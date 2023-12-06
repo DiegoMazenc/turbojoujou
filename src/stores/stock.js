@@ -1,9 +1,9 @@
-import stock from '../json/stockjoujou.json'; 
+import joujouListe from '../json/stockjoujou.json'; 
 import { defineStore } from 'pinia'; 
 
 export const useJoujouStore = defineStore('joujou', {
    state: () => ({
-    joujouListe: []
+    joujouListe: joujouListe
    }),
 
    getters: {
