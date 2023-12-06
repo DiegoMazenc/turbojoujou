@@ -1,22 +1,24 @@
 <script >
 import FormAdd from './components/FormAdd.vue';
+import Display from './Display/Display.vue'
+export default{
+    name: "App",
+    components:{
+        FormAdd,
+        Display
+    }
+}
 
-export default {
-  name: 'App',
-  components: {
-    FormAdd,
-  },
-  // Other options...
-};
+
 </script>
 
 <template>
-    <div id="app">
-      <!-- Other content here -->
-      <FormAdd />
-    </div>
-  </template>
+<div id="app">
+    <FormAdd/>
+    <Display/>
+</div>
+</template>
 
-<style >
+<style>
 
 </style>
