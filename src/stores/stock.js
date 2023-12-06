@@ -1,23 +1,22 @@
-import stock from '../json/stockjoujou.json'; 
-import { defineStore } from 'pinia'; 
+import joujouListe from '../json/stockjoujou.json'
+import { defineStore } from 'pinia'
 
 export const useJoujouStore = defineStore('joujou', {
-   state: () => ({
-    joujouListe: []
-   }),
+  state: () => ({
+    joujouListe: joujouListe
+  }),
 
-   getters: {
+  getters: {
     getJoujou: (state) => state.joujouListe
-   }, 
+  },
 
-   actions: {
+  actions: {
     addJoujouToList(item) {
-        this.joujouListe.push(item); 
-    }, 
+      this.joujouListe.push(item)
+    },
 
     deleteJoujouFromList(id) {
-        this.joujouListe.splice(id,1); 
+      this.joujouListe.splice(id, 1)
     }
-   }
-  })
-  
+  }
+})
