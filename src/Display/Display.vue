@@ -1,5 +1,6 @@
 <script>
 import { mapState } from 'pinia'
+import { mapActions } from 'pinia'
 import { useJoujouStore } from '../stores/stock.js'
 
 export default {
@@ -7,6 +8,9 @@ export default {
   computed: {
     ...mapState(useJoujouStore, ['joujouListe'])
   },
+  methods: {
+
+  }
 }
 </script>
 
@@ -17,7 +21,7 @@ export default {
       <h5 class="card-title">{{ item.nom }}</h5>
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.la_marque }}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary" @click="supprJoujou">Supprimer</a>
     </div>
   </div>
 </template>
