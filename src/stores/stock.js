@@ -16,21 +16,7 @@ export const useJoujouStore = defineStore('joujou', {
     getTriAlpha: (state) => state.triAlpha, 
     getTriPrix: (state) => state.triPrix,
 
-    getFilteredList: (state) => {
-      // associer le tableau original à une variable
-   let tab = this.joujouListe.slice(); 
-      // filtrer le tableau par marque
-      if (state.selectedMarque !== 'all') {
-        state.filteredList = filteredList.filter(item => item.la_marque === this.selectedMarque)
-      }
 
-      filteredList = this.tab; 
-      // organiser le trix par alphabetique ou par prix
-
-      // retourner le tableau filtré
-    
-      return this.tab; 
-    }
   },
 
   actions: {
