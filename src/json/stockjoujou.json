@@ -82,5 +82,12 @@
     "la_marque": "Halo",
     "prix": 25.99,
     "taille": "15 cm"
+  },
+  {
+    "id": 13,
+    "nom": "AckerMan",
+    "la_marque": "DC Comics",
+    "prix": 25.99,
+    "taille": "18 cm"
   }
 ]
