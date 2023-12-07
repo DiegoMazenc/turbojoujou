@@ -14,6 +14,7 @@ export default {
     ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
 
     deleteJoujou(id) {
+      
       const index = this.joujouListe.findIndex(item => item.id === id);
       console.log(index); 
       this.deleteJoujouFromListAction(index); 
