@@ -23,8 +23,7 @@ export default {
   },
 
   computed: {
-    ...mapState(useJoujouStore, ['joujouListe']),
-    ...mapState(useJoujouStore, ['filteredList']),
+    ...mapState(useJoujouStore, ['joujouListe', 'getfilteredList'])
 
   }
 }
@@ -32,7 +31,7 @@ export default {
 
 <template>
  <div class="cards-template">
-<div v-for="(item, index) in filteredList" :key="item.id" class="card" style="width: 18rem">
+<div v-for="(item, index) in getfilteredList" :key="item.id" class="card" style="width: 18rem">
     <img src="..." class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ item.nom }}</h5>
