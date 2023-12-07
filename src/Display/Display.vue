@@ -12,7 +12,6 @@ export default {
   },
   methods: {
     ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
-    ...mapActions(useJoujouStore, { debugAction: 'debug' }),
 
 
     deleteJoujou(id) {
