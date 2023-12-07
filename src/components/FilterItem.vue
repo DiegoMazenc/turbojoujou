@@ -9,7 +9,9 @@ export default {
     return {
       la_marque: null,
       tabMarque: [],
-      selectedMarque: null
+      selectedMarque: "all", 
+      triAlpha : false, 
+      triPrix : false
     }
   },
   methods: {
@@ -17,7 +19,20 @@ export default {
     exportSelectedMarque() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
       this.updateSelectedMarqueAction(this.selectedMarque);
-    }
+    }, 
+
+    ...mapActions(useJoujouStore, {updateTriAlphaAction : "updateTriAlpha" }),
+    exportTrieAlpha() {
+      // Appelez l'action du store pour mettre à jour la valeur dans le store
+      this.updateTriAlphaAction(this.triAlpha);
+    }, 
+
+    ...mapActions(useJoujouStore, {updateTriPrixAction : "updateTriPrix" }),
+    exportTriePrix() {
+      // Appelez l'action du store pour mettre à jour la valeur dans le store
+      this.updateTriPrixAction(this.triPrix);
+    }, 
+
   },
   computed: {
     ...mapState(useJoujouStore, ['joujouListe']),
@@ -41,8 +56,8 @@ export default {
 
 <template>
   <div>
-    <button>Alphabétique</button>
-    <button>Prix</button>
+    <button @click="exportTrieAlpha">Alphabétique</button>
+    <button @click="exportTriePrix">Prix</button>
     <select  class="card" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
       <option value="all">All</option>
       <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
