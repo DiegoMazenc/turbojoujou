@@ -1,28 +1,28 @@
 <script>
-import { mapState } from 'pinia';
-import { mapActions } from 'pinia';
-import { useJoujouStore } from '../stores/stock.js';
+import { mapState } from 'pinia'
+import { mapActions } from 'pinia'
+import { useJoujouStore } from '../stores/stock.js'
 
 export default {
   name: 'Display',
-  data(){
+  data() {
     return {
-    id: null
+      id: null
     }
-},
-methods: {
-
-  ...mapActions(useJoujouStore, {deleteJoujouFromListAction: 'deleteJoujouFromList'}),
-
-  deleteJoujou(item){
-    this.deleteJoujouFromListAction(item); 
-  }
   },
+  methods: {
+    ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
 
+    deleteJoujou(id) {
+      const index = this.joujouListe.findIndex(item => item.id === id);
+      console.log(index); 
+      this.deleteJoujouFromListAction(index); 
+    }
+  },
 
   computed: {
     ...mapState(useJoujouStore, ['joujouListe'])
-  },
+  }
 }
 </script>
 
