@@ -11,7 +11,8 @@ export default {
 </script>
 
 <template>
-  <div v-for="(item, index) in joujouListe" :key="item.id" class="card" style="width: 18rem">
+ <div class="cards-template">
+<div v-for="(item, index) in joujouListe" :key="item.id" class="card" style="width: 18rem">
     <img src="..." class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ item.nom }}</h5>
@@ -20,6 +21,20 @@ export default {
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>
+ </div>
+
+
+  
 </template>
 
-<style></style>
+<style>
+.cards-template{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+}
+
+.card{
+  margin:5px;
+}
+</style>

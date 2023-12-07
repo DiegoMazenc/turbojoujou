@@ -19,8 +19,7 @@ export default {
     }
   },
   computed: {
-    //générer l'objet ici
-    //après on le prend et on le met dans mapaction
+    
     joujouMapper() {
       let joujouModel = {}
       joujouModel.nom = this.nom
