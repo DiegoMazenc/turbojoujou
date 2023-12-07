@@ -13,7 +13,10 @@ export default {
     }
   },
   methods: {
-
+    exportSelectedMarque(){
+      this.$store.dispatch('stock.js/sortJoujouFromList', this.selectedMarque)
+      console.log(this.exportSelectedMarque); 
+    }
   },
   computed: {
     ...mapState(useJoujouStore, ['joujouListe']),
@@ -28,9 +31,14 @@ export default {
 
       // Convertissez le Set en tableau
       return Array.from(uniqueMarquesSet);
-    }
+    },
+
   },
-  
+//   watch: {
+//   selectedMarque(newValue) {
+//     console.log(newValue);
+//   }
+// },
 }
 </script>
 
@@ -38,7 +46,7 @@ export default {
   <div>
     <button>Alphabétique</button>
     <button>Prix</button>
-    <select  class="card" style="width: 18rem" v-model="selectedMarque">
+    <select  class="card" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
       <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
     </select>
   </div>
