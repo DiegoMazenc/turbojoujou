@@ -10,6 +10,13 @@ export default {
     id: null
     }
 },
+methods: {
+
+  ...mapActions(useJoujouStore, {deleteJoujouFromListAction: 'deleteJoujouFromList'})
+
+  },
+
+
   computed: {
     ...mapState(useJoujouStore, ['joujouListe'])
   },
@@ -23,7 +30,7 @@ export default {
       <h5 class="card-title">{{ item.nom }}</h5>
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.la_marque }}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary" @click="deleteJoujou(item.id)">Go somewhere</a>
     </div>
   </div>
 </template>
