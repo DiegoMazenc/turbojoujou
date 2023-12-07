@@ -44,6 +44,7 @@ export default {
     <button>Alphabétique</button>
     <button>Prix</button>
     <select  class="card" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
+      <option value="all">All</option>
       <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
     </select>
   </div>
