@@ -22,7 +22,7 @@ export default {
     }
   }, 
   mounted() {
-    this.showQte(); 
+    this.showQte()
   },
   watch: {
     joujouListe: {

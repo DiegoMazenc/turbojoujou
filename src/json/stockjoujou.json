@@ -68,5 +68,19 @@
     "la_marque": "Halo",
     "prix": 25.99,
     "taille": "15 cm"
+  },
+  {
+    "id": 11,
+    "nom": "Master Chief",
+    "la_marque": "Halo",
+    "prix": 25.99,
+    "taille": "15 cm"
+  },
+  {
+    "id": 12,
+    "nom": "Master Chief",
+    "la_marque": "Halo",
+    "prix": 25.99,
+    "taille": "15 cm"
   }
 ]
