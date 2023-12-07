@@ -1,12 +1,28 @@
 <script>
 import { mapState } from 'pinia'
+import { mapActions } from 'pinia'
 import { useJoujouStore } from '../stores/stock.js'
 
 export default {
   name: 'Display',
+  data() {
+    return {
+      id: null
+    }
+  },
+  methods: {
+    ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
+
+    deleteJoujou(id) {
+      const index = this.joujouListe.findIndex(item => item.id === id);
+      console.log(index); 
+      this.deleteJoujouFromListAction(index); 
+    }
+  },
+
   computed: {
     ...mapState(useJoujouStore, ['joujouListe'])
-  },
+  }
 }
 </script>
 
@@ -18,7 +34,7 @@ export default {
       <h5 class="card-title">{{ item.nom }}</h5>
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.la_marque }}</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <a href="#" class="btn btn-primary" @click="deleteJoujou(item.id)">Go somewhere</a>
     </div>
   </div>
  </div>
