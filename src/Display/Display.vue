@@ -12,6 +12,8 @@ export default {
   },
   methods: {
     ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
+    ...mapActions(useJoujouStore, { debugAction: 'debug' }),
+
 
     deleteJoujou(id) {
       
@@ -22,14 +24,16 @@ export default {
   },
 
   computed: {
-    ...mapState(useJoujouStore, ['joujouListe'])
+    ...mapState(useJoujouStore, ['joujouListe']),
+    ...mapState(useJoujouStore, ['filteredList']),
+
   }
 }
 </script>
 
 <template>
  <div class="cards-template">
-<div v-for="(item, index) in joujouListe" :key="item.id" class="card" style="width: 18rem">
+<div v-for="(item, index) in filteredList" :key="item.id" class="card" style="width: 18rem">
     <img src="..." class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ item.nom }}</h5>

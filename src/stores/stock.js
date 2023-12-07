@@ -4,6 +4,7 @@ import { defineStore } from 'pinia'
 export const useJoujouStore = defineStore('joujou', {
   state: () => ({
     joujouListe: joujouListe,
+    filteredList: joujouListe, 
     selectedMarque: 'all',
     triAlpha: false,
     triPrix: false
@@ -17,17 +18,18 @@ export const useJoujouStore = defineStore('joujou', {
 
     getFilteredList: (state) => {
       // associer le tableau original à une variable
-      let filteredList = joujouListe
-
+   let tab = this.joujouListe.slice(); 
       // filtrer le tableau par marque
-      if (state.selectedMarque != 'all') {
-        filteredList = filteredList.filter()
+      if (state.selectedMarque !== 'all') {
+        state.filteredList = filteredList.filter(item => item.la_marque === this.selectedMarque)
       }
 
+      filteredList = this.tab; 
       // organiser le trix par alphabetique ou par prix
 
       // retourner le tableau filtré
-      return filteredList
+    
+      return this.tab; 
     }
   },
 
@@ -45,20 +47,25 @@ export const useJoujouStore = defineStore('joujou', {
       console.log(selectedMarque)
       this.selectedMarque = selectedMarque
       console.log('new', this.selectedMarque)
+      console.log(this.filteredList); 
     },
 
     updateTriAlpha() {
-      console.log('trialpha marche')
+      // console.log('trialpha marche')
       this.triPrix = false
       this.triAlpha = true
-      console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
+      // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
     },
 
     updateTriPrix() {
       
       this.triAlpha = false
       this.triPrix = true
-      console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+      // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+    },
+
+    debug () {
+      console.log(this.getFilteredList); 
     }
   }
 })
