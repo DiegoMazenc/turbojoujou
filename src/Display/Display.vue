@@ -12,8 +12,11 @@ export default {
 },
 methods: {
 
-  ...mapActions(useJoujouStore, {deleteJoujouFromListAction: 'deleteJoujouFromList'})
+  ...mapActions(useJoujouStore, {deleteJoujouFromListAction: 'deleteJoujouFromList'}),
 
+  deleteJoujou(item){
+    this.deleteJoujouFromListAction(item); 
+  }
   },
 
 
