@@ -1,8 +1,6 @@
 <script>
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
-
-// import { mapActions } from 'pinia'
 import { useJoujouStore } from '../stores/stock.js'
 
 export default {
@@ -15,44 +13,29 @@ export default {
     }
   },
   methods: {
-<<<<<<< HEAD
-    exportSelectedMarque(){
-      this.$store.dispatch('stock.js/sortJoujouFromList', this.selectedMarque)
-      console.log(this.exportSelectedMarque); 
-=======
     ...mapActions(useJoujouStore, {updateSelectedMarqueAction : "updateSelectedMarque" }),
     exportSelectedMarque() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
       this.updateSelectedMarqueAction(this.selectedMarque);
->>>>>>> 4c1e6dc53b7c3db0a2fe4ba840dabd334d9ecbd9
     }
   },
   computed: {
     ...mapState(useJoujouStore, ['joujouListe']),
     uniqueMarques() {
+    
       const uniqueMarquesSet = new Set();
 
+     
       this.joujouListe.forEach(joujou => {
         uniqueMarquesSet.add(joujou.la_marque);
       });
 
+  
       return Array.from(uniqueMarquesSet);
     },
-<<<<<<< HEAD
 
   },
-//   watch: {
-//   selectedMarque(newValue) {
-//     console.log(newValue);
-//   }
-// },
-=======
-    
-  },
-  mounted() {
-  
-  }
->>>>>>> 4c1e6dc53b7c3db0a2fe4ba840dabd334d9ecbd9
+
 }
 </script>
 

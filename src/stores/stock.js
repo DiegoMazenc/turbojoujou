@@ -42,4 +42,4 @@ export const useJoujouStore = defineStore('joujou', {
       this.selectedMarque = selectedMarque;
       console.log("new", this.selectedMarque);
   }
-})
+}})
