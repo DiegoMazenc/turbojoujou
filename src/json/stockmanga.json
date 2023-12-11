@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "titre": "One Piece",
+    "auteur": "Eiichiro Oda",
+    "éditeur": "Shueisha",
+    "année_de_parution": 1997,
+    "tomes": [
+      {"numéro": 1, "stock": 50},
+      {"numéro": 2, "stock": 45},
+      {"numéro": 3, "stock": 40}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 2,
+    "titre": "Naruto",
+    "auteur": "Masashi Kishimoto",
+    "éditeur": "Shueisha",
+    "année_de_parution": 1999,
+    "tomes": [
+      {"numéro": 1, "stock": 55},
+      {"numéro": 2, "stock": 50},
+      {"numéro": 3, "stock": 48}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 3,
+    "titre": "Death Note",
+    "auteur": "Tsugumi Ohba",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2003,
+    "tomes": [
+      {"numéro": 1, "stock": 30},
+      {"numéro": 2, "stock": 28},
+      {"numéro": 3, "stock": 25}
+    ],
+    "style": "Seinen"
+  },
+  {
+    "id": 4,
+    "titre": "Attack on Titan",
+    "auteur": "Hajime Isayama",
+    "éditeur": "Kodansha",
+    "année_de_parution": 2009,
+    "tomes": [
+      {"numéro": 1, "stock": 40},
+      {"numéro": 2, "stock": 38},
+      {"numéro": 3, "stock": 35}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 5,
+    "titre": "My Hero Academia",
+    "auteur": "Kohei Horikoshi",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2014,
+    "tomes": [
+      {"numéro": 1, "stock": 60},
+      {"numéro": 2, "stock": 58},
+      {"numéro": 3, "stock": 55}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 6,
+    "titre": "Fullmetal Alchemist",
+    "auteur": "Hiromu Arakawa",
+    "éditeur": "Square Enix",
+    "année_de_parution": 2001,
+    "tomes": [
+      {"numéro": 1, "stock": 35},
+      {"numéro": 2, "stock": 33},
+      {"numéro": 3, "stock": 30}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 7,
+    "titre": "Demon Slayer",
+    "auteur": "Koyoharu Gotouge",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2016,
+    "tomes": [
+      {"numéro": 1, "stock": 25},
+      {"numéro": 2, "stock": 23},
+      {"numéro": 3, "stock": 20}
+    ],
+    "style": "Shonen"
+  },
+  {
+    "id": 8,
+    "titre": "One Punch Man",
+    "auteur": "ONE",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2009,
+    "tomes": [
+      {"numéro": 1, "stock": 42},
+      {"numéro": 2, "stock": 40},
+      {"numéro": 3, "stock": 38}
+    ],
+    "style": "Seinen"
+  },
+  {
+    "id": 9,
+    "titre": "Tokyo Ghoul",
+    "auteur": "Sui Ishida",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2011,
+    "tomes": [
+      {"numéro": 1, "stock": 28},
+      {"numéro": 2, "stock": 26},
+      {"numéro": 3, "stock": 24}
+    ],
+    "style": "Seinen"
+  },
+  {
+    "id": 10,
+    "titre": "Bleach",
+    "auteur": "Tite Kubo",
+    "éditeur": "Shueisha",
+    "année_de_parution": 2001,
+    "tomes": [
+      {"numéro": 1, "stock": 48},
+      {"numéro": 2, "stock": 45},
+      {"numéro": 3, "stock": 42}
+    ],
+    "style": "Shonen"
+  }
+]

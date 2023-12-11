@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // 1. Define route components.
 // These can be imported from other files
-
+import Joujou from '../Pages/Joujou.vue'
 
 
 // 2. Define some routes
@@ -10,9 +10,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 // We'll talk about nested routes later.
 const routes = [
     { 
-        name: "Home",
+        name: "Joujou",
         path: '/', 
-        component: BasicPage
+        component: Joujou
     },
     { 
         name: "CheeseList",

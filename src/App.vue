@@ -14,6 +14,7 @@ export default{
 <template>
 <div id="app">
 <Joujou/>
+
 </div>
 </template>
 
