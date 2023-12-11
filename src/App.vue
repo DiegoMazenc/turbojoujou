@@ -1,15 +1,10 @@
 <script >
-import FormAdd from './components/FormAdd.vue';
-import Display from './Display/Display.vue'
-import Counter from './components/Counter.vue';
-import FilterItem from './components/FilterItem.vue';
+import Joujou from './Pages/Joujou.vue'
+
 export default{
     name: "App",
     components:{
-        FormAdd,
-        Display,
-        Counter,
-        FilterItem
+       Joujou
     }
 }
 
@@ -18,11 +13,7 @@ export default{
 
 <template>
 <div id="app">
-    <FormAdd/>
-    <FilterItem/>
-    <Counter/>
-    <Display/>
-   
+<Joujou/>
 </div>
 </template>
 

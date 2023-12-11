@@ -37,7 +37,7 @@ export default {
       <h5 class="card-title">{{ item.nom }}</h5>
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.la_marque }}</p>
-      <a href="#" class="btn btn-primary" @click="deleteJoujou(item.id)">Go somewhere</a>
+      <a href="#" class="btn btn-primary" @click="deleteJoujou(item.id)">Supprimer</a>
     </div>
   </div>
  </div>
