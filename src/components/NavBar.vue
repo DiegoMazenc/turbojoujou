@@ -1,6 +1,10 @@
 <script>
+import { RouterLink } from 'vue-router'
 export default {
-    name:'NavBar'
+    name:'NavBar',
+    components:{
+      RouterLink
+    }
 }
 </script>
 
@@ -15,21 +19,17 @@ export default {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <router-link to="/"
-                >Home</router-link>
+            <RouterLink to="/">Home</RouterLink>
         </li>
         <li class="nav-item">
-            <router-link to="/mangaspage"
-                >Mangas</router-link>
+            <RouterLink to="/mangaspage">Mangas</RouterLink>
         </li>
         <li class="nav-item">
-            <router-link to="/jeuxvideo"
-                >Jeux vidéos</router-link>
+            <RouterLink to="/jeuxvideo">Jeux vidéos</RouterLink>
         </li>
-        <li class="nav-item">
-            <router-link to="/admin"
-                >Admin</router-link>
-        </li>
+        <!-- <li class="nav-item">
+            <RouterLink to="/admin">Admin</RouterLink>
+        </li> -->
         </ul>
     </div>
   </div>

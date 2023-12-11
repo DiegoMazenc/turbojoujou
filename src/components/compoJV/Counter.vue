@@ -1,6 +1,6 @@
 <script>
 import { mapState } from 'pinia'
-import { useJoujouStore } from '../../stores/stock.js'
+import { useJeuxvVideoStore } from '../../stores/stock.js'
 
 export default {
   name: 'Counter',
@@ -14,10 +14,10 @@ export default {
   },
 
   computed: {
-    ...mapState(useJoujouStore, ['joujouListe']),
+    ...mapState(useJeuxvVideoStore, ['jeuxVideoList']),
 
     showQte () {
-        this.qte = this.joujouListe.length
+        this.qte = this.jeuxVideoList.length
         return this.qte; 
     }
   }, 
@@ -25,7 +25,7 @@ export default {
     this.showQte()
   },
   watch: {
-    joujouListe: {
+    jeuxVideoList: {
         handler() {
             this.showQte; 
         },

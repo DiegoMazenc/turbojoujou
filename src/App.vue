@@ -1,12 +1,12 @@
 <script >
-import JeuxVideo from './Pages/JeuxVideo.vue'
+import { RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue';
 
 export default{
     name: "App",
     components:{
-       JeuxVideo, 
-       NavBar
+        NavBar,
+        RouterView
     }
 }
 
@@ -16,8 +16,7 @@ export default{
 <template>
 <div id="app">
 <NavBar />
-<JeuxVideo/>
-
+<RouterView />
 </div>
 </template>
 

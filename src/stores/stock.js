@@ -22,12 +22,12 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
 
       if (state.selectedMarque !== 'all') {
         filteredList = filteredList.filter(
-          (item) => item.la_marque === state.selectedMarque
+          (item) => item.style === state.selectedMarque
         )
       }
 
       if (state.triAlpha == true) {
-       filteredList = filteredList.sort((a, b) => a.nom.localeCompare(b.nom))
+       filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
         console.log(filteredList)
       }
 
