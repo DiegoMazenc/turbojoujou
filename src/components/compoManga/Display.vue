@@ -11,7 +11,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(useMangaStore, { deleteMangaFromListAction: 'deleteJeuxVideoFromList' }),
+    ...mapActions(useMangaStore, { deleteMangaFromListAction: 'deleteMangaFromList' }),
 
     deleteManga(id) {
       
