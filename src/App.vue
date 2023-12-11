@@ -1,10 +1,11 @@
 <script >
-import Joujou from './Pages/Joujou.vue'
+
+import JeuxVideo from './Pages/JeuxVideo.vue'
 
 export default{
     name: "App",
     components:{
-       Joujou
+       JeuxVideo
     }
 }
 
@@ -13,7 +14,7 @@ export default{
 
 <template>
 <div id="app">
-<Joujou/>
+<JeuxVideo/>
 
 </div>
 </template>
