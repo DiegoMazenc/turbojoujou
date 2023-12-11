@@ -6,7 +6,8 @@
     "prix": 59.99,
     "pegi": 12,
     "style": "aventure",
-    "stock": 50
+    "stock": 50, 
+    "img": "https://zelda.nintendo.com/breath-of-the-wild/assets/icons/BOTW-Share_icon.jpg"
   },
   {
     "id": 2,
@@ -15,7 +16,8 @@
     "prix": 49.99,
     "pegi": 18,
     "style": "action",
-    "stock": 45
+    "stock": 45, 
+    "img": "https://cdn.akamai.steamstatic.com/steam/apps/1593500/capsule_616x353.jpg?t=1695758729"
   },
   {
     "id": 3,
@@ -24,7 +26,8 @@
     "prix": 39.99,
     "pegi": 18,
     "style": "action-aventure",
-    "stock": 40
+    "stock": 40, 
+    "img": "https://store-images.s-microsoft.com/image/apps.58752.13942869738016799.078aba97-2f28-440f-97b6-b852e1af307a.95fdf1a1-efd6-4938-8100-8abae91695d6?q=90&w=480&h=270"
   },
   {
     "id": 4,
@@ -33,7 +36,8 @@
     "prix": 29.99,
     "pegi": 18,
     "style": "action-RPG",
-    "stock": 35
+    "stock": 35, 
+    "img": "https://xboxsquad.fr/wp-content/uploads/2023/05/we-played-the-witcher-3-wild-hunt-for-6-hours-ign_jtu3.jpg"
   },
   {
     "id": 5,
@@ -42,7 +46,8 @@
     "prix": 49.99,
     "pegi": 7,
     "style": "plateforme",
-    "stock": 60
+    "stock": 60, 
+    "img": "https://assets.nintendo.com/image/upload/c_fill,w_1200/q_auto:best/f_auto/dpr_2.0/ncom/software/switch/70010000001130/c42553b4fd0312c31e70ec7468c6c9bccd739f340152925b9600631f2d29f8b5"
   },
   {
     "id": 6,
@@ -51,7 +56,8 @@
     "prix": 59.99,
     "pegi": 18,
     "style": "action-RPG",
-    "stock": 42
+    "stock": 42, 
+    "img": "https://gaming-cdn.com/images/products/6147/orig/assassin-s-creed-valhalla-pc-jeu-ubisoft-connect-europe-cover.jpg?v=1697644479"
   },
   {
     "id": 7,
@@ -60,16 +66,18 @@
     "prix": 19.99,
     "pegi": 7,
     "style": "sandbox",
-    "stock": 25
+    "stock": 25, 
+    "img": "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg"
   },
   {
     "id": 8,
-    "titre": "FIFA 22",
+    "titre": "FIFA 23",
     "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
     "prix": 59.99,
     "pegi": 3,
     "style": "sport",
-    "stock": 48
+    "stock": 48, 
+    "img": "https://cdn2.unrealengine.com/ea-sports-fifa-23-is-coming-to-the-epic-games-store-1920x1080-398e19351a82.jpg"
   },
   {
     "id": 9,
@@ -78,7 +86,8 @@
     "prix": 49.99,
     "pegi": 18,
     "style": "action-RPG",
-    "stock": 28
+    "stock": 28, 
+    "img": "https://cdn2.unrealengine.com/en-product-landscape-image-2560x1440-2560x1440-6dbb1ee2879a.jpg?h=270&quality=medium&resize=1&w=480"
   },
   {
     "id": 10,
@@ -87,6 +96,7 @@
     "prix": 39.99,
     "pegi": 16,
     "style": "action",
-    "stock": 35
+    "stock": 35, 
+    "img": "https://www.micromania.fr/dw/image/v2/BCRB_PRD/on/demandware.static/-/Sites-masterCatalog_Micromania/default/dw74706ea5/images/high-res/aff998e2-a954-47e7-b67f-245c31a2c55c_srcmax.jpg?sw=480&sh=480&sm=fit"
   }
 ]

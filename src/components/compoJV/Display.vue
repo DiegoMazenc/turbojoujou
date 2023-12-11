@@ -37,7 +37,7 @@ export default {
 <template>
  <div class="cards-template">
 <div v-for="(item) in getfilteredList" :key="item.id" class="card" style="width: 18rem">
-    <img src="..." class="card-img-top" alt="..." />
+    <img :src="item.img" class="card-img-top" alt="..." />
     <div class="card-body">
       <h5 class="card-title">{{ item.titre }}</h5>
       <p class="card-text">{{ item.prix }}</p>
