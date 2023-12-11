@@ -3,11 +3,13 @@ import Display from '../components/compoJV/Display.vue'
 import Counter from '../components/compoJV/Counter.vue';
 import FilterItem from '../components/compoJV/FilterItem.vue';
 export default{
-    name: "App",
+    name: "JeuxVideoView",
     components:{
+
         Display,
         Counter,
         FilterItem
+        
     }
 }
 
@@ -15,11 +17,10 @@ export default{
 </script>
 
 <template>
-<div id="app">
+<div>
     <FilterItem/>
     <Counter/>
     <Display/>
-   
 </div>
 </template>
 

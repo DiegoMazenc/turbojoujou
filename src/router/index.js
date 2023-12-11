@@ -1,8 +1,8 @@
 
 import { createRouter, createWebHistory } from 'vue-router'
-import JouJou from '../Pages/Joujou.vue'
+import JouJouView from '../Pages/Joujou.vue'
 import MangasPage from '../Pages/MangasPage.vue'
-import JeuxVideo from '../Pages/JeuxVideo.vue'
+import JeuxVideoView from '../Pages/JeuxVideo.vue'
 
 
 const router = createRouter({
@@ -10,8 +10,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'JouJou',
-      component: JouJou
+      name: 'JouJouView',
+      component: JouJouView
     },
     {
         path: '/mangaspage',
@@ -20,9 +20,9 @@ const router = createRouter({
       },
     {
       path: '/jeuxvideo',
-      name: 'JeuxVideo',
+      name: 'JeuxVideoView',
  
-      component: JeuxVideo
+      component: JeuxVideoView
     }
   ]
 })

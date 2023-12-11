@@ -4,7 +4,7 @@ import Display from '../components/compoJoujou/Display.vue'
 import Counter from '../components/compoJoujou/Counter.vue';
 import FilterItem from '../components/compoJoujou/FilterItem.vue';
 export default{
-    name: "JouJou",
+    name: "JouJouView",
     components:{
         FormAdd,
         Display,
@@ -17,12 +17,11 @@ export default{
 </script>
 
 <template>
-<div id="app">
+<div>
     <FormAdd/>
     <FilterItem/>
     <Counter/>
     <Display/>
-   
 </div>
 </template>
 
