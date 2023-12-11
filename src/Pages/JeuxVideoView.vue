@@ -1,15 +1,12 @@
 <script >
 import Display from '../components/compoJV/Display.vue'
-import Counter from '../components/compoJV/Counter.vue';
 import FilterItem from '../components/compoJV/FilterItem.vue';
 
 export default{
     name: "JeuxVideoView",
     components:{
         Display,
-        Counter,
         FilterItem
-
     }
 }
 
@@ -19,7 +16,6 @@ export default{
 <template>
 <div>
     <FilterItem/>
-    <Counter/>
     <Display/>
 </div>
 </template>

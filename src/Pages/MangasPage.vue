@@ -6,6 +6,6 @@ export default {
 
 <template>
     <div>
-        
+        <h1>Hello Manga</h1>
     </div>
 </template>
