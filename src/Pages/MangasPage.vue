@@ -7,13 +7,19 @@ export default {
     components:{
         Display, 
         FilterItem
-    }
+    }, 
+    methods:{
+        ajoutPanierManga(item){
+            this.$emit("ajoutPanierManga", item)
+        }
+    }, 
+    emits:["ajoutPanierManga"]
 }
 </script>
 
 <template>
     <div>  
     <FilterItem/>
-    <Display/>
+    <Display @ajoutPanierManga="ajoutPanierManga"/>
     </div>
 </template>

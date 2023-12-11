@@ -7,6 +7,11 @@ export default{
     components:{
         Display,
         FilterItem
+    }, 
+    methods:{
+        ajoutPanierJV(item){
+            this.$emit('ajoutPanierJV', item)
+        }
     }
 }
 
@@ -16,7 +21,7 @@ export default{
 <template>
 <div>
     <FilterItem/>
-    <Display/>
+    <Display @ajoutPanierJV="ajoutPanierJV"/>
 </div>
 </template>
 

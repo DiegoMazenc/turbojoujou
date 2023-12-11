@@ -19,6 +19,10 @@ export default {
       const index = this.joujouListe.findIndex(item => item.id === id);
       console.log(index); 
       this.deleteJoujouFromListAction(index); 
+    }, 
+
+    ajoutPanierJoujou(item){
+      this.$emit("ajoutPanierJoujou", item)
     }
   },
 
@@ -38,6 +42,7 @@ export default {
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.la_marque }}</p>
       <a href="#" class="btn btn-primary" @click="deleteJoujou(item.id)">Supprimer</a>
+      <a href="#" class="btn btn-primary" @click="ajoutPanierJoujou(item)">Ajouter au panier</a>
     </div>
   </div>
  </div>

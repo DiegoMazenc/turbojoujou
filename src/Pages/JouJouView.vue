@@ -8,6 +8,12 @@ export default {
     FormAdd,
     Display,
     FilterItem
+  }, 
+  emits:['ajoutPanierJoujou'], 
+  methods:{
+    ajoutPanierJoujou(item){
+      this.$emit('ajoutPanierJoujou', item)
+    }
   }
 }
 </script>
@@ -16,7 +22,7 @@ export default {
   <div>
     <FormAdd />
     <FilterItem />
-    <Display />
+    <Display @ajoutPanierJoujou="ajoutPanierJoujou"/>
   </div>
 </template>
 

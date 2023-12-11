@@ -19,13 +19,18 @@ export default {
       const index = this.jeuxVideoList.findIndex(item => item.id === id);
       console.log(index); 
       this.deleteJeuxVideoFromListAction(index); 
-    }
+    }, 
+
+    ajoutPanierJV(item){
+      this.$emit("ajoutPanierJV", item)
+}
   },
 
   computed: {
     ...mapState(useJeuxvVideoStore, ['jeuxVideoList', 'getfilteredList'])
 
-  }
+  }, 
+  emits:['ajoutPanierJV'], 
 }
 </script>
 
@@ -38,6 +43,7 @@ export default {
       <p class="card-text">{{ item.prix }}</p>
       <p class="card-text">{{ item.plateforme }}</p>
       <a href="#" class="btn btn-primary" @click="deleteJeuxVideo(item.id)">Supprimer</a>
+      <a href="#" class="btn btn-primary" @click="ajoutPanierJV(item)">Ajouter au panier</a>
     </div>
   </div>
  </div>

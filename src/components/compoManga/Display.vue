@@ -18,13 +18,18 @@ export default {
       const index = this.mangaList.findIndex(item => item.id === id);
       console.log(index); 
       this.deleteMangaFromListAction(index); 
+    }, 
+
+    ajoutPanierManga(item){
+      this.$emit('ajoutPanierManga', item)
     }
   },
 
   computed: {
     ...mapState(useMangaStore, ['mangaList', 'getfilteredList', 'getTomeList'])
 
-  }
+  },
+  emits:['ajoutPanierManga']
 }
 </script>
 
@@ -39,7 +44,10 @@ export default {
     <div>
       <p v-for="(item) in item.tomes">{{ `Tome : ${item.numero} Prix : ${item.prix} Nombre en stock : ${item.stock}` }}</p>
     </div>
+    <div class="d-flex gap-3">
       <a href="#" class="btn btn-primary" @click="deleteManga(item.id)">Supprimer</a>
+      <a href="#" class="btn btn-primary" @click="ajoutPanierManga(item)">Ajouter au panier</a>
+      </div>
      
     </div>
   </div>
