@@ -1,11 +1,12 @@
 <script >
-
 import JeuxVideo from './Pages/JeuxVideo.vue'
+import NavBar from './components/NavBar.vue';
 
 export default{
     name: "App",
     components:{
-       JeuxVideo
+       JeuxVideo, 
+       NavBar
     }
 }
 
@@ -14,6 +15,7 @@ export default{
 
 <template>
 <div id="app">
+<NavBar />
 <JeuxVideo/>
 
 </div>
