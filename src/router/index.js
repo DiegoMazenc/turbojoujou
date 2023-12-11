@@ -3,6 +3,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 // 1. Define route components.
 // These can be imported from other files
 import Joujou from '../Pages/Joujou.vue'
+import MangasPage from '../Pages/MangasPage.vue'
+import JeuxVideo from '../JeuxVideo.vue'
+import AdminPage from '../AdminPage.vue'
 
 
 // 2. Define some routes
@@ -15,14 +18,19 @@ const routes = [
         component: Joujou
     },
     { 
-        name: "CheeseList",
-        path: '/cheeses', 
-        component: CheeseListPage,
+        name: "MangasPage",
+        path: '/mangaspage', 
+        component: MangasPage,
     },
     { 
-        name: "CheeseDetail",
-        path: '/cheeses/:id', 
-        component: CheeseDetailPage,
+        name: "JeuxVideo",
+        path: '/jeuxvideo', 
+        component: JeuxVideo,
+    },
+    { 
+        name: "AdminPage",
+        path: '/adminpage', 
+        component: AdminPage,
     },
 ]
 
