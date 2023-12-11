@@ -4,8 +4,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 // These can be imported from other files
 import Joujou from '../Pages/Joujou.vue'
 import MangasPage from '../Pages/MangasPage.vue'
-import JeuxVideo from '../JeuxVideo.vue'
-import AdminPage from '../AdminPage.vue'
+import JeuxVideo from '../Pages/JeuxVideo.vue'
+import AdminPage from '../Pages/AdminPage.vue'
 
 
 // 2. Define some routes
