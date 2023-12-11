@@ -1,7 +1,7 @@
 <script>
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
-import { useJoujouStore } from '../stores/stock.js'
+import { useJoujouStore } from '../../stores/stock.js'
 
 export default {
   name: 'Display',

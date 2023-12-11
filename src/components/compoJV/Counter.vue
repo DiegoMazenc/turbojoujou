@@ -1,6 +1,6 @@
 <script>
 import { mapState } from 'pinia'
-import { useJoujouStore } from '../stores/stock.js'
+import { useJoujouStore } from '../../stores/stock.js'
 
 export default {
   name: 'Counter',

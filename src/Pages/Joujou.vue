@@ -1,10 +1,10 @@
 <script >
-import FormAdd from '../components/FormAdd.vue';
-import Display from '../components/Display.vue'
-import Counter from '../components/Counter.vue';
-import FilterItem from '../components/FilterItem.vue';
+import FormAdd from '../components/compoJoujou/FormAdd.vue';
+import Display from '../components/compoJoujou/Display.vue'
+import Counter from '../components/compoJoujou/Counter.vue';
+import FilterItem from '../components/compoJoujou/FilterItem.vue';
 export default{
-    name: "App",
+    name: "JouJou",
     components:{
         FormAdd,
         Display,
