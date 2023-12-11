@@ -9,8 +9,9 @@ export default {
         FilterItem
     }, 
     methods:{
-        ajoutPanierManga(item){
-            this.$emit("ajoutPanierManga", item)
+        ajoutPanierManga(item, tome){
+            this.$emit("ajoutPanierManga", {manga:item, tome: tome})
+           
         }
     }, 
     emits:["ajoutPanierManga"]

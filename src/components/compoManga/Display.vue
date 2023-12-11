@@ -14,57 +14,52 @@ export default {
     ...mapActions(useMangaStore, { deleteMangaFromListAction: 'deleteMangaFromList' }),
 
     deleteManga(id) {
-      
-      const index = this.mangaList.findIndex(item => item.id === id);
-      console.log(index); 
-      this.deleteMangaFromListAction(index); 
-    }, 
+      const index = this.mangaList.findIndex((item) => item.id === id)
+      console.log(index)
+      this.deleteMangaFromListAction(index)
+    },
 
-    ajoutPanierManga(item){
-      this.$emit('ajoutPanierManga', item)
-    }
+    ajoutPanierManga(item, tome) {
+  this.$emit('ajoutPanierManga', { manga: item, tome: tome });
+}, 
+
+   
   },
-
   computed: {
     ...mapState(useMangaStore, ['mangaList', 'getfilteredList', 'getTomeList'])
-
   },
-  emits:['ajoutPanierManga']
+  emits: ['ajoutPanierManga'], 
 }
 </script>
 
 <template>
- <div class="cards-template">
-<div v-for="(item) in getfilteredList" :key="item.id" class="card" style="width: 18rem">
-    <img :src="item.img" class="card-img-top"/>
-    <div class="card-body">
-      <h5 class="card-title">{{ item.titre }}</h5>
-      <p class="card-text">{{ item.prix }}</p>
-      <p class="card-text">{{ item.plateforme }}</p>
-    <div>
-      <p v-for="(item) in item.tomes">{{ `Tome : ${item.numero} Prix : ${item.prix} Nombre en stock : ${item.stock}` }}</p>
-    </div>
-    <div class="d-flex gap-3">
-      <a href="#" class="btn btn-primary" @click="deleteManga(item.id)">Supprimer</a>
-      <a href="#" class="btn btn-primary" @click="ajoutPanierManga(item)">Ajouter au panier</a>
+  <div class="cards-template">
+    <div v-for="item in getfilteredList" :key="item.id" class="card" style="width: 18rem">
+      <img :src="item.img" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.titre }}</h5>
+        <p class="card-text">{{ item.prix }}</p>
+        <p class="card-text">{{ item.plateforme }}</p>
+        <div v-for="tome in item.tomes">
+          <p>{{ `Tome : ${tome.numero} Prix : ${tome.prix} Nombre en stock : ${tome.stock}` }}</p>
+          <a href="#" class="btn btn-primary" @click="ajoutPanierManga(item, tome)">Ajouter au panier</a>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="#" class="btn btn-primary" @click="deleteManga(item.id)">Supprimer</a>
+        </div>
       </div>
-     
     </div>
   </div>
- </div>
-
-
-  
 </template>
 
 <style>
-.cards-template{
-  display:flex;
-  flex-wrap:wrap;
+.cards-template {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.card{
-  margin:5px;
+.card {
+  margin: 5px;
 }
 </style>

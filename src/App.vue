@@ -14,8 +14,9 @@ export default {
     }
   },
   methods: {
-    ajoutPanierManga(item) {
-      this.panier.push(item)
+    ajoutPanierManga(item, tome) {
+      this.panier.push({manga:item, tome:tome})
+      console.log(item, tome)
     }, 
     ajoutPanierJV(item){
       this.panier.push(item)
