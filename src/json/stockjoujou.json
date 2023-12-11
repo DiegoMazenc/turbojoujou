@@ -4,90 +4,103 @@
     "nom": "Batman",
     "la_marque": "DC Comics",
     "prix": 15.99,
-    "taille": "10 cm"
+    "taille": "10 cm",
+    "stock": 50
   },
   {
     "id": 2,
     "nom": "Darth Vader",
     "la_marque": "Star Wars",
     "prix": 19.99,
-    "taille": "12 cm"
+    "taille": "12 cm",
+    "stock": 45
   },
   {
     "id": 3,
     "nom": "Spider-Man",
     "la_marque": "Marvel",
     "prix": 12.99,
-    "taille": "8 cm"
+    "taille": "8 cm",
+    "stock": 40
   },
   {
     "id": 4,
     "nom": "Harry Potter",
     "la_marque": "Wizarding World",
     "prix": 18.99,
-    "taille": "11 cm"
+    "taille": "11 cm",
+    "stock": 35
   },
   {
     "id": 5,
     "nom": "Mario",
     "la_marque": "Nintendo",
     "prix": 14.99,
-    "taille": "9 cm"
+    "taille": "9 cm",
+    "stock": 60
   },
   {
     "id": 6,
     "nom": "Wonder Woman",
     "la_marque": "DC Comics",
     "prix": 16.99,
-    "taille": "10.5 cm"
+    "taille": "10.5 cm",
+    "stock": 42
   },
   {
     "id": 7,
     "nom": "Iron Man",
     "la_marque": "Marvel",
     "prix": 21.99,
-    "taille": "13 cm"
+    "taille": "13 cm",
+    "stock": 25
   },
   {
     "id": 8,
     "nom": "Elsa",
     "la_marque": "Disney",
     "prix": 23.99,
-    "taille": "14 cm"
+    "taille": "14 cm",
+    "stock": 48
   },
   {
     "id": 9,
     "nom": "Gandalf",
     "la_marque": "The Lord of the Rings",
     "prix": 20.99,
-    "taille": "12.5 cm"
+    "taille": "12.5 cm",
+    "stock": 28
   },
   {
     "id": 10,
     "nom": "Master Chief",
     "la_marque": "Halo",
     "prix": 25.99,
-    "taille": "15 cm"
+    "taille": "15 cm",
+    "stock": 35
   },
   {
     "id": 11,
     "nom": "Master Chief",
     "la_marque": "Halo",
     "prix": 25.99,
-    "taille": "15 cm"
+    "taille": "15 cm",
+    "stock": 35
   },
   {
     "id": 12,
     "nom": "Master Chief",
     "la_marque": "Halo",
     "prix": 25.99,
-    "taille": "15 cm"
+    "taille": "15 cm",
+    "stock": 35
   },
   {
     "id": 13,
     "nom": "AckerMan",
     "la_marque": "DC Comics",
     "prix": 25.99,
-    "taille": "18 cm"
+    "taille": "18 cm",
+    "stock": 30
   }
 ]

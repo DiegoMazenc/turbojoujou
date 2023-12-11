@@ -1,93 +1,92 @@
 [
   {
     "id": 1,
-    "nom": "Batman",
-    "la_marque": "DC Comics",
-    "prix": 15.99,
-    "taille": "10 cm"
+    "titre": "The Legend of Zelda: Breath of the Wild",
+    "plateforme": ["Nintendo Switch", "Wii U"],
+    "prix": 59.99,
+    "pegi": 12,
+    "style": "aventure",
+    "stock": 50
   },
   {
     "id": 2,
-    "nom": "Darth Vader",
-    "la_marque": "Star Wars",
-    "prix": 19.99,
-    "taille": "12 cm"
+    "titre": "God of War",
+    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "prix": 49.99,
+    "pegi": 18,
+    "style": "action",
+    "stock": 45
   },
   {
     "id": 3,
-    "nom": "Spider-Man",
-    "la_marque": "Marvel",
-    "prix": 12.99,
-    "taille": "8 cm"
+    "titre": "Red Dead Redemption 2",
+    "plateforme": ["PlayStation 4", "Xbox One"],
+    "prix": 39.99,
+    "pegi": 18,
+    "style": "action-aventure",
+    "stock": 40
   },
   {
     "id": 4,
-    "nom": "Harry Potter",
-    "la_marque": "Wizarding World",
-    "prix": 18.99,
-    "taille": "11 cm"
+    "titre": "The Witcher 3: Wild Hunt",
+    "plateforme": ["PlayStation 4", "Xbox One", "Nintendo Switch"],
+    "prix": 29.99,
+    "pegi": 18,
+    "style": "action-RPG",
+    "stock": 35
   },
   {
     "id": 5,
-    "nom": "Mario",
-    "la_marque": "Nintendo",
-    "prix": 14.99,
-    "taille": "9 cm"
+    "titre": "Super Mario Odyssey",
+    "plateforme": ["Nintendo Switch"],
+    "prix": 49.99,
+    "pegi": 7,
+    "style": "plateforme",
+    "stock": 60
   },
   {
     "id": 6,
-    "nom": "Wonder Woman",
-    "la_marque": "DC Comics",
-    "prix": 16.99,
-    "taille": "10.5 cm"
+    "titre": "Assassin's Creed Valhalla",
+    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "prix": 59.99,
+    "pegi": 18,
+    "style": "action-RPG",
+    "stock": 42
   },
   {
     "id": 7,
-    "nom": "Iron Man",
-    "la_marque": "Marvel",
-    "prix": 21.99,
-    "taille": "13 cm"
+    "titre": "Minecraft",
+    "plateforme": ["Nintendo Switch", "PlayStation 4", "Xbox One"],
+    "prix": 19.99,
+    "pegi": 7,
+    "style": "sandbox",
+    "stock": 25
   },
   {
     "id": 8,
-    "nom": "Elsa",
-    "la_marque": "Disney",
-    "prix": 23.99,
-    "taille": "14 cm"
+    "titre": "FIFA 22",
+    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "prix": 59.99,
+    "pegi": 3,
+    "style": "sport",
+    "stock": 48
   },
   {
     "id": 9,
-    "nom": "Gandalf",
-    "la_marque": "The Lord of the Rings",
-    "prix": 20.99,
-    "taille": "12.5 cm"
+    "titre": "Cyberpunk 2077",
+    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "prix": 49.99,
+    "pegi": 18,
+    "style": "action-RPG",
+    "stock": 28
   },
   {
     "id": 10,
-    "nom": "Master Chief",
-    "la_marque": "Halo",
-    "prix": 25.99,
-    "taille": "15 cm"
-  },
-  {
-    "id": 11,
-    "nom": "Master Chief",
-    "la_marque": "Halo",
-    "prix": 25.99,
-    "taille": "15 cm"
-  },
-  {
-    "id": 12,
-    "nom": "Master Chief",
-    "la_marque": "Halo",
-    "prix": 25.99,
-    "taille": "15 cm"
-  },
-  {
-    "id": 13,
-    "nom": "AckerMan",
-    "la_marque": "DC Comics",
-    "prix": 25.99,
-    "taille": "18 cm"
+    "titre": "Spider-Man: Miles Morales",
+    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "prix": 39.99,
+    "pegi": 16,
+    "style": "action",
+    "stock": 35
   }
 ]
