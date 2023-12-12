@@ -41,7 +41,9 @@ export default {
     <div class="card-body">
       <h5 class="card-title">{{ item.titre }}</h5>
       <p class="card-text">{{ item.prix }}</p>
-      <p class="card-text">{{ item.plateforme }}</p>
+      <div v-for="(plateform, index) in item.plateforme" :key="index">
+        <p class="card-text">{{ plateform }}</p>
+      </div>
       <a href="#" class="btn btn-primary" @click="deleteJeuxVideo(item.id)">Supprimer</a>
       <a href="#" class="btn btn-primary" @click="ajoutPanierJV(item)">Ajouter au panier</a>
     </div>
