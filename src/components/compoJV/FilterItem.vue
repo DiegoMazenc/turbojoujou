@@ -2,6 +2,8 @@
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { useJeuxvVideoStore } from '../../stores/stock.js'
+import PanierArticles from '../../components/PanierArticles.vue'
+
 
 export default {
   name: 'FilterItem',
@@ -14,6 +16,9 @@ export default {
       triAlpha: false,
       triPrix: false
     }
+  },
+  components:{
+    PanierArticles
   },
   methods: {
     ...mapActions(useJeuxvVideoStore, { updateSelectedGenreAction: 'updateSelectedGenre' }),
@@ -124,7 +129,9 @@ export default {
         </select>
       </div>
     </div>
+    <PanierArticles/>
   </div>
+  
 </template>
 
 <style>

@@ -2,6 +2,8 @@
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { useMangaStore } from '../../stores/stock.js'
+import PanierArticles from '../../components/PanierArticles.vue'
+
 
 export default {
   name: 'FilterItem',
@@ -16,6 +18,9 @@ export default {
       mangaTitre: null, 
       tomeInfo: null, 
     }
+  },
+  components:{
+    PanierArticles
   },
   methods: {
     ...mapActions(useMangaStore, { updateSelectedMarqueAction: 'updateSelectedMarque' }),
@@ -89,6 +94,7 @@ export default {
       </select>
       <button class="btn btn-primary" @click="ajoutPanierManga(selectedTitle, tomeInfo)">Ajouter au panier</button>
     </div>
+    <PanierArticles/>
   </div>
 </template>
 

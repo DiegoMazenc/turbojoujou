@@ -2,6 +2,7 @@
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { useJeuxvVideoStore } from '../../stores/stock.js'
+import { usePanierStore } from '../../stores/panier.js'
 
 export default {
   name: 'Display',
@@ -10,11 +11,12 @@ export default {
       id: null,
       consoles: null,
       colorConsoleBtn: null,
-      consoleSelected: null,
+      consoleSelected: null
     }
   },
   methods: {
     ...mapActions(useJeuxvVideoStore, { deleteJeuxVideoFromListAction: 'deleteJeuxVideoFromList' }),
+    ...mapActions(usePanierStore, { updatePanierAction: 'updatePanier' }),
 
     deleteJeuxVideo(id) {
       const index = this.jeuxVideoList.findIndex((item) => item.id === id)
@@ -24,9 +26,12 @@ export default {
 
     ajoutPanierJV(item) {
       if (item.consoleSelected) {
-        this.$emit('ajoutPanierJV', item);
-      }
-    },
+        this.updatePanierAction({name: item.titre,
+          price: item.prix,
+          plateforme: item.consoleSelected})
+        this.$emit('ajoutPanierJV', item)
+    }
+  },
 
     getConsoleSelect(item, plateform) {
       if (item.consoleSelected === plateform) {
@@ -74,7 +79,10 @@ export default {
             :key="index"
             :class="[
               getColorClass(plateform),
-              { btnConsoleSelected: plateform === item.consoleSelected, btnConsoleUnselected: plateform !== item.consoleSelected}
+              {
+                btnConsoleSelected: plateform === item.consoleSelected,
+                btnConsoleUnselected: plateform !== item.consoleSelected
+              }
             ]"
             class="btnConsole"
             @click="getConsoleSelect(item, plateform)"
@@ -83,14 +91,14 @@ export default {
           </button>
         </div>
         <div class="linkCard">
-          <a href="#" class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</a>
-          <a
-            href="#"
+          <button class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</button>
+          <button
             class="btn"
             :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
             @click="ajoutPanierJV(item)"
-            >🛒</a
           >
+            🛒
+          </button>
         </div>
       </div>
     </div>
@@ -102,6 +110,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  height: 400px;
 }
 
 .card {
@@ -148,16 +157,16 @@ export default {
   margin: 10px 0;
 }
 
-.img-size{
+.img-size {
   height: 170px;
 }
 
-.infoContainCard{
+.infoContainCard {
   position: relative;
   padding-bottom: 60px;
 }
 
-.linkCard{
+.linkCard {
   position: absolute;
   width: 90%;
   display: flex;
