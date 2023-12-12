@@ -9,60 +9,170 @@ export default {
     return {
       la_marque: null,
       tabMarque: [],
-      selectedMarque: "all", 
-      triAlpha : false, 
-      triPrix : false
+      selectedGenre: 'all',
+      selectedConsole: 'all',
+      triAlpha: false,
+      triPrix: false
     }
   },
   methods: {
-    ...mapActions(useJeuxvVideoStore, {updateSelectedMarqueAction : "updateSelectedMarque" }),
-    exportSelectedMarque() {
+    ...mapActions(useJeuxvVideoStore, { updateSelectedGenreAction: 'updateSelectedGenre' }),
+    exportSelectedGenre() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateSelectedMarqueAction(this.selectedMarque);
-    }, 
+      this.updateSelectedGenreAction(this.selectedGenre)
+    },
 
-    ...mapActions(useJeuxvVideoStore, {updateTriAlphaAction : "updateTriAlpha" }),
+    ...mapActions(useJeuxvVideoStore, { updateSelectedPlatformeAction: 'updateSelectedPlatforme' }),
+    exportSelectedPlateforme() {
+      // Appelez l'action du store pour mettre à jour la valeur dans le store
+      
+      this.updateSelectedPlatformeAction(this.selectedConsole)
+    },
+
+    ...mapActions(useJeuxvVideoStore, { updateTriAlphaAction: 'updateTriAlpha' }),
     exportTrieAlpha() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriAlphaAction(this.triAlpha);
-    }, 
+      this.updateTriAlphaAction(this.triAlpha)
+    },
 
-    ...mapActions(useJeuxvVideoStore, {updateTriPrixAction : "updateTriPrix" }),
+    ...mapActions(useJeuxvVideoStore, { updateTriPrixAction: 'updateTriPrix' }),
     exportTriePrix() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriPrixAction(this.triPrix);
-    }, 
-
+      this.updateTriPrixAction(this.triPrix)
+    }
   },
   computed: {
     ...mapState(useJeuxvVideoStore, ['jeuxVideoList']),
-    uniqueMarques() {
-    
-      const uniqueMarquesSet = new Set();
+    uniqueGenres() {
+      const uniqueGenresSet = new Set()
 
-     
-      this.jeuxVideoList.forEach(jeuxvideo => {
-        uniqueMarquesSet.add(jeuxvideo.style);
-      });
+      this.jeuxVideoList.forEach((jeuxvideo) => {
+        uniqueGenresSet.add(jeuxvideo.style)
+      })
 
-  
-      return Array.from(uniqueMarquesSet);
+      return Array.from(uniqueGenresSet)
     },
 
-  },
+    uniqueConsole() {
+      const uniqueConsolesSet = new Set()
 
+      this.jeuxVideoList.forEach((jeuxvideo) => {
+        jeuxvideo.plateforme.forEach((plateforme) => {
+          uniqueConsolesSet.add(plateforme)
+        })
+      })
+
+      return Array.from(uniqueConsolesSet)
+    },
+
+    filteredConsoles() {
+      if (this.selectedGenre === 'all') {
+        return this.uniqueConsole
+      } else {
+        const filteredConsolesSet = new Set()
+        this.jeuxVideoList
+          .filter((item) => item.style === this.selectedGenre)
+          .forEach((jeuxvideo) => {
+            jeuxvideo.plateforme.forEach((plateforme) => {
+              filteredConsolesSet.add(plateforme)
+            })
+          })
+        return Array.from(filteredConsolesSet)
+      }
+    },
+
+    filteredGenres() {
+      if (this.selectedConsole === 'all') {
+        return this.uniqueGenres;
+      } else {
+        const filteredGenresSet = new Set();
+        this.jeuxVideoList
+          .filter(item => item.plateforme.includes(this.selectedConsole))
+          .forEach(jeuxvideo => {
+            filteredGenresSet.add(jeuxvideo.style);
+          });
+        return Array.from(filteredGenresSet);
+      }
+    },
+  }
 }
 </script>
 
 <template>
   <div>
-    <button @click="exportTrieAlpha">Alphabétique</button>
-    <button @click="exportTriePrix">Prix</button>
-    <select  class="card" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
-      <option value="all">All</option>
-      <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
-    </select>
+    <div class="options-container">
+      <button @click="exportTrieAlpha">Alphabétique</button>
+      <button @click="exportTriePrix">Prix</button>
+      <div class="custom-select">
+        <select class="card selectOption" v-model="selectedGenre" @change="exportSelectedGenre">
+          <option value="all">All</option>
+          <option v-for="(item, index) in filteredGenres" :key="index" :value="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+      <div class="custom-select">
+        <select
+          class="card selectOption"
+          v-model="selectedConsole"
+          @change="exportSelectedPlateforme"
+        >
+          <option value="all">All</option>
+          <option v-for="(item, index) in filteredConsoles" :key="index" :value="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+    </div>
   </div>
 </template>
 
-<style></style>
+<style>
+.options-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+select {
+  margin-bottom: 10px;
+}
+
+.custom-select {
+  position: relative;
+  width: 18rem;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* Style par défaut de la flèche de la liste déroulante */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.custom-select select:focus {
+  outline: none; /* Supprime la bordure focus par défaut sur certains navigateurs */
+}
+
+.custom-select::after {
+  content: '\25BC'; /* Flèche vers le bas */
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.selectOption {
+  width: 100%;
+  border: none;
+  border-top: 1px gray solid;
+  border-bottom: 1px gray solid;
+  border-radius: 0;
+}
+</style>

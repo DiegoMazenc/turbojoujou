@@ -6,7 +6,8 @@ import { defineStore } from 'pinia'
 export const useJeuxvVideoStore = defineStore('jeuxvideo', {
   state: () => ({
     jeuxVideoList: jeuxVideoList,
-    selectedMarque: 'all',
+    selectedGenre: 'all',
+    selectedConsole: 'all',
     triAlpha: false,
     triPrix: false
   }),
@@ -14,17 +15,24 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
   
   getters: {
     getJeuxVideo: (state) => state.jeuxVideoList,
-    getSelectedMarque: (state) => state.selectedMarque,
+    getSelectedGenre: (state) => state.selectedGenre,
+    getSelectedConsole: (state) => state.selectedConsole,
     getTriAlpha: (state) => state.triAlpha,
     getTriPrix: (state) => state.triPrix,
 
     getfilteredList: (state) => {
       let filteredList = state.jeuxVideoList
 
-      if (state.selectedMarque !== 'all') {
+      if (state.selectedGenre !== 'all') {
         filteredList = filteredList.filter(
-          (item) => item.style === state.selectedMarque
+          (item) => item.style === state.selectedGenre
         )
+      }
+
+      if (state.selectedConsole !== 'all') {
+        filteredList = filteredList.filter(
+          (item) => item.plateforme.includes(state.selectedConsole)
+        );
       }
 
       if (state.triAlpha == true) {
@@ -48,9 +56,14 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
     deleteJeuxVideoFromList(id) {
       this.jeuxVideoList.splice(id, 1)
     },
-    updateSelectedMarque(selectedMarque) {
+    updateSelectedGenre(selectedGenre) {
       // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedMarque = selectedMarque
+      this.selectedGenre = selectedGenre
+    },
+
+    updateSelectedPlatforme(selectedConsole) {
+      // Mettez à jour la valeur du sélecteur dans le state
+      this.selectedConsole = selectedConsole
     },
 
     updateTriAlpha() {
