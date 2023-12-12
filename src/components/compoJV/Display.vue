@@ -28,7 +28,8 @@ export default {
       if (item.consoleSelected) {
         this.updatePanierAction({name: item.titre,
           price: item.prix,
-          plateforme: item.consoleSelected})
+          plateforme: item.consoleSelected,
+          id: item.id})
         this.$emit('ajoutPanierJV', item)
     }
   },

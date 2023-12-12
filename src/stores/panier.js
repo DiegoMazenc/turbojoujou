@@ -14,8 +14,8 @@ export const usePanierStore = defineStore('panier', {
     },
   
     actions: {
-        updatePanier({ name, price, plateforme }) {
-            const insertItem = []
+        updatePanier({ name, price, plateforme, id }) {
+            const insertItem = {}
           
            
               // Mise à jour de la référence de l'article dans le store
@@ -24,11 +24,20 @@ export const usePanierStore = defineStore('panier', {
               // Ajout de l'article au panier avec la taille et la quantité
               insertItem.price = price;
               insertItem.plateforme = plateforme;
+              insertItem.id = id;
           
               this.panierContent.push(insertItem);
            
           
-            console.log("dans le store", name, price, plateforme);
+            console.log("dans le store", name, price, plateforme, id);
+          },
+
+          deleteItemPanierFromList(id) {
+            const index = this.panierContent.findIndex(item => item.id === id);
+        
+            if (index !== -1) {
+              this.panierContent.splice(index, 1);
+            }
           },
     }
   })

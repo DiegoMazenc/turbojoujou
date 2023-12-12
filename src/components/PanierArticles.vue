@@ -1,15 +1,24 @@
 <script>
 import { usePanierStore } from '../stores/panier.js'
 import { mapState } from 'pinia'
+import { mapActions } from 'pinia'
 export default {
   name: 'PanierArticles',
   data() {
     return {}
   },
-  methods: {},
+  methods: {
+    ...mapActions(usePanierStore, { deleteItemPanierFromListAction: 'deleteItemPanierFromList' }),
+    deleteItemPanier(id) {
+      
+      this.deleteItemPanierFromListAction(id);
+    },
+
+  },
 
   computed: {
-    ...mapState(usePanierStore, ['getPanierContent'])
+    ...mapState(usePanierStore, ['getPanierContent']),
+    
   }
 }
 </script>
@@ -25,7 +34,7 @@ export default {
       <p>{{ item.price }}</p>
     </div>
     <div class="hoverSup">
-        <a href="#">🗑️</a>
+        <button  @click="deleteItemPanier(item.id)" class="btnDelete">🗑️</button>
 
     </div>
     
@@ -51,7 +60,7 @@ export default {
     padding-left: 20px;
     width: 100%;
     height: 100%;
-    background-color: rgba(219, 43, 43, 0.5);
+    background-color: rgba(219, 43, 43, 0.3);
     top: 0;
     left: 0;
     border-radius: 5px;
@@ -63,8 +72,16 @@ export default {
     background-color: rgba(219, 43, 43, 1);
 }
 
+
 .itemPanier:hover .hoverSup {
   transform: translateX(80%);
+}
+
+.btnDelete{
+    border: none;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    transform: translate(-28%,8%);
 }
 
 .itemPanier p{
