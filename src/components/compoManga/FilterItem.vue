@@ -13,7 +13,8 @@ export default {
       selectedTitle: 'all',
       triAlpha: false,
       triPrix: false,
-      mangaTitre: null
+      mangaTitre: null, 
+      tomeInfo: null, 
     }
   },
   methods: {
@@ -38,7 +39,10 @@ export default {
     ...mapActions(useMangaStore, { updateSelectedTitleAction: 'updateSelectedTitle' }),
     exportSelectedTitle() {
       this.updateSelectedTitleAction(this.selectedTitle)
-      console.log(this.selectedTitle)
+    },
+
+    ajoutPanierManga(item, tome) {
+      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
     }
   },
   computed: {
@@ -69,21 +73,21 @@ export default {
       <option value="all">All</option>
       <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
     </select>
+
     <h4>Titre</h4>
     <select class="card" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
       <option value="all">All</option>
-      <option v-for="(item, index) in getfilteredList" :key="index" :value="item">
-        {{ item.titre }}
+      <option v-for="(manga, index) in getfilteredList" :key="index" :value="manga">
+        {{ manga.titre }}
       </option>
     </select>
+
     <div v-if="selectedTitle != 'all'">
       <h4>Tome</h4>
-      <select class="card" style="width: 18rem" v-if="selectedTitle">
-        <option value="all">All</option>
-        <option v-for="tome in selectedTitle.tomes">
-          N°{{ tome.numero }} - {{ tome.prix }}€
-        </option>
+      <select class="card" style="width: 18rem" v-if="selectedTitle" v-model="tomeInfo">
+        <option v-for="tome in selectedTitle.tomes">N°{{ tome.numero }} - {{ tome.prix }}€</option>
       </select>
+      <button class="btn btn-primary" @click="ajoutPanierManga(selectedTitle, tomeInfo)">Ajouter au panier</button>
     </div>
   </div>
 </template>

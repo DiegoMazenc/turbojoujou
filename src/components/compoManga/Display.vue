@@ -18,11 +18,10 @@ export default {
       console.log(index)
       this.deleteMangaFromListAction(index)
     },
-
     ajoutPanierManga(item, tome) {
-  this.$emit('ajoutPanierManga', { manga: item, tome: tome });
-}, 
-
+      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
+      console.log(item, tome)
+    }
    
   },
   computed: {
