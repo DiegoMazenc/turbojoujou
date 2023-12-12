@@ -12,7 +12,6 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
     triPrix: false
   }),
 
-  
   getters: {
     getJeuxVideo: (state) => state.jeuxVideoList,
     getSelectedGenre: (state) => state.selectedGenre,
@@ -36,12 +35,12 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
       }
 
       if (state.triAlpha == true) {
-       filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
+        filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
         console.log(filteredList)
       }
 
       if (state.triPrix == true) {
-       filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
         console.log(filteredList)
       }
       return filteredList
@@ -71,7 +70,6 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
       this.triPrix = false
       this.triAlpha = true
       // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-     
     },
 
     updateTriPrix() {
@@ -86,7 +84,6 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', {
 
 export const useJoujouStore = defineStore('joujou', {
   state: () => ({
-    
     joujouListe: joujouListe,
     selectedMarque: 'all',
     triAlpha: false,
@@ -103,18 +100,16 @@ export const useJoujouStore = defineStore('joujou', {
       let filteredList = state.joujouListe
 
       if (state.selectedMarque !== 'all') {
-        filteredList = filteredList.filter(
-          (item) => item.style === state.selectedMarque
-        )
+        filteredList = filteredList.filter((item) => item.style === state.selectedMarque)
       }
 
       if (state.triAlpha == true) {
-       filteredList = filteredList.sort((a, b) => a.nom.localeCompare(b.nom))
+        filteredList = filteredList.sort((a, b) => a.nom.localeCompare(b.nom))
         console.log(filteredList)
       }
 
       if (state.triPrix == true) {
-       filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
         console.log(filteredList)
       }
       return filteredList
@@ -139,7 +134,6 @@ export const useJoujouStore = defineStore('joujou', {
       this.triPrix = false
       this.triAlpha = true
       // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-     
     },
 
     updateTriPrix() {
@@ -152,15 +146,17 @@ export const useJoujouStore = defineStore('joujou', {
 
 export const useMangaStore = defineStore('manga', {
   state: () => ({
-    mangaList : mangaList,
+    mangaList: mangaList,
     selectedMarque: 'all',
+    selectedTitle: 'all',
     triAlpha: false,
     triPrix: false
   }),
 
-  
   getters: {
     getManga: (state) => state.mangaList,
+    getMangaTitre: (state) => state.mangaList.titre,
+    getselectedTitle: (state) => state.selectedTitle,
     getSelectedMarque: (state) => state.selectedMarque,
     getTriAlpha: (state) => state.triAlpha,
     getTriPrix: (state) => state.triPrix,
@@ -169,18 +165,20 @@ export const useMangaStore = defineStore('manga', {
       let filteredList = state.mangaList
 
       if (state.selectedMarque !== 'all') {
-        filteredList = filteredList.filter(
-          (item) => item.style === state.selectedMarque
-        )
+        filteredList = filteredList.filter((item) => item.style === state.selectedMarque)
       }
 
+      if (state.selectedTitle !== 'all') {
+        filteredList = filteredList.filter((item) => item.titre === state.selectedTitle.titre)
+      }
+      
       if (state.triAlpha == true) {
-       filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
+        filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
         console.log(filteredList)
       }
 
       if (state.triPrix == true) {
-       filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
         console.log(filteredList)
       }
       return filteredList
@@ -200,12 +198,16 @@ export const useMangaStore = defineStore('manga', {
       this.selectedMarque = selectedMarque
     },
 
+    updateSelectedTitle(selectedTitle) {
+      // Mettez à jour la valeur du sélecteur dans le state
+      this.selectedTitle = selectedTitle
+    },
+
     updateTriAlpha() {
       // console.log('trialpha marche')
       this.triPrix = false
       this.triAlpha = true
       // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-     
     },
 
     updateTriPrix() {
