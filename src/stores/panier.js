@@ -14,7 +14,7 @@ export const usePanierStore = defineStore('panier', {
     },
   
     actions: {
-        updatePanier({ name, price, plateforme, id }) {
+        updatePanier({ name, price, plateforme, id, tome }) {
             const insertItem = {}
           
            
@@ -25,6 +25,7 @@ export const usePanierStore = defineStore('panier', {
               insertItem.price = price;
               insertItem.plateforme = plateforme;
               insertItem.id = id;
+              insertItem.tome = tome; 
           
               this.panierContent.push(insertItem);
            
