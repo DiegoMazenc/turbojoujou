@@ -46,9 +46,6 @@ export default {
       this.updateSelectedTitleAction(this.selectedTitle)
     },
 
-    ajoutPanierManga(item, tome) {
-      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
-    }
   },
   computed: {
     ...mapState(useMangaStore, ['mangaList', 'getfilteredList']),
@@ -89,8 +86,6 @@ export default {
       </option>
     </select>
 </div>
-    
-
     <PanierArticles/>
   </div>
 </template>

@@ -29,8 +29,6 @@ export const usePanierStore = defineStore('panier', {
           
               this.panierContent.push(insertItem);
            
-          
-            console.log("dans le store", name, price, plateforme, id);
           },
 
           deleteItemPanierFromList(id) {
