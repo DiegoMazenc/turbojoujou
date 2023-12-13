@@ -46,9 +46,6 @@ export default {
       this.updateSelectedTitleAction(this.selectedTitle)
     },
 
-    ajoutPanierManga(item, tome) {
-      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
-    }
   },
   computed: {
     ...mapState(useMangaStore, ['mangaList', 'getfilteredList']),
@@ -89,15 +86,6 @@ export default {
       </option>
     </select>
 </div>
-    <div v-if="selectedTitle != 'all'">
-      <h4>Tome</h4>
-      <div class="custom-select">
-      <select class="card" style="width: 18rem" v-if="selectedTitle" v-model="tomeInfo">
-        <option v-for="tome in selectedTitle.tomes">N°{{ tome.numero }} - {{ tome.prix }}€</option>
-      </select>
-    </div>
-      <button class="btn btn-primary" @click="ajoutPanierManga(selectedTitle, tomeInfo)">Ajouter au panier</button>
-    </div>
     <PanierArticles/>
   </div>
 </template>

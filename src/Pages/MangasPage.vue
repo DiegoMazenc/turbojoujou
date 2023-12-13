@@ -5,35 +5,36 @@ import FilterItem from '../components/compoManga/FilterItem.vue'
 export default {
   name: 'JeuxVideoView',
   data() {
-  return {
-    isFilterItemFixed: false,
-  };
-},
+    return {
+      isFilterItemFixed: false
+    }
+  },
   components: {
     Display,
     FilterItem
   },
+  emits:['ajoutPanierManga'],
   methods: {
-    ajoutPanierJV(item) {
-      this.$emit('ajoutPanierJV', item)
+    ajoutPanierManga(item, tome) {
+      this.$emit('ajoutPanierManga',{item, tome})
     },
-    
+
     handleScroll() {
-    const filterItem = this.$el; // Obtenez la référence de l'élément FilterItem
-    const filterItemOffsetTop = filterItem.offsetTop;
+      const filterItem = this.$el // Obtenez la référence de l'élément FilterItem
+      const filterItemOffsetTop = filterItem.offsetTop
 
-    // Ajoutez votre propre valeur pour déterminer quand l'élément doit être fixé
-    this.isFilterItemFixed = window.scrollY > filterItemOffsetTop;
+      // Ajoutez votre propre valeur pour déterminer quand l'élément doit être fixé
+      this.isFilterItemFixed = window.scrollY > filterItemOffsetTop
+    }
   },
-    },
 
-    mounted() {
-  window.addEventListener('scroll', this.handleScroll);
-},
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
 
-beforeUnmount() {
-  window.removeEventListener('scroll', this.handleScroll);
-},
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 }
 </script>
 
@@ -45,7 +46,7 @@ beforeUnmount() {
     <Display
       class="mainDisplay"
       :class="{ marginMainDisplay: isFilterItemFixed }"
-      @ajoutPanierJV="ajoutPanierJV"
+      @ajoutPanierManga="ajoutPanierManga"
     />
   </div>
 </template>

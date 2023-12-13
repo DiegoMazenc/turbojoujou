@@ -16,22 +16,26 @@ export default {
   methods: {
     ajoutPanierManga(item, tome) {
       this.panier.push({manga:item, tome:tome})
-      console.log(item, tome)
-    }, 
+      console.log("coucou")
+    },
     ajoutPanierJV(item){
       this.panier.push(item)
-    }, 
+    },
     ajoutPanierJoujou(item){
-      this.panier.push(item); 
-    }
+      this.panier.push(item);
+    },
   }
 }
 </script>
 
 <template>
   <div id="app">
-    <NavBar :panier="panier"/>
-    <RouterView @ajoutPanierManga="ajoutPanierManga" @ajoutPanierJV="ajoutPanierJV" @ajoutPanierJoujou="ajoutPanierJoujou"/>
+    <NavBar :panier="panier" />
+    <RouterView
+      @ajoutPanierManga="ajoutPanierManga"
+      @ajoutPanierJV="ajoutPanierJV"
+      @ajoutPanierJoujou="ajoutPanierJoujou"
+    />
   </div>
 </template>
 
