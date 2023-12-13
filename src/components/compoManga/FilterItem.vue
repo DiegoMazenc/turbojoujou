@@ -66,11 +66,12 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="options-container">
     <button @click="exportTrieAlpha">Alphabétique</button>
     <h4>Style</h4>
+    <div class="custom-select">
     <select
-      class="card"
+      class="card selectOption"
       style="width: 18rem"
       v-model="selectedMarque"
       @change="exportSelectedMarque"
@@ -78,24 +79,75 @@ export default {
       <option value="all">All</option>
       <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
     </select>
-
+</div>
     <h4>Titre</h4>
-    <select class="card" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
+<div class="custom-select">
+    <select class="card selectOption" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
       <option value="all">All</option>
       <option v-for="(manga, index) in getfilteredList" :key="index" :value="manga">
         {{ manga.titre }}
       </option>
     </select>
-
+</div>
     <div v-if="selectedTitle != 'all'">
       <h4>Tome</h4>
+      <div class="custom-select">
       <select class="card" style="width: 18rem" v-if="selectedTitle" v-model="tomeInfo">
         <option v-for="tome in selectedTitle.tomes">N°{{ tome.numero }} - {{ tome.prix }}€</option>
       </select>
+    </div>
       <button class="btn btn-primary" @click="ajoutPanierManga(selectedTitle, tomeInfo)">Ajouter au panier</button>
     </div>
     <PanierArticles/>
   </div>
 </template>
 
-<style></style>
+<style>
+.options-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+select {
+  margin-bottom: 10px;
+}
+
+.custom-select {
+  position: relative;
+  width: 18rem;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  appearance: none; /* Style par défaut de la flèche de la liste déroulante */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.custom-select select:focus {
+  outline: none; /* Supprime la bordure focus par défaut sur certains navigateurs */
+}
+
+.custom-select::after {
+  content: '\25BC'; /* Flèche vers le bas */
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.selectOption {
+  width: 100%;
+  border: none;
+  border-top: 1px gray solid;
+  border-bottom: 1px gray solid;
+  border-radius: 0;
+}
+</style>
