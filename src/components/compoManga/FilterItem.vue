@@ -2,8 +2,8 @@
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { useMangaStore } from '../../stores/stock.js'
+import { usePanierStore } from '@/stores/panier'
 import PanierArticles from '../../components/PanierArticles.vue'
-
 
 export default {
   name: 'FilterItem',
@@ -15,11 +15,11 @@ export default {
       selectedTitle: 'all',
       triAlpha: false,
       triPrix: false,
-      mangaTitre: null, 
-      tomeInfo: null, 
+      mangaTitre: null,
+      tomeInfo: null
     }
   },
-  components:{
+  components: {
     PanierArticles
   },
   methods: {
@@ -46,10 +46,18 @@ export default {
       this.updateSelectedTitleAction(this.selectedTitle)
     },
 
-    ajoutPanierManga(item, tome) {
-      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
+...mapActions(usePanierStore, {updatePanierAction:"updatePanier"}),
+    ajoutPanierManga(item, tome, prix) {
+      this.updatePanierAction({
+        name: item.titre,
+        price: item[1],
+        tome: tome
+      })
+      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: tome })
+      console.log(item, tome)
     }
   },
+
   computed: {
     ...mapState(useMangaStore, ['mangaList', 'getfilteredList']),
     uniqueMarques() {
@@ -87,14 +95,7 @@ export default {
       </option>
     </select>
 
-    <div v-if="selectedTitle != 'all'">
-      <h4>Tome</h4>
-      <select class="card" style="width: 18rem" v-if="selectedTitle" v-model="tomeInfo">
-        <option v-for="tome in selectedTitle.tomes">N°{{ tome.numero }} - {{ tome.prix }}€</option>
-      </select>
-      <button class="btn btn-primary" @click="ajoutPanierManga(selectedTitle, tomeInfo)">Ajouter au panier</button>
-    </div>
-    <PanierArticles/>
+    <PanierArticles />
   </div>
 </template>
 
