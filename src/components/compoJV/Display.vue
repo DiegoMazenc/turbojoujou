@@ -26,10 +26,12 @@ export default {
 
     ajoutPanierJV(item) {
       if (item.consoleSelected) {
-        this.updatePanierAction({name: item.titre,
+        this.updatePanierAction({
+          name: item.titre,
           price: item.prix,
           plateforme: item.consoleSelected,
-          id: item.id})
+          id: item.id
+        })
         this.$emit('ajoutPanierJV', item)
     }
   },
