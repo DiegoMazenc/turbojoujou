@@ -50,7 +50,7 @@ export default {
         <p class="card-text">{{ item.style }}</p>
 
         <div class="consoleContain">
-          <div v-for="tome in item.tomes" class="d-flex flex-column">
+          <div v-for="tome in item.tomes" class="d-flex flex-column mb-3 tome-container">
           <p class=" text-center">{{ `Tome : ${tome.numero} Prix : ${tome.prix} Nombre en stock : ${tome.stock}` }}</p>
           <button
             class="btn"
@@ -82,44 +82,12 @@ export default {
   margin: 5px;
 }
 
-.btnConsole {
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 10px;
-  margin: 2px;
-  border: none;
-  color: white;
-}
-
-.btnConsoleUnselected {
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-.btnConsoleUnselected:hover {
-  opacity: 1;
-}
-.btnConsoleSelected {
-  opacity: 1;
-}
-
-.playstation-color {
-  background-color: #4245ee;
-}
-
-.nintendo-color {
-  background-color: #ee4242;
-}
-
-.xbox-color {
-  background-color: #12c52f;
-}
-
 .consoleContain {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 10px 0;
+
 }
 
 .img-size {
@@ -138,10 +106,8 @@ export default {
   justify-content: space-between;
   bottom: 15px;
 }
-</style>
 
 
-<style>
 .cards-template {
   display: flex;
   flex-wrap: wrap;
@@ -150,5 +116,10 @@ export default {
 
 .card {
   margin: 5px;
+}
+
+.tome-container{
+  border: 1px solid black; 
+  border-radius : 15px 
 }
 </style>
