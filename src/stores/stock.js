@@ -100,7 +100,7 @@ export const useJoujouStore = defineStore('joujou', {
       let filteredList = state.joujouListe
 
       if (state.selectedMarque !== 'all') {
-        filteredList = filteredList.filter((item) => item.style === state.selectedMarque)
+        filteredList = filteredList.filter((item) => item.la_marque === state.selectedMarque)
       }
 
       if (state.triAlpha == true) {
@@ -127,6 +127,7 @@ export const useJoujouStore = defineStore('joujou', {
     updateSelectedMarque(selectedMarque) {
       // Mettez à jour la valeur du sélecteur dans le state
       this.selectedMarque = selectedMarque
+      
     },
 
     updateTriAlpha() {

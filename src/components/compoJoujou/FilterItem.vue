@@ -24,6 +24,7 @@ export default {
     exportSelectedMarque() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
       this.updateSelectedMarqueAction(this.selectedMarque)
+      
     },
 
     ...mapActions(useJoujouStore, { updateTriAlphaAction: 'updateTriAlpha' }),
