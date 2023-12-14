@@ -2,35 +2,32 @@
 import { useJoujouStore } from '../../stores/stock.js'
 import { usePanierStore } from '@/stores/panier'
 import { computed } from 'vue'
+import { defineEmits } from 'vue';
 
-const id = null
 
 const storeJoujou = useJoujouStore()
 const storePanier = usePanierStore()
+const emit = defineEmits(['ajoutPanierJoujou'])
 
-function deleteJoujou(id) {
-  const index = this.joujouListe.findIndex((item) => item.id === id)
-  console.log(index)
-  storeJoujou.deleteJoujouFromListAction(index)
-}
-
-function ajoutPanierJoujou(item) {
-  storePanier.updatePanierAction({
+const ajoutPanierJoujou = (item) => {
+  storePanier.updatePanier({
     name: item.nom,
     price: item.prix,
     marque: item.la_marque
   })
-  this.$emit('ajoutPanierJoujou', item)
+
+  emit('ajoutPanierJoujou', item)
 }
+// Utilise l'événement emis pour communiquer avec le parent
 
 const filterJoujouListe = computed(() => {
-  storeJoujou.getfilteredList
+  return storeJoujou.getfilteredList
 })
 </script>
 
 <template>
   <div class="cards-template">
-    <div v-for="item in getfilteredList" :key="item.id" class="card" style="width: 18rem">
+    <div v-for="item in filterJoujouListe" :key="item.id" class="card" style="width: 18rem">
       <img :src="item.img" class="card-img-top img-sizeJoujou" alt="..." />
       <div class="card-body">
         <h5 class="card-title">{{ item.nom }}</h5>
