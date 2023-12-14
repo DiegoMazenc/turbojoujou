@@ -5,7 +5,8 @@
     "la_marque": "DC Comics",
     "prix": 15.99,
     "taille": "10 cm",
-    "stock": 50
+    "stock": 50, 
+    "img":"https://media.auchan.fr/af947306-52b3-47db-b083-7d6511807618_0x0/B2CD/"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "la_marque": "Star Wars",
     "prix": 19.99,
     "taille": "12 cm",
-    "stock": 45
+    "stock": 45, 
+    "img" : "https://i.etsystatic.com/42139378/r/il/896cd1/5287851036/il_794xN.5287851036_ryc3.jpg"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "la_marque": "Marvel",
     "prix": 12.99,
     "taille": "8 cm",
-    "stock": 40
+    "stock": 40, 
+    "img" : "https://mania-toys-collector.fr/27058-large_default/hasbro-marvel-legends-series-spider-man.jpg"
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "la_marque": "Wizarding World",
     "prix": 18.99,
     "taille": "11 cm",
-    "stock": 35
+    "stock": 35, 
+    "img" : "https://www.figurine-discount.com/44591-large_default/harry-potter-figurine-wizarding-world-collection-116-year-1-10-cm.jpg"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "la_marque": "Nintendo",
     "prix": 14.99,
     "taille": "9 cm",
-    "stock": 60
+    "stock": 60, 
+    "img" : "https://boutiquemario.fr/468-medium_default/mario-odyssey.jpg"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "la_marque": "DC Comics",
     "prix": 16.99,
     "taille": "10.5 cm",
-    "stock": 42
+    "stock": 42, 
+    "img" : "https://www.breizh-comics.fr/images/imagecache/620x620/jpg/x_weta740104264_k.jpg"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "la_marque": "Marvel",
     "prix": 21.99,
     "taille": "13 cm",
-    "stock": 25
+    "stock": 25, 
+    "img" : "https://m.media-amazon.com/images/I/71VitPCjqNL.jpg"
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "la_marque": "Disney",
     "prix": 23.99,
     "taille": "14 cm",
-    "stock": 48
+    "stock": 48, 
+    "img" : "https://m.media-amazon.com/images/I/41tj9ycH4YS.jpg"
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "la_marque": "The Lord of the Rings",
     "prix": 20.99,
     "taille": "12.5 cm",
-    "stock": 28
+    "stock": 28, 
+    "img" : "https://m.media-amazon.com/images/I/71rQHQ4Kj8L.jpg"
   },
   {
     "id": 10,
@@ -77,30 +86,16 @@
     "la_marque": "Halo",
     "prix": 25.99,
     "taille": "15 cm",
-    "stock": 35
-  },
-  {
-    "id": 11,
-    "nom": "Master Chief",
-    "la_marque": "Halo",
-    "prix": 25.99,
-    "taille": "15 cm",
-    "stock": 35
-  },
-  {
-    "id": 12,
-    "nom": "Master Chief",
-    "la_marque": "Halo",
-    "prix": 25.99,
-    "taille": "15 cm",
-    "stock": 35
+    "stock": 35, 
+    "img" : "https://www.coleka.com/media/item/202104/02/oxmox-halo-2-master-chief.webp"
   },
   {
     "id": 13,
     "nom": "AckerMan",
-    "la_marque": "DC Comics",
+    "la_marque": "Kana",
     "prix": 25.99,
     "taille": "18 cm",
-    "stock": 30
+    "stock": 30, 
+    "img" : "https://m.media-amazon.com/images/I/41EaDhvLp7L._SL500_.jpg"
   }
 ]
