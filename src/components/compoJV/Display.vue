@@ -112,12 +112,12 @@ export default {
         <div class="linkCard">
           <!-- <button class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</button> -->
           <button
-            class="btn btnPanier"
-            :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
-            @click="ajoutPanierJV(item)"
-          >
-            🛒
-          </button>
+  class="btn btnPanier"
+  :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
+  @click="ajoutPanierJV(item)"
+>
+  {{ item.consoleSelected ? '🛒' : 'Sélectionnez une console' }}
+</button>
         </div>
       </div>
     </div>
@@ -136,25 +136,24 @@ export default {
   margin: 5px;
 }
 
-.btn-success{
- 
+.btn-success {
   --bs-btn-color: #fff;
-    --bs-btn-bg: #dff0e5;
-    --bs-btn-border-color: #7ec997;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #3cb163;
-    --bs-btn-hover-border-color: #7ec997;
-    --bs-btn-focus-shadow-rgb: 60,153,110;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #7ec997;
-    --bs-btn-active-border-color: #7ec997;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #7ec997;
-    --bs-btn-disabled-border-color: #7ec997;
+  --bs-btn-bg: #dff0e5;
+  --bs-btn-border-color: #7ec997;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #3cb163;
+  --bs-btn-hover-border-color: #7ec997;
+  --bs-btn-focus-shadow-rgb: 60, 153, 110;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #7ec997;
+  --bs-btn-active-border-color: #7ec997;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #7ec997;
+  --bs-btn-disabled-border-color: #7ec997;
 }
 
-.btnPanier{
+.btnPanier {
   width: 100%;
   margin: 0;
 }
@@ -194,9 +193,7 @@ export default {
   background-color: #12c52f;
 }
 
-
-
-.listConsole{
+.listConsole {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -209,11 +206,9 @@ export default {
 .infoContainCard {
   position: relative;
   padding-bottom: 60px;
-  
- 
 }
 
-h5{
+h5 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
