@@ -2,6 +2,7 @@
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
 import { useJoujouStore } from '../../stores/stock.js'
+import { usePanierStore } from '@/stores/panier'
 
 export default {
   name: 'Display',
@@ -12,6 +13,7 @@ export default {
   },
   methods: {
     ...mapActions(useJoujouStore, { deleteJoujouFromListAction: 'deleteJoujouFromList' }),
+    ...mapActions(usePanierStore, { updatePanierAction: 'updatePanier' }),
 
 
     deleteJoujou(id) {
@@ -22,6 +24,12 @@ export default {
     }, 
 
     ajoutPanierJoujou(item){
+    
+      this.updatePanierAction({
+        name: item.nom, 
+        price: item.prix, 
+        marque: item.la_marque
+      })
       this.$emit("ajoutPanierJoujou", item)
     }
   },

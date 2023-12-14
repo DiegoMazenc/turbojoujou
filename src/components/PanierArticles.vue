@@ -52,6 +52,7 @@ export default {
       <div class="sousInfosPanier">
         <p v-if="item.plateforme">{{ item.plateforme }}</p>
         <p v-if="item.tome">Tome n°{{ item.tome }}</p>
+        <p v-if="item.marque">{{ item.marque }}</p>
         <p>{{ item.price }}€</p>
       </div>
       <div class="hoverSup">
