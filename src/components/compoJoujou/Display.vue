@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
- <div class="cards-template">
+ <div class="cards-template ">
 <div v-for="(item) in getfilteredList" :key="item.id" class="card" style="width: 18rem">
     <img :src="item.img" class="card-img-top img-sizeJoujou" alt="..." />
     <div class="card-body ">
@@ -71,6 +71,8 @@ export default {
   margin: 5px;
 }
 
+
+
 .btn-success{
  
   --bs-btn-color: #fff;
@@ -94,60 +96,14 @@ export default {
   margin: 0;
 }
 
-.btnConsole {
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 10px;
-  margin: 2px;
-  border: none;
-  color: white;
-}
 
-.btnConsoleUnselected {
-  font-weight: 700;
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-.btnConsoleUnselected:hover {
-  opacity: 1;
-}
-.btnConsoleSelected {
-  font-weight: 700;
-  opacity: 1;
-}
-
-.playstation-color {
-  background-color: #4245ee;
-}
-
-.nintendo-color {
-  background-color: #ee4242;
-}
-
-.xbox-color {
-  background-color: #12c52f;
-}
-
-
-
-.listConsole{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
 
 .img-sizeJoujou {
   height: 320px;
   width: auto;
 }
 
-.infoContainCard {
-  position: relative;
-  padding-bottom: 60px;
-  
- 
-}
+
 
 h5{
   white-space: nowrap;
