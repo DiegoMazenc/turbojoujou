@@ -21,10 +21,9 @@ export default {
       this.deleteMangaFromListAction(index)
     },
     ajoutPanierManga(item, tome) {
-
       this.updatePanierAction({
-        name: item.titre, 
-        price: tome.prix, 
+        name: item.titre,
+        price: tome.prix,
         tome: tome.numero
       })
       this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
@@ -38,35 +37,38 @@ export default {
 }
 </script>
 
-
-
 <template>
   <div class="cards-template">
     <div v-for="item in getfilteredList" :key="item.id" class="card" style="width: 18rem">
       <img :src="item.img" class="card-img-top img-size" alt="..." />
-      <div class="card-body infoContainCard">
+      <div class="card-body">
         <h5 class="card-title">{{ item.titre }}</h5>
         <p class="card-text">{{ item.prix }}</p>
         <p class="card-text">{{ item.style }}</p>
 
         <div class="consoleContain">
-          <div v-for="tome in item.tomes" class="d-flex flex-column mb-3 tome-container">
-          <p class=" text-center">{{ `Tome : ${tome.numero} Prix : ${tome.prix} Nombre en stock : ${tome.stock}` }}</p>
-          <button
-            class="btn"
-            :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
-            @click="ajoutPanierManga(item, tome)"
-          >
-            🛒
-          </button>
-        </div>
-        <div class="linkCard">
+          <div v-for="tome in item.tomes" class="tome-container">
+            <!-- <p class=" text-center">{{ `Tome : ${tome.numero} Prix : ${tome.prix} Nombre en stock : ${tome.stock}` }}</p> -->
+            <div class="tomContain">
+              <div>
+                <p>Tome {{ tome.numero }}</p>
+                <p>Prix : {{ tome.prix }} €</p>
+              </div>
+              <button
+                class="btn btn-success btnPanierMangas"
+                @click="ajoutPanierManga(item, tome)"
+              >
+                🛒
+              </button>
+            </div>
+          </div>
+          <!-- <div class="linkCard">
           <button class="btn btn-outline-danger" @click="deleteManga(item.id)">🗑️</button>
         
+        </div> -->
         </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -84,19 +86,31 @@ export default {
 
 .consoleContain {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
   margin: 10px 0;
-
 }
 
 .img-size {
   height: 170px;
 }
 
+.tomContain{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+
+
+.btnPanierMangas, .tomContain p{
+  margin: 0;
+}
+
 .infoContainCard {
   position: relative;
-  padding-bottom: 60px;
+  padding-bottom: 10px;
 }
 
 .linkCard {
@@ -106,7 +120,6 @@ export default {
   justify-content: space-between;
   bottom: 15px;
 }
-
 
 .cards-template {
   display: flex;
@@ -118,8 +131,8 @@ export default {
   margin: 5px;
 }
 
-.tome-container{
-  border: 1px solid black; 
-  border-radius : 15px 
+.tome-container {
+  border-top: 1px solid black;
 }
+
 </style>

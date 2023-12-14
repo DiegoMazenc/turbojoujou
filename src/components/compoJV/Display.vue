@@ -33,8 +33,8 @@ export default {
           id: item.id
         })
         this.$emit('ajoutPanierJV', item)
-    }
-  },
+      }
+    },
 
     getConsoleSelect(item, plateform) {
       if (item.consoleSelected === plateform) {
@@ -49,7 +49,7 @@ export default {
       // Retourne la classe appropriée en fonction de la plateforme
       if (plateform === 'Nintendo Switch' || plateform === 'Wii U') {
         return 'nintendo-color'
-      } else if (plateform === 'PlayStation 4' || plateform === 'PlayStation 5') {
+      } else if (plateform === 'PS4' || plateform === 'PS5') {
         return 'playstation-color'
       } else if (plateform === 'Xbox One' || plateform === 'Xbox Series X/S') {
         return 'xbox-color'
@@ -77,26 +77,42 @@ export default {
         <p class="card-text">{{ item.style }}</p>
 
         <div class="consoleContain">
+          <div v-if="getSelectedConsole === 'all'" class="listConsole">
+            <button
+              v-for="(plateform, index) in item.plateforme"
+              :key="index"
+              :class="[
+                getColorClass(plateform),
+                'btnConsole',
+                {
+                  btnConsoleSelected: plateform === item.consoleSelected,
+                  btnConsoleUnselected: plateform !== item.consoleSelected
+                }
+              ]"
+              @click="getConsoleSelect(item, plateform)"
+            >
+              {{ plateform }}
+            </button>
+          </div>
+
           <button
-            v-for="(plateform, index) in item.plateforme"
-            :key="index"
+            v-else
             :class="[
-              getColorClass(plateform),
+              getConsoleSelect(item, getSelectedConsole),
+              getColorClass(getSelectedConsole),
               {
-                btnConsoleSelected: plateform === item.consoleSelected,
-                btnConsoleUnselected: plateform !== item.consoleSelected
+                btnConsoleSelected: getSelectedConsole === item.consoleSelected
               }
             ]"
             class="btnConsole"
-            @click="getConsoleSelect(item, plateform)"
           >
-            {{ plateform }}
+            {{ getSelectedConsole }}
           </button>
         </div>
         <div class="linkCard">
-          <button class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</button>
+          <!-- <button class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</button> -->
           <button
-            class="btn"
+            class="btn btnPanier"
             :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
             @click="ajoutPanierJV(item)"
           >
@@ -120,6 +136,29 @@ export default {
   margin: 5px;
 }
 
+.btn-success{
+ 
+  --bs-btn-color: #fff;
+    --bs-btn-bg: #dff0e5;
+    --bs-btn-border-color: #7ec997;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #3cb163;
+    --bs-btn-hover-border-color: #7ec997;
+    --bs-btn-focus-shadow-rgb: 60,153,110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #7ec997;
+    --bs-btn-active-border-color: #7ec997;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #7ec997;
+    --bs-btn-disabled-border-color: #7ec997;
+}
+
+.btnPanier{
+  width: 100%;
+  margin: 0;
+}
+
 .btnConsole {
   padding: 5px 10px;
   border-radius: 10px;
@@ -130,6 +169,7 @@ export default {
 }
 
 .btnConsoleUnselected {
+  font-weight: 700;
   opacity: 0.5;
   transition: 0.2s;
 }
@@ -138,6 +178,7 @@ export default {
   opacity: 1;
 }
 .btnConsoleSelected {
+  font-weight: 700;
   opacity: 1;
 }
 
@@ -153,11 +194,12 @@ export default {
   background-color: #12c52f;
 }
 
-.consoleContain {
+
+
+.listConsole{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 10px 0;
 }
 
 .img-size {
@@ -167,6 +209,15 @@ export default {
 .infoContainCard {
   position: relative;
   padding-bottom: 60px;
+  
+ 
+}
+
+h5{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 30px;
 }
 
 .linkCard {

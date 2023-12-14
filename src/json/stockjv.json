@@ -12,7 +12,7 @@
   {
     "id": 2,
     "titre": "God of War",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 49.99,
     "pegi": 18,
     "style": "Action",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "titre": "Red Dead Redemption 2",
-    "plateforme": ["PlayStation 4", "Xbox One"],
+    "plateforme": ["PS4", "Xbox One"],
     "prix": 39.99,
     "pegi": 18,
     "style": "Action-aventure",
@@ -32,7 +32,7 @@
   {
     "id": 4,
     "titre": "The Witcher 3: Wild Hunt",
-    "plateforme": ["PlayStation 4", "Xbox One", "Nintendo Switch"],
+    "plateforme": ["PS4", "Xbox One", "Nintendo Switch"],
     "prix": 29.99,
     "pegi": 18,
     "style": "Action-RPG",
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "titre": "Assassin's Creed Valhalla",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 59.99,
     "pegi": 18,
     "style": "Action-RPG",
@@ -62,7 +62,7 @@
   {
     "id": 7,
     "titre": "Minecraft",
-    "plateforme": ["Nintendo Switch", "PlayStation 4", "Xbox One"],
+    "plateforme": ["Nintendo Switch", "PS4", "Xbox One"],
     "prix": 19.99,
     "pegi": 7,
     "style": "Sandbox",
@@ -72,7 +72,7 @@
   {
     "id": 8,
     "titre": "FIFA 23",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 59.99,
     "pegi": 3,
     "style": "Sport",
@@ -82,7 +82,7 @@
   {
     "id": 9,
     "titre": "Cyberpunk 2077",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 49.99,
     "pegi": 18,
     "style": "Action-RPG",
@@ -92,7 +92,7 @@
   {
     "id": 10,
     "titre": "Spider-Man: Miles Morales",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 39.99,
     "pegi": 16,
     "style": "Action",
@@ -102,7 +102,7 @@
   {
     "id": 11,
     "titre": "Horizon Zero Dawn",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 49.99,
     "pegi": 16,
     "style": "Action-RPG",
@@ -132,7 +132,7 @@
   {
     "id": 14,
     "titre": "Doom Eternal",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 44.99,
     "pegi": 18,
     "style": "Shooter",
@@ -142,7 +142,7 @@
   {
     "id": 15,
     "titre": "The Last of Us Part II",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 49.99,
     "pegi": 18,
     "style": "Action-aventure",
@@ -152,7 +152,7 @@
   {
     "id": 16,
     "titre": "Star Wars Jedi: Fallen Order",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 39.99,
     "pegi": 16,
     "style": "Action-aventure",
@@ -162,7 +162,7 @@
   {
     "id": 17,
     "titre": "Rainbow Six Siege",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 29.99,
     "pegi": 18,
     "style": "Tactique",
@@ -172,7 +172,7 @@
   {
     "id": 18,
     "titre": "Uncharted 4: A Thief's End",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 34.99,
     "pegi": 16,
     "style": "Action-aventure",
@@ -182,7 +182,7 @@
   {
     "id": 19,
     "titre": "Cyber Shadow",
-    "plateforme": ["Nintendo Switch", "PlayStation 4", "Xbox One"],
+    "plateforme": ["Nintendo Switch", "PS4", "Xbox One"],
     "prix": 24.99,
     "pegi": 12,
     "style": "Action",
@@ -192,7 +192,7 @@
   {
     "id": 20,
     "titre": "Final Fantasy VII Remake",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 49.99,
     "pegi": 16,
     "style": "RPG",
@@ -202,7 +202,7 @@
   {
     "id": 21,
     "titre": "The Elder Scrolls V: Skyrim",
-    "plateforme": ["PlayStation 4", "Xbox One", "Nintendo Switch"],
+    "plateforme": ["PS4", "Xbox One", "Nintendo Switch"],
     "prix": 39.99,
     "pegi": 18,
     "style": "Action-RPG",
@@ -212,7 +212,7 @@
   {
     "id": 22,
     "titre": "Overwatch",
-    "plateforme": ["PlayStation 4", "Xbox One", "PC"],
+    "plateforme": ["PS4", "Xbox One"],
     "prix": 29.99,
     "pegi": 12,
     "style": "FPS",
@@ -222,7 +222,7 @@
   {
     "id": 23,
     "titre": "Persona 5",
-    "plateforme": ["PlayStation 4", "PlayStation 5"],
+    "plateforme": ["PS4", "PS5"],
     "prix": 49.99,
     "pegi": 16,
     "style": "JRPG",
@@ -232,7 +232,7 @@
   {
     "id": 24,
     "titre": "Fortnite",
-    "plateforme": ["PlayStation 4", "Xbox One", "Nintendo Switch"],
+    "plateforme": ["PS4", "Xbox One", "Nintendo Switch"],
     "prix": 20.00,
     "pegi": 12,
     "style": "Battle Royale",
@@ -242,7 +242,7 @@
   {
     "id": 25,
     "titre": "Genshin Impact",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Nintendo Switch"],
+    "plateforme": ["PS4", "PS5", "Nintendo Switch"],
     "prix": 15.00,
     "pegi": 12,
     "style": "Action-RPG",
@@ -262,7 +262,7 @@
   {
     "id": 27,
     "titre": "Call of Duty: Warzone",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S"],
     "prix": 90.00,
     "pegi": 18,
     "style": "Battle Royale",
@@ -272,7 +272,7 @@
   {
     "id": 28,
     "titre": "Rocket League",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Nintendo Switch"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S", "Nintendo Switch"],
     "prix": 25.00,
     "pegi": 3,
     "style": "Sport",
@@ -292,7 +292,7 @@
   {
     "id": 30,
     "titre": "Mortal Kombat 11",
-    "plateforme": ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Nintendo Switch"],
+    "plateforme": ["PS4", "PS5", "Xbox One", "Xbox Series X/S", "Nintendo Switch"],
     "prix": 39.99,
     "pegi": 18,
     "style": "Combat",
