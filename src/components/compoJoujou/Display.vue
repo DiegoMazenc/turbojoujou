@@ -2,8 +2,7 @@
 import { useJoujouStore } from '../../stores/stock.js'
 import { usePanierStore } from '@/stores/panier'
 import { computed } from 'vue'
-import { defineEmits } from 'vue';
-import FormAdd from './FormAdd.vue'
+import { defineEmits } from 'vue'
 
 
 
@@ -27,7 +26,6 @@ const filterJoujouListe = computed(() => {
 </script>
 
 <template>
-  <FormAdd/>
   <div class="cards-template">
     <div v-for="item in filterJoujouListe" :key="item.id" class="card" style="width: 18rem">
       <img :src="item.img" class="card-img-top img-sizeJoujou" alt="..." />
@@ -142,4 +140,3 @@ h5 {
   bottom: 15px;
 }
 </style>
-@/stores/panier-first.js

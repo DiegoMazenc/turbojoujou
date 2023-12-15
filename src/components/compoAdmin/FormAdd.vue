@@ -18,6 +18,7 @@ const formSubmit = () => {
 
 const joujouMapper = computed(() => {
   let joujouModel = {}
+  
   joujouModel.nom = nom.value
   joujouModel.la_marque = la_marque.value
   joujouModel.prix = prix.value
