@@ -4,7 +4,6 @@ import { mapActions } from 'pinia'
 import { useJeuxvVideoStore } from '../../stores/stock.js'
 import PanierArticles from '../../components/PanierArticles.vue'
 
-
 export default {
   name: 'FilterItem',
   data() {
@@ -17,7 +16,7 @@ export default {
       triPrix: false
     }
   },
-  components:{
+  components: {
     PanierArticles
   },
   methods: {
@@ -30,13 +29,14 @@ export default {
     ...mapActions(useJeuxvVideoStore, { updateSelectedPlatformeAction: 'updateSelectedPlatforme' }),
     exportSelectedPlateforme() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
-      
+
       this.updateSelectedPlatformeAction(this.selectedConsole)
     },
 
     ...mapActions(useJeuxvVideoStore, { updateTriAlphaAction: 'updateTriAlpha' }),
     exportTrieAlpha() {
       // Appelez l'action du store pour mettre à jour la valeur dans le store
+
       this.updateTriAlphaAction(this.triAlpha)
     },
 
@@ -88,17 +88,17 @@ export default {
 
     filteredGenres() {
       if (this.selectedConsole === 'all') {
-        return this.uniqueGenres;
+        return this.uniqueGenres
       } else {
-        const filteredGenresSet = new Set();
+        const filteredGenresSet = new Set()
         this.jeuxVideoList
-          .filter(item => item.plateforme.includes(this.selectedConsole))
-          .forEach(jeuxvideo => {
-            filteredGenresSet.add(jeuxvideo.style);
-          });
-        return Array.from(filteredGenresSet);
+          .filter((item) => item.plateforme.includes(this.selectedConsole))
+          .forEach((jeuxvideo) => {
+            filteredGenresSet.add(jeuxvideo.style)
+          })
+        return Array.from(filteredGenresSet)
       }
-    },
+    }
   }
 }
 </script>
@@ -129,9 +129,8 @@ export default {
         </select>
       </div>
     </div>
-    <PanierArticles/>
+    <PanierArticles />
   </div>
-  
 </template>
 
 <style>
