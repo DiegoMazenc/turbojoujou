@@ -1,15 +1,12 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
-import {ref} from vue
+<script setup>
+import { ref, computed } from 'vue'
 import { useJoujouStore } from '../../stores/stock.js'
 import PanierArticles from '../../components/PanierArticles.vue'
 
-let selectedMarque = ref('all')
+let selectedMarque = 'all'
 let triAlpha = ref(true)
 let triPrix = ref(true)
-let tabMarque =  ref([])
-let la_marque =ref( null)
+
 const storeJoujou = useJoujouStore()
 
 const exportSelectedMarque = () => {
@@ -24,30 +21,15 @@ const exportTriePrix = () => {
   storeJoujou.updateTriPrix(triPrix)
 }
 
+const uniqueMarques = computed(() => {
+  const uniqueMarquesSet = new Set()
 
+  storeJoujou.getfilteredList.forEach((joujou) => {
+    uniqueMarquesSet.add(joujou.la_marque)
+  })
 
-export default {
-  components: {
-    PanierArticles
-  },
-
-  methods: {
-
-    
-  },
-  computed: {
-    ...mapState(useJoujouStore, ['joujouListe']),
-    uniqueMarques() {
-      const uniqueMarquesSet = new Set()
-
-      this.joujouListe.forEach((joujou) => {
-        uniqueMarquesSet.add(joujou.la_marque)
-      })
-
-      return Array.from(uniqueMarquesSet)
-    }
-  }
-}
+  return Array.from(uniqueMarquesSet)
+})
 </script>
 
 <template>
