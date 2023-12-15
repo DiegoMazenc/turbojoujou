@@ -39,9 +39,9 @@ const props = defineProps({
           <li class="nav-item ms-5">
             <RouterLink to="/jeuxvideo" class="styleLinkNav">Jeux vidéos</RouterLink>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <RouterLink to="/admin">Admin</RouterLink>
-        </li> -->
+        </li>
         </ul>
         <div class="cart">
           <RouterLink to="/jeuxvideo" class="styleLinkNav">
