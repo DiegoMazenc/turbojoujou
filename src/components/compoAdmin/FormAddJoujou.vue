@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue'
 import { useJoujouStore } from '../../stores/stock.js'
 
-
+let img = ref(null)
 let nom = ref(null)
 let la_marque = ref(null)
 let prix = ref(null)
@@ -18,7 +18,7 @@ const formSubmit = () => {
 
 const joujouMapper = computed(() => {
   let joujouModel = {}
-  
+  joujouModel.img = img.value
   joujouModel.nom = nom.value
   joujouModel.la_marque = la_marque.value
   joujouModel.prix = prix.value
@@ -32,6 +32,10 @@ const joujouMapper = computed(() => {
 <template>
   <form @submit.prevent="formSubmit">
     <h3>Ajouter un nouveau Joujou</h3>
+    <div class="mb-3">
+      <label for="img" class="form-label">Lien Image</label>
+      <input type="text" class="form-control" name="img" id="img" v-model="img" />
+    </div>
     <div class="mb-3">
       <label for="nom" class="form-label">Nom</label>
       <input type="text" class="form-control" name="nom" id="nom" v-model="nom" />
