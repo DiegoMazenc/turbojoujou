@@ -56,20 +56,20 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   })
 
   function addJeuxVideoToList(item) {
-    jeuxVideoList.push(item)
+    jeuxVideoList.value.push(item)
   }
 
   function deleteJeuxVideoFromList(id) {
-    jeuxVideoList.splice(id, 1)
+    jeuxVideoList.value.splice(id, 1)
   }
   function updateSelectedGenre(selectedGenre) {
     // Mettez à jour la valeur du sélecteur dans le state
-    selectedGenre = selectedGenre
+    selectedGenre.value = selectedGenre
   }
 
   function updateSelectedPlatforme(selectedConsole) {
     // Mettez à jour la valeur du sélecteur dans le state
-    selectedConsole = selectedConsole
+    selectedConsole.value = selectedConsole
   }
 
   function updateTriAlpha() {
