@@ -3,6 +3,8 @@ import { useJoujouStore } from '../../stores/stock.js'
 import { usePanierStore } from '@/stores/panier'
 import { computed } from 'vue'
 import { defineEmits } from 'vue';
+import FormAdd from './FormAdd.vue'
+
 
 
 const storeJoujou = useJoujouStore()
@@ -18,7 +20,6 @@ const ajoutPanierJoujou = (item) => {
 
   emit('ajoutPanierJoujou', item)
 }
-// Utilise l'événement emis pour communiquer avec le parent
 
 const filterJoujouListe = computed(() => {
   return storeJoujou.getfilteredList
@@ -26,6 +27,7 @@ const filterJoujouListe = computed(() => {
 </script>
 
 <template>
+  <FormAdd/>
   <div class="cards-template">
     <div v-for="item in filterJoujouListe" :key="item.id" class="card" style="width: 18rem">
       <img :src="item.img" class="card-img-top img-sizeJoujou" alt="..." />

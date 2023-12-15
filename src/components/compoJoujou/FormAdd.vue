@@ -1,38 +1,31 @@
-<script>
-import { mapActions } from 'pinia'
+<script setup>
+import { ref, computed } from 'vue'
 import { useJoujouStore } from '../../stores/stock.js'
 
-export default {
-  name: 'FormAdd',
-  data() {
-    return {
-      nom: null,
-      la_marque: null,
-      prix: null,
-      taille: null
-    }
-  },
-  methods: {
-    ...mapActions(useJoujouStore, { addJoujouToListAction: 'addJoujouToList' }),
-    formSubmit() {
-        this.addJoujouToListAction(this.joujouMapper)
-    }
-  },
-  computed: {
-    
-    joujouMapper() {
-      let joujouModel = {}
-      joujouModel.nom = this.nom
-      joujouModel.la_marque = this.la_marque
-      joujouModel.prix = this.prix
-      joujouModel.taille = this.taille
 
-      console.log(joujouModel)
-      return joujouModel
-    }
+let nom = ref(null)
+let la_marque = ref(null)
+let prix = ref(null)
+let taille = ref(null)
 
-  }
+const storeJoujou = useJoujouStore()
+
+const formSubmit = () => {
+  console.log(joujouMapper.value)
+  storeJoujou.addJoujouToList(joujouMapper.value)
+
 }
+
+const joujouMapper = computed(() => {
+  let joujouModel = {}
+  joujouModel.nom = nom.value
+  joujouModel.la_marque = la_marque.value
+  joujouModel.prix = prix.value
+  joujouModel.taille = taille.value
+
+
+  return joujouModel
+})
 </script>
 
 <template>
