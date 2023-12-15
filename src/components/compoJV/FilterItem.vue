@@ -1,106 +1,86 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
+<script setup>
+import { ref, computed } from 'vue'
 import { useJeuxvVideoStore } from '../../stores/stock.js'
 import PanierArticles from '../../components/PanierArticles.vue'
 
+const storeJeuxVideo = useJeuxvVideoStore()
 
-export default {
-  name: 'FilterItem',
-  data() {
-    return {
-      la_marque: null,
-      tabMarque: [],
-      selectedGenre: 'all',
-      selectedConsole: 'all',
-      triAlpha: false,
-      triPrix: false
-    }
-  },
-  components:{
-    PanierArticles
-  },
-  methods: {
-    ...mapActions(useJeuxvVideoStore, { updateSelectedGenreAction: 'updateSelectedGenre' }),
-    exportSelectedGenre() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateSelectedGenreAction(this.selectedGenre)
-    },
+let selectedGenre = ref('all')
+let selectedConsole = ref('all')
+let triAlpha = ref(false)
+let triPrix = ref(false)
 
-    ...mapActions(useJeuxvVideoStore, { updateSelectedPlatformeAction: 'updateSelectedPlatforme' }),
-    exportSelectedPlateforme() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      
-      this.updateSelectedPlatformeAction(this.selectedConsole)
-    },
+const exportSelectedGenre = () => {
+  storeJeuxVideo.updateSelectedGenre(selectedGenre.value)
+}
 
-    ...mapActions(useJeuxvVideoStore, { updateTriAlphaAction: 'updateTriAlpha' }),
-    exportTrieAlpha() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriAlphaAction(this.triAlpha)
-    },
+const exportSelectedPlateforme = () => {
+  storeJeuxVideo.updateSelectedPlatforme(selectedConsole.value)
+}
 
-    ...mapActions(useJeuxvVideoStore, { updateTriPrixAction: 'updateTriPrix' }),
-    exportTriePrix() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriPrixAction(this.triPrix)
-    }
-  },
-  computed: {
-    ...mapState(useJeuxvVideoStore, ['jeuxVideoList']),
-    uniqueGenres() {
-      const uniqueGenresSet = new Set()
+const exportTrieAlpha = () => {
+  storeJeuxVideo.updateTriAlpha(triAlpha)
+}
 
-      this.jeuxVideoList.forEach((jeuxvideo) => {
-        uniqueGenresSet.add(jeuxvideo.style)
-      })
+const exportTriePrix = () => {
+  storeJeuxVideo.updateTriPrix(triPrix)
+}
 
-      return Array.from(uniqueGenresSet)
-    },
+const uniqueGenres = computed(() => {
+  const uniqueGenresSet = new Set()
 
-    uniqueConsole() {
-      const uniqueConsolesSet = new Set()
+  storeJeuxVideo.jeuxVideoList.forEach((jeuxvideo) => {
+    uniqueGenresSet.add(jeuxvideo.style)
+  })
 
-      this.jeuxVideoList.forEach((jeuxvideo) => {
+  return Array.from(uniqueGenresSet)
+})
+
+const uniqueConsole = computed(() => {
+  const uniqueConsolesSet = new Set()
+
+  storeJeuxVideo.jeuxVideoList.forEach((jeuxvideo) => {
+    jeuxvideo.plateforme.forEach((plateforme) => {
+      uniqueConsolesSet.add(plateforme)
+    })
+  })
+
+  return Array.from(uniqueConsolesSet)
+})
+
+const filteredConsoles = computed(() => {
+  console.log('Selected Console:', selectedConsole.value);
+  if (selectedGenre.value === 'all') {
+    return uniqueConsole.value
+  } else {
+    const filteredConsolesSet = new Set()
+    storeJeuxVideo.jeuxVideoList
+      .filter((item) => item.style === selectedGenre.value)
+      .forEach((jeuxvideo) => {
         jeuxvideo.plateforme.forEach((plateforme) => {
-          uniqueConsolesSet.add(plateforme)
+          filteredConsolesSet.add(plateforme)
         })
       })
-
-      return Array.from(uniqueConsolesSet)
-    },
-
-    filteredConsoles() {
-      if (this.selectedGenre === 'all') {
-        return this.uniqueConsole
-      } else {
-        const filteredConsolesSet = new Set()
-        this.jeuxVideoList
-          .filter((item) => item.style === this.selectedGenre)
-          .forEach((jeuxvideo) => {
-            jeuxvideo.plateforme.forEach((plateforme) => {
-              filteredConsolesSet.add(plateforme)
-            })
-          })
-        return Array.from(filteredConsolesSet)
-      }
-    },
-
-    filteredGenres() {
-      if (this.selectedConsole === 'all') {
-        return this.uniqueGenres;
-      } else {
-        const filteredGenresSet = new Set();
-        this.jeuxVideoList
-          .filter(item => item.plateforme.includes(this.selectedConsole))
-          .forEach(jeuxvideo => {
-            filteredGenresSet.add(jeuxvideo.style);
-          });
-        return Array.from(filteredGenresSet);
-      }
-    },
+    return Array.from(filteredConsolesSet)
   }
-}
+})
+
+const filteredGenres = computed(() => {
+  console.log('Selected Genre:', selectedGenre.value);
+  if (selectedConsole.value === 'all') {
+    return uniqueGenres.value
+  } else {
+    const filteredGenresSet = new Set()
+    storeJeuxVideo.jeuxVideoList
+      .filter((item) => item.plateforme.includes(selectedConsole.value))
+      .forEach((jeuxvideo) => {
+        filteredGenresSet.add(jeuxvideo.style)
+      })
+    return Array.from(filteredGenresSet)
+  }
+})
+
+
 </script>
 
 <template>
@@ -129,9 +109,8 @@ export default {
         </select>
       </div>
     </div>
-    <PanierArticles/>
+    <PanierArticles />
   </div>
-  
 </template>
 
 <style>

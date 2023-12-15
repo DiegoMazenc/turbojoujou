@@ -9,13 +9,14 @@ const storePanier = usePanierStore()
 const emit = defineEmits(['ajoutPanierJV'])
 
 const ajoutPanierJV = (item) => {
+  if (item.consoleSelected){
   storePanier.updatePanier({
     name: item.titre,
     price: item.prix,
     plateforme: item.consoleSelected,
     id: item.id
   })
-  emit('ajoutPanierJV', item)
+  emit('ajoutPanierJV', item)}
 }
 
 const getConsoleSelect = (item, plateform) => {
