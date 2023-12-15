@@ -26,7 +26,7 @@ import { ref } from 'vue'
       @ajoutPanierJV="ajoutPanierJV"
       @ajoutPanierJoujou="ajoutPanierJoujou"
     /> -->
-    <Transition name="slide-fade">
+    <Transition name="fade">
     <component :is="RouterView">
     </component>
   </Transition>
