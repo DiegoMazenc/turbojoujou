@@ -291,7 +291,5 @@ export const useMangaStore = defineStore('manga', () => {
     updateSelectedTitle,
     updateTriAlpha,
     updateTriPrix
-
   }
-
 })

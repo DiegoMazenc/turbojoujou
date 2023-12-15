@@ -1,42 +1,48 @@
-<script>
+<script setup>
 import { RouterView } from 'vue-router'
 import NavBar from './components/NavBar.vue'
+import { ref } from 'vue'
 
-export default {
-  name: 'App',
-  components: {
-    NavBar,
-    RouterView
-  },
-  data() {
-    return {
-      panier: []
-    }
-  },
-  methods: {
-    ajoutPanierManga(item, tome) {
+    const panier = ref([])
+
+    function ajoutPanierManga(item, tome) {
       this.panier.push({manga:item, tome:tome})
       console.log("coucou")
-    },
-    ajoutPanierJV(item){
+    }
+    function ajoutPanierJV(item){
       this.panier.push(item)
-    },
-    ajoutPanierJoujou(item){
+    }
+    function ajoutPanierJoujou(item){
       this.panier.push(item);
-    },
-  }
-}
+    }
+
 </script>
 
 <template>
   <div id="app">
     <NavBar :panier="panier" />
-    <RouterView
+    <!-- <RouterView
       @ajoutPanierManga="ajoutPanierManga"
       @ajoutPanierJV="ajoutPanierJV"
       @ajoutPanierJoujou="ajoutPanierJoujou"
-    />
+    /> -->
+    <Transition name="slide-fade">
+    <component :is="RouterView">
+    </component>
+  </Transition>
   </div>
 </template>
 
-<style></style>
+<style>
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+</style>
