@@ -1,65 +1,41 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
+<script setup>
+
 import { useMangaStore } from '../../stores/stock.js'
+import { computed } from 'vue';
+import { ref } from 'vue';
 import PanierArticles from '../../components/PanierArticles.vue'
 
 
-export default {
-  name: 'FilterItem',
-  data() {
-    return {
-      la_marque: null,
-      tabMarque: [],
-      selectedMarque: 'all',
-      selectedTitle: 'all',
-      triAlpha: false,
-      triPrix: false,
-      mangaTitre: null, 
-      tomeInfo: null, 
-    }
-  },
-  components:{
-    PanierArticles
-  },
-  methods: {
-    ...mapActions(useMangaStore, { updateSelectedMarqueAction: 'updateSelectedMarque' }),
-    exportSelectedMarque() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateSelectedMarqueAction(this.selectedMarque)
-    },
+const selectedMarque = ref('all')
+const selectedTitle =  ref('all')
+let triAlpha = ref(false); 
 
-    ...mapActions(useMangaStore, { updateTriAlphaAction: 'updateTriAlpha' }),
-    exportTrieAlpha() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriAlphaAction(this.triAlpha)
-    },
 
-    ...mapActions(useMangaStore, { updateTriPrixAction: 'updateTriPrix' }),
-    exportTriePrix() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriPrixAction(this.triPrix)
-    },
+const storeManga = useMangaStore(); 
+const list = storeManga.getfilteredList; 
 
-    ...mapActions(useMangaStore, { updateSelectedTitleAction: 'updateSelectedTitle' }),
-    exportSelectedTitle() {
-      this.updateSelectedTitleAction(this.selectedTitle)
-    },
-
-  },
-  computed: {
-    ...mapState(useMangaStore, ['mangaList', 'getfilteredList']),
-    uniqueMarques() {
-      const uniqueMarquesSet = new Set()
-
-      this.mangaList.forEach((manga) => {
-        uniqueMarquesSet.add(manga.style)
-      })
-
-      return Array.from(uniqueMarquesSet)
-    }
-  }
+function exportSelectedMarque(){
+  storeManga.updateSelectedMarque(selectedMarque.value); 
 }
+
+function exportTrieAlpha(){
+  storeManga.updateTriAlpha(triAlpha.value); 
+}
+
+  
+function exportSelectedTitle() {
+  storeManga.updateSelectedTitle(selectedTitle.value)
+}
+
+const data = computed(()=>{
+  const uniqueMarquesSet = new Set()
+  storeManga.mangaList.forEach((manga)=>{
+    uniqueMarquesSet.add(manga.style)
+  
+  })
+  return Array.from(uniqueMarquesSet)
+})
+
 </script>
 
 <template>
@@ -67,26 +43,23 @@ export default {
     <button @click="exportTrieAlpha">Alphabétique</button>
     <h4>Style</h4>
     <div class="custom-select">
-    <select
-      class="card selectOption"
-      style="width: 18rem"
-      v-model="selectedMarque"
-      @change="exportSelectedMarque"
-    >
-      <option value="all">All</option>
-      <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">{{ item }}</option>
-    </select>
-</div>
+      <select class="card selectOption" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
+        <option value="all">All</option>
+        <option v-for="(item, index) in data" :key="index" :value="item">
+          {{ item }}
+        </option>
+      </select>
+    </div>
     <h4>Titre</h4>
-<div class="custom-select">
-    <select class="card selectOption" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
-      <option value="all">All</option>
-      <option v-for="(manga, index) in getfilteredList" :key="index" :value="manga">
-        {{ manga.titre }}
-      </option>
-    </select>
-</div>
-    <PanierArticles/>
+    <div class="custom-select">
+      <select class="card selectOption" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
+        <option value="all">All</option>
+        <option v-for="(manga, index) in list" :key="index" :value="manga">
+          {{ manga.titre }}
+        </option>
+      </select>
+    </div>
+    <PanierArticles />
   </div>
 </template>
 
@@ -112,18 +85,21 @@ select {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  appearance: none; /* Style par défaut de la flèche de la liste déroulante */
+  appearance: none;
+  /* Style par défaut de la flèche de la liste déroulante */
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
 }
 
 .custom-select select:focus {
-  outline: none; /* Supprime la bordure focus par défaut sur certains navigateurs */
+  outline: none;
+  /* Supprime la bordure focus par défaut sur certains navigateurs */
 }
 
 .custom-select::after {
-  content: '\25BC'; /* Flèche vers le bas */
+  content: '\25BC';
+  /* Flèche vers le bas */
   position: absolute;
   top: 50%;
   right: 15px;
