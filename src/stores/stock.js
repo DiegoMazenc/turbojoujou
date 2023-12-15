@@ -1,86 +1,92 @@
 import joujouListe from '../json/stockjoujou.json'
-import jeuxVideoList from '../json/stockjv.json'
+import listeJeuxVideo from '../json/stockjv.json'
 import mangaList from '../json/stockmanga.json'
 import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
 
-export const useJeuxvVideoStore = defineStore('jeuxvideo', {
-  state: () => ({
-    jeuxVideoList: jeuxVideoList,
-    selectedGenre: 'all',
-    selectedConsole: 'all',
-    triAlpha: false,
-    triPrix: false
-  }),
+export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
 
-  getters: {
-    getJeuxVideo: (state) => state.jeuxVideoList,
-    getSelectedGenre: (state) => state.selectedGenre,
-    getSelectedConsole: (state) => state.selectedConsole,
-    getTriAlpha: (state) => state.triAlpha,
-    getTriPrix: (state) => state.triPrix,
+  const jeuxVideoList = ref(listeJeuxVideo)
+  const selectedGenre = ref('all')
+  const selectedConsole = ref('all')
+  const triAlpha = ref(false)
+  const triPrix = ref(false)
 
-    getfilteredList: (state) => {
-      let filteredList = state.jeuxVideoList
+  const getJeuxVideo = computed(() => {
+    return jeuxVideoList.value
+  })
 
-      if (state.selectedGenre !== 'all') {
-        filteredList = filteredList.filter(
-          (item) => item.style === state.selectedGenre
-        )
-      }
+  const getSelectedGenre = computed(() => {
+    return selectedGenre.value
+  })
 
-      if (state.selectedConsole !== 'all') {
-        filteredList = filteredList.filter(
-          (item) => item.plateforme.includes(state.selectedConsole)
-        );
-      }
+  const getSelectedConsole = computed(() => {
+    return selectedConsole.value
+  })
 
-      if (state.triAlpha == true) {
-        filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
-        console.log(filteredList)
-      }
+  const getTriAlpha = computed(() => {
+    return triAlpha
+  })
 
-      if (state.triPrix == true) {
-        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
-        console.log(filteredList)
-      }
-      return filteredList
+  const getTriPrix = computed(() => {
+    return triPrix
+  })
+
+  const getfilteredList = computed(() => {
+    let filteredList = jeuxVideoList.value
+
+    if (selectedGenre.value !== 'all') {
+      filteredList = filteredList.filter((item) => item.style === state.selectedGenre)
     }
-  },
 
-  actions: {
-    addJeuxVideoToList(item) {
-      this.jeuxVideoList.push(item)
-    },
-
-    deleteJeuxVideoFromList(id) {
-      this.jeuxVideoList.splice(id, 1)
-    },
-    updateSelectedGenre(selectedGenre) {
-      // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedGenre = selectedGenre
-    },
-
-    updateSelectedPlatforme(selectedConsole) {
-      // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedConsole = selectedConsole
-    },
-
-    updateTriAlpha() {
-      // console.log('trialpha marche')
-      this.triPrix = false
-      this.triAlpha = true
-      // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-    },
-
-    updateTriPrix() {
-      this.triAlpha = false
-      this.triPrix = true
-      // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+    if (selectedConsole.value !== 'all') {
+      filteredList = filteredList.filter((item) => item.plateforme.includes(state.selectedConsole))
     }
+
+    if (triAlpha.value == true) {
+      filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
+      console.log(filteredList)
+    }
+
+    if (triPrix.value == true) {
+      filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+      console.log(filteredList)
+    }
+    return filteredList
+  })
+
+  function addJeuxVideoToList(item) {
+    jeuxVideoList.value.push(item)
+  }
+
+  function deleteJeuxVideoFromList(id) {
+    jeuxVideoList.value.splice(id, 1)
+  }
+  function updateSelectedGenre(selectedGenre) {
+    // Mettez à jour la valeur du sélecteur dans le state
+    selectedGenre.value = selectedGenre
+  }
+
+  function updateSelectedPlatforme(selectedConsole) {
+    // Mettez à jour la valeur du sélecteur dans le state
+    selectedConsole.value = selectedConsole
+  }
+
+  function updateTriAlpha() {
+    // console.log('trialpha marche')
+    triPrix = false
+    triAlpha = true
+    // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
+  }
+
+  function updateTriPrix() {
+    triAlpha = false
+    triPrix = true
+    // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
   }
 })
 
-// Section manga
+// Section Joujou
 
 export const useJoujouStore = defineStore('joujou', {
   state: () => ({
@@ -127,7 +133,6 @@ export const useJoujouStore = defineStore('joujou', {
     updateSelectedMarque(selectedMarque) {
       // Mettez à jour la valeur du sélecteur dans le state
       this.selectedMarque = selectedMarque
-      
     },
 
     updateTriAlpha() {
@@ -172,7 +177,7 @@ export const useMangaStore = defineStore('manga', {
       if (state.selectedTitle !== 'all') {
         filteredList = filteredList.filter((item) => item.titre === state.selectedTitle.titre)
       }
-      
+
       if (state.triAlpha == true) {
         filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
         console.log(filteredList)
