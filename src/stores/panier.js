@@ -1,43 +1,32 @@
-// import joujouListe from '../json/stockjoujou.json'
-// import jeuxVideoList from '../json/stockjv.json'
-// import mangaList from '../json/stockmanga.json'
+
 import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
 
-export const usePanierStore = defineStore('panier', {
-    state: () => ({
-      panierContent: []
-    }),
-  
-    getters: {
-        getPanierContent: (state) => state.panierContent,
-  
-    },
-  
-    actions: {
-        updatePanier({ name, price, plateforme, id, tome, marque }) {
-            const insertItem = {}
-          
-           
-              // Mise à jour de la référence de l'article dans le store
-              insertItem.name = name;
-          
-              // Ajout de l'article au panier avec la taille et la quantité
-              insertItem.price = price;
-              insertItem.plateforme = plateforme;
-              insertItem.id = id;
-              insertItem.tome = tome; 
-              insertItem.marque = marque; 
-          
-              this.panierContent.push(insertItem);
-           
-          },
+export const usePanierStore = defineStore('panier', () => {
+      const panierContent = ref([])
 
-          deleteItemPanierFromList(id) {
-            const index = this.panierContent.findIndex(item => item.id === id);
-        
-            if (index !== -1) {
-              this.panierContent.splice(index, 1);
-            }
-          },
-    }
-  })
+      const getPanierContent = computed(() => panierContent.value)
+
+      function updatePanier({ name, price, plateforme, id, tome, marque }) {
+        const insertItem = {}
+          insertItem.name = name;
+          insertItem.price = price;
+          insertItem.plateforme = plateforme;
+          insertItem.id = id;
+          insertItem.tome = tome; 
+          insertItem.marque = marque; 
+          panierContent.value.push(insertItem);
+      }
+
+      function deleteItemPanierFromList(id) {
+        const index = panierContent.value.findIndex(item => item.id === id);
+        if (index !== -1) {
+          panierContent.value.splice(index, 1);
+        }
+      }
+
+      return { panierContent, getPanierContent, updatePanier, deleteItemPanierFromList }
+
+    })
+  
+    

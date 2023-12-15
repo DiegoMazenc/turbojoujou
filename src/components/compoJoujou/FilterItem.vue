@@ -1,43 +1,39 @@
 <script>
 import { mapState } from 'pinia'
 import { mapActions } from 'pinia'
+import {ref} from vue
 import { useJoujouStore } from '../../stores/stock.js'
 import PanierArticles from '../../components/PanierArticles.vue'
 
-export default {
-  name: 'FilterItem',
-  data() {
-    return {
-      la_marque: null,
-      tabMarque: [],
-      selectedMarque: 'all',
-      triAlpha: false,
-      triPrix: false
-    }
-  },
+let selectedMarque = ref('all')
+let triAlpha = ref(true)
+let triPrix = ref(true)
+let tabMarque =  ref([])
+let la_marque =ref( null)
+const storeJoujou = useJoujouStore()
 
+const exportSelectedMarque = () => {
+  storeJoujou.updateSelectedMarque(selectedMarque)
+}
+
+const exportTrieAlpha = () => {
+  storeJoujou.updateTriAlpha(triAlpha)
+}
+
+const exportTriePrix = () => {
+  storeJoujou.updateTriPrix(triPrix)
+}
+
+
+
+export default {
   components: {
     PanierArticles
   },
+
   methods: {
-    ...mapActions(useJoujouStore, { updateSelectedMarqueAction: 'updateSelectedMarque' }),
-    exportSelectedMarque() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateSelectedMarqueAction(this.selectedMarque)
-      
-    },
 
-    ...mapActions(useJoujouStore, { updateTriAlphaAction: 'updateTriAlpha' }),
-    exportTrieAlpha() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriAlphaAction(this.triAlpha)
-    },
-
-    ...mapActions(useJoujouStore, { updateTriPrixAction: 'updateTriPrix' }),
-    exportTriePrix() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriPrixAction(this.triPrix)
-    }
+    
   },
   computed: {
     ...mapState(useJoujouStore, ['joujouListe']),

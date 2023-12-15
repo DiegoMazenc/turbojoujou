@@ -151,3 +151,4 @@ export default {
  border-radius: 10px;
 }
 </style>
+../stores/panier-first.js

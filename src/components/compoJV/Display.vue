@@ -4,10 +4,6 @@ import { usePanierStore } from '../../stores/panier.js'
 import { computed } from 'vue'
 import { defineEmits } from 'vue'
 
-// const id = null
-// const consoles = null
-// const colorConsoleBtn = null
-// const consoleSelected = null
 const storeJeuxVideo = useJeuxvVideoStore()
 const storePanier = usePanierStore()
 const emit = defineEmits(['ajoutPanierJV'])
@@ -38,7 +34,6 @@ const getColorClass = (plateform) => {
   } else if (plateform === 'Xbox One' || plateform === 'Xbox Series X/S') {
     return 'xbox-color'
   }
-  // Ajoutez une gestion par défaut si nécessaire
   return ''
 }
 
@@ -206,3 +201,4 @@ h5 {
   bottom: 15px;
 }
 </style>
+../../stores/panier-first.js
