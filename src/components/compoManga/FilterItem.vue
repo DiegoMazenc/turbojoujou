@@ -2,39 +2,36 @@
 
 import { useMangaStore } from '../../stores/stock.js'
 import { computed } from 'vue';
+import { ref } from 'vue';
 import PanierArticles from '../../components/PanierArticles.vue'
 
 
-const la_marque = null;
-const tabMarque = [];
-const selectedMarque = 'all'
-const selectedTitle = 'all'
-const triAlpha = false
-const triPrix = false
-const mangaTitre = null
-const tomeInfo = null
+const selectedMarque = ref('all')
+const selectedTitle =  ref('all')
+let triAlpha = ref(false); 
 
+
+const storeManga = useMangaStore(); 
+const list = storeManga.getfilteredList; 
 
 function exportSelectedMarque(){
-  useMangaStore.updateSelectedMarque(); 
+  storeManga.updateSelectedMarque(selectedMarque.value); 
 }
 
 function exportTrieAlpha(){
-  useMangaStore.updateTrieAlpha(triAlpha); 
+  storeManga.updateTriAlpha(triAlpha.value); 
 }
 
-function exportTriePrix(){
-  useMangaStore.updateTriPrix(triPrix); 
-}
   
 function exportSelectedTitle() {
-  useMangaStore.updateSelectedTitle()
+  storeManga.updateSelectedTitle(selectedTitle.value)
 }
 
 const data = computed(()=>{
   const uniqueMarquesSet = new Set()
-  useMangaStore.mangaList.forEach((manga)=>{
+  storeManga.mangaList.forEach((manga)=>{
     uniqueMarquesSet.add(manga.style)
+  
   })
   return Array.from(uniqueMarquesSet)
 })
@@ -48,7 +45,7 @@ const data = computed(()=>{
     <div class="custom-select">
       <select class="card selectOption" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
         <option value="all">All</option>
-        <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">
+        <option v-for="(item, index) in data" :key="index" :value="item">
           {{ item }}
         </option>
       </select>
@@ -57,7 +54,7 @@ const data = computed(()=>{
     <div class="custom-select">
       <select class="card selectOption" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
         <option value="all">All</option>
-        <option v-for="(manga, index) in getfilteredList" :key="index" :value="manga">
+        <option v-for="(manga, index) in list" :key="index" :value="manga">
           {{ manga.titre }}
         </option>
       </select>
