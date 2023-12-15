@@ -4,6 +4,10 @@ import { mapActions } from 'pinia'
 import { useJeuxvVideoStore } from '../../stores/stock.js'
 import { usePanierStore } from '../../stores/panier.js'
 
+
+
+
+
 export default {
   name: 'Display',
   data() {
