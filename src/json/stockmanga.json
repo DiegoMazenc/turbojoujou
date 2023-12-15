@@ -6,9 +6,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 1997,
     "tomes": [
-      {"numero": 1, "stock": 50, "prix": 10.99},
-      {"numero": 2, "stock": 45, "prix": 11.99},
-      {"numero": 3, "stock": 40, "prix": 12.99}
+      { "numero": 1, "stock": 50, "prix": 10.99 },
+      { "numero": 2, "stock": 45, "prix": 11.99 },
+      { "numero": 3, "stock": 40, "prix": 12.99 }
     ],
     "style": "Shonen",
     "img": "https://imgsrc.cineserie.com/2023/08/one-piece-manga.jpg?ver=1"
@@ -20,9 +20,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 1999,
     "tomes": [
-      {"numero": 1, "stock": 55, "prix": 9.99},
-      {"numero": 2, "stock": 50, "prix": 10.99},
-      {"numero": 3, "stock": 48, "prix": 11.99}
+      { "numero": 1, "stock": 55, "prix": 9.99 },
+      { "numero": 2, "stock": 50, "prix": 10.99 },
+      { "numero": 3, "stock": 48, "prix": 11.99 }
     ],
     "style": "Shonen",
     "img": "https://cdn-uploads.gameblog.fr/img/news/429603_64a27d068bae6.jpeg"
@@ -34,9 +34,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2003,
     "tomes": [
-      {"numero": 1, "stock": 30, "prix": 8.99},
-      {"numero": 2, "stock": 28, "prix": 9.99},
-      {"numero": 3, "stock": 25, "prix": 10.99}
+      { "numero": 1, "stock": 30, "prix": 8.99 },
+      { "numero": 2, "stock": 28, "prix": 9.99 },
+      { "numero": 3, "stock": 25, "prix": 10.99 }
     ],
     "style": "Seinen",
     "img": "https://i0.wp.com/dmtalkies.com/wp-content/uploads/2021/01/Death-Note-Light-L-and-Ryuk-Cropped-compressed.jpg?resize=696%2C348&ssl=1"
@@ -48,9 +48,9 @@
     "éditeur": "Kodansha",
     "année_de_parution": 2009,
     "tomes": [
-      {"numero": 1, "stock": 40, "prix": 11.99},
-      {"numero": 2, "stock": 38, "prix": 12.99},
-      {"numero": 3, "stock": 35, "prix": 13.99}
+      { "numero": 1, "stock": 40, "prix": 11.99 },
+      { "numero": 2, "stock": 38, "prix": 12.99 },
+      { "numero": 3, "stock": 35, "prix": 13.99 }
     ],
     "style": "Shonen",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgr0G6YCC_qTGyFZnO_mIy8P79FysdXCW1Bw&usqp=CAU"
@@ -62,9 +62,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2014,
     "tomes": [
-      {"numero": 1, "stock": 60, "prix": 10.99},
-      {"numero": 2, "stock": 58, "prix": 11.99},
-      {"numero": 3, "stock": 55, "prix": 12.99}
+      { "numero": 1, "stock": 60, "prix": 10.99 },
+      { "numero": 2, "stock": 58, "prix": 11.99 },
+      { "numero": 3, "stock": 55, "prix": 12.99 }
     ],
     "style": "Shonen",
     "img": "https://img.lemde.fr/2022/01/27/0/0/1800/1013/664/0/75/0/a1e02c8_917831125-myheroacademia.jpg"
@@ -76,9 +76,9 @@
     "éditeur": "Square Enix",
     "année_de_parution": 2001,
     "tomes": [
-      {"numero": 1, "stock": 35, "prix": 9.99},
-      {"numero": 2, "stock": 33, "prix": 10.99},
-      {"numero": 3, "stock": 30, "prix": 11.99}
+      { "numero": 1, "stock": 35, "prix": 9.99 },
+      { "numero": 2, "stock": 33, "prix": 10.99 },
+      { "numero": 3, "stock": 30, "prix": 11.99 }
     ],
     "style": "Shonen",
     "img": "https://www.actuabd.com/local/cache-vignettes/L720xH422/fullmetal-alchemist-hiromu-arakawa-manga-kurokawa-edition-perfect-mars-2020_copie-8b97a.jpg?1596449040"
@@ -90,9 +90,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2016,
     "tomes": [
-      {"numero": 1, "stock": 25, "prix": 13.99},
-      {"numero": 2, "stock": 23, "prix": 14.99},
-      {"numero": 3, "stock": 20, "prix": 15.99}
+      { "numero": 1, "stock": 25, "prix": 13.99 },
+      { "numero": 2, "stock": 23, "prix": 14.99 },
+      { "numero": 3, "stock": 20, "prix": 15.99 }
     ],
     "style": "Shonen",
     "img": "https://www.journaldugeek.com/app/uploads/2023/12/demon-slayer-saison-4.jpg"
@@ -104,9 +104,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2009,
     "tomes": [
-      {"numero": 1, "stock": 42, "prix": 12.99},
-      {"numero": 2, "stock": 40, "prix": 13.99},
-      {"numero": 3, "stock": 38, "prix": 14.99}
+      { "numero": 1, "stock": 42, "prix": 12.99 },
+      { "numero": 2, "stock": 40, "prix": 13.99 },
+      { "numero": 3, "stock": 38, "prix": 14.99 }
     ],
     "style": "Seinen",
     "img": "https://cdn-www.bluestacks.com/bs-images/featured_com.moonton.opmen_6-1.jpg"
@@ -118,9 +118,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2011,
     "tomes": [
-      {"numero": 1, "stock": 28, "prix": 11.99},
-      {"numero": 2, "stock": 26, "prix": 12.99},
-      {"numero": 3, "stock": 24, "prix": 13.99}
+      { "numero": 1, "stock": 28, "prix": 11.99 },
+      { "numero": 2, "stock": 26, "prix": 12.99 },
+      { "numero": 3, "stock": 24, "prix": 13.99 }
     ],
     "style": "Seinen",
     "img": "https://www.japanpop.fr/wp-content/uploads/2018/06/Tokyo-Ghoul-re-Call-to-Exist_2018_06-20-18_001.jpg"
@@ -132,9 +132,9 @@
     "éditeur": "Shueisha",
     "année_de_parution": 2001,
     "tomes": [
-      {"numero": 1, "stock": 48, "prix": 10.99},
-      {"numero": 2, "stock": 45, "prix": 11.99},
-      {"numero": 3, "stock": 42, "prix": 12.99}
+      { "numero": 1, "stock": 48, "prix": 10.99 },
+      { "numero": 2, "stock": 45, "prix": 11.99 },
+      { "numero": 3, "stock": 42, "prix": 12.99 }
     ],
     "style": "Shonen",
     "img": "https://img.utdstc.com/screen/f78/153/f7815338d7fc80072df5d3e858cad736d302027476462361c25613850a0a42f9:600"
