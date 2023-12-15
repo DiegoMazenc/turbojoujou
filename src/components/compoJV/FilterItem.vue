@@ -45,42 +45,40 @@ const uniqueConsole = computed(() => {
     })
   })
 
-  return Array.from(uniqueConsolesSet)
-})
+      return Array.from(uniqueConsolesSet)
+    },
 
-const filteredConsoles = computed(() => {
-  console.log('Selected Console:', selectedConsole.value);
-  if (selectedGenre.value === 'all') {
-    return uniqueConsole.value
-  } else {
-    const filteredConsolesSet = new Set()
-    storeJeuxVideo.jeuxVideoList
-      .filter((item) => item.style === selectedGenre.value)
-      .forEach((jeuxvideo) => {
-        jeuxvideo.plateforme.forEach((plateforme) => {
-          filteredConsolesSet.add(plateforme)
-        })
-      })
-    return Array.from(filteredConsolesSet)
+    filteredConsoles() {
+      if (this.selectedGenre === 'all') {
+        return this.uniqueConsole
+      } else {
+        const filteredConsolesSet = new Set()
+        this.jeuxVideoList
+          .filter((item) => item.style === this.selectedGenre)
+          .forEach((jeuxvideo) => {
+            jeuxvideo.plateforme.forEach((plateforme) => {
+              filteredConsolesSet.add(plateforme)
+            })
+          })
+        return Array.from(filteredConsolesSet)
+      }
+    },
+
+    filteredGenres() {
+      if (this.selectedConsole === 'all') {
+        return this.uniqueGenres;
+      } else {
+        const filteredGenresSet = new Set();
+        this.jeuxVideoList
+          .filter(item => item.plateforme.includes(this.selectedConsole))
+          .forEach(jeuxvideo => {
+            filteredGenresSet.add(jeuxvideo.style);
+          });
+        return Array.from(filteredGenresSet);
+      }
+    },
   }
-})
-
-const filteredGenres = computed(() => {
-  console.log('Selected Genre:', selectedGenre.value);
-  if (selectedConsole.value === 'all') {
-    return uniqueGenres.value
-  } else {
-    const filteredGenresSet = new Set()
-    storeJeuxVideo.jeuxVideoList
-      .filter((item) => item.plateforme.includes(selectedConsole.value))
-      .forEach((jeuxvideo) => {
-        filteredGenresSet.add(jeuxvideo.style)
-      })
-    return Array.from(filteredGenresSet)
-  }
-})
-
-
+}
 </script>
 
 <template>

@@ -5,15 +5,14 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
 export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
-
   const jeuxVideoList = ref(listeJeuxVideo)
   const selectedGenre = ref('all')
   const selectedConsole = ref('all')
-  const triAlpha = ref(false)
-  const triPrix = ref(false)
+  let triAlpha = ref(false)
+  let triPrix = ref(false)
 
   const getJeuxVideo = computed(() => {
-    return jeuxVideoList.value
+   return jeuxVideoList.value
   })
 
   const getSelectedGenre = computed(() => {
@@ -25,22 +24,23 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   })
 
   const getTriAlpha = computed(() => {
-    return triAlpha
+    return triAlpha.value
   })
 
   const getTriPrix = computed(() => {
-    return triPrix
+    return triPrix.value
   })
 
   const getfilteredList = computed(() => {
-    let filteredList = jeuxVideoList.value
+
+    let filteredList = jeuxVideoList.value; 
 
     if (selectedGenre.value !== 'all') {
-      filteredList = filteredList.filter((item) => item.style === state.selectedGenre)
+      filteredList = filteredList.filter((item) => item.style === selectedGenre.value)
     }
 
     if (selectedConsole.value !== 'all') {
-      filteredList = filteredList.filter((item) => item.plateforme.includes(state.selectedConsole))
+      filteredList = filteredList.filter((item) => item.plateforme.includes(selectedConsole.value))
     }
 
     if (triAlpha.value == true) {
@@ -62,27 +62,46 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   function deleteJeuxVideoFromList(id) {
     jeuxVideoList.value.splice(id, 1)
   }
-  function updateSelectedGenre(selectedGenre) {
+  function updateSelectedGenre(newGenre) {
     // Mettez à jour la valeur du sélecteur dans le state
-    selectedGenre.value = selectedGenre
+    selectedGenre.value = newGenre
   }
 
-  function updateSelectedPlatforme(selectedConsole) {
+  function updateSelectedPlatforme(newConsole) {
     // Mettez à jour la valeur du sélecteur dans le state
-    selectedConsole.value = selectedConsole
+    selectedConsole.value = newConsole
   }
 
   function updateTriAlpha() {
     // console.log('trialpha marche')
-    triPrix = false
-    triAlpha = true
+    triPrix.value = false
+    triAlpha.value = true
     // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
   }
 
   function updateTriPrix() {
-    triAlpha = false
-    triPrix = true
+    triAlpha.value = false
+    triPrix.value = true
     // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+  }
+  return {
+    jeuxVideoList,
+    selectedGenre,
+    selectedConsole,
+    triAlpha,
+    triPrix,
+    getJeuxVideo,
+    getSelectedGenre,
+    getSelectedConsole,
+    getTriAlpha,
+    getTriPrix,
+    getfilteredList,
+    deleteJeuxVideoFromList,
+    addJeuxVideoToList,
+    updateSelectedGenre,
+    updateSelectedPlatforme,
+    updateTriAlpha,
+    updateTriPrix
   }
 })
 
