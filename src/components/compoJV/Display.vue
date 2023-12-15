@@ -1,79 +1,59 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
+<script setup>
 import { useJeuxvVideoStore } from '../../stores/stock.js'
 import { usePanierStore } from '../../stores/panier.js'
+import { computed } from 'vue'
+import { defineEmits } from 'vue'
 
+// const id = null
+// const consoles = null
+// const colorConsoleBtn = null
+// const consoleSelected = null
+const storeJeuxVideo = useJeuxvVideoStore()
+const storePanier = usePanierStore()
+const emit = defineEmits(['ajoutPanierJV'])
 
-
-
-
-export default {
-  name: 'Display',
-  data() {
-    return {
-      id: null,
-      consoles: null,
-      colorConsoleBtn: null,
-      consoleSelected: null
-    }
-  },
-  methods: {
-    ...mapActions(useJeuxvVideoStore, { deleteJeuxVideoFromListAction: 'deleteJeuxVideoFromList' }),
-    ...mapActions(usePanierStore, { updatePanierAction: 'updatePanier' }),
-
-    deleteJeuxVideo(id) {
-      const index = this.jeuxVideoList.findIndex((item) => item.id === id)
-      console.log(index)
-      this.deleteJeuxVideoFromListAction(index)
-    },
-
-    ajoutPanierJV(item) {
-      if (item.consoleSelected) {
-        this.updatePanierAction({
-          name: item.titre,
-          price: item.prix,
-          plateforme: item.consoleSelected,
-          id: item.id
-        })
-        this.$emit('ajoutPanierJV', item)
-      }
-    },
-
-    getConsoleSelect(item, plateform) {
-      if (item.consoleSelected === plateform) {
-        item.consoleSelected = null
-      } else {
-        item.consoleSelected = plateform
-      }
-      console.log(item.consoleSelected)
-    },
-
-    getColorClass(plateform) {
-      // Retourne la classe appropriée en fonction de la plateforme
-      if (plateform === 'Nintendo Switch' || plateform === 'Wii U') {
-        return 'nintendo-color'
-      } else if (plateform === 'PS4' || plateform === 'PS5') {
-        return 'playstation-color'
-      } else if (plateform === 'Xbox One' || plateform === 'Xbox Series X/S') {
-        return 'xbox-color'
-      }
-      // Ajoutez une gestion par défaut si nécessaire
-      return ''
-    }
-  },
-
-  computed: {
-    ...mapState(useJeuxvVideoStore, ['jeuxVideoList', 'getfilteredList', 'getSelectedConsole'])
-  },
-
-  emits: ['ajoutPanierJV']
+const ajoutPanierJV = (item) => {
+  storePanier.updatePanier({
+    name: item.titre,
+    price: item.prix,
+    plateforme: item.consoleSelected,
+    id: item.id
+  })
+  emit('ajoutPanierJV', item)
 }
+
+const getConsoleSelect = (item, plateform) => {
+  if (item.consoleSelected === plateform) {
+    item.consoleSelected = null
+  } else {
+    item.consoleSelected = plateform
+  }
+}
+
+const getColorClass = (plateform) => {
+  if (plateform === 'Nintendo Switch' || plateform === 'Wii U') {
+    return 'nintendo-color'
+  } else if (plateform === 'PS4' || plateform === 'PS5') {
+    return 'playstation-color'
+  } else if (plateform === 'Xbox One' || plateform === 'Xbox Series X/S') {
+    return 'xbox-color'
+  }
+  // Ajoutez une gestion par défaut si nécessaire
+  return ''
+}
+
+const filterJVListe = computed(() => {
+  return storeJeuxVideo.getfilteredList
+})
+
+const selectedConsole = computed(() => {
+  return storeJeuxVideo.getSelectedConsole
+})
 </script>
 
 <template>
   <div class="cards-template">
-    <div v-for="item in getfilteredList" :key="item.id" class="card" style="width: 18rem">
+    <div v-for="item in filterJVListe" :key="item.id" class="card" style="width: 18rem">
       <img :src="item.img" class="card-img-top img-size" alt="..." />
       <div class="card-body infoContainCard">
         <h5 class="card-title">{{ item.titre }}</h5>
@@ -81,7 +61,7 @@ export default {
         <p class="card-text">{{ item.style }}</p>
 
         <div class="consoleContain">
-          <div v-if="getSelectedConsole === 'all'" class="listConsole">
+          <div v-if="selectedConsole === 'all'" class="listConsole">
             <button
               v-for="(plateform, index) in item.plateforme"
               :key="index"
@@ -102,26 +82,25 @@ export default {
           <button
             v-else
             :class="[
-              getConsoleSelect(item, getSelectedConsole),
-              getColorClass(getSelectedConsole),
+              getConsoleSelect(item, selectedConsole),
+              getColorClass(selectedConsole),
               {
-                btnConsoleSelected: getSelectedConsole === item.consoleSelected
+                btnConsoleSelected: selectedConsole === item.consoleSelected
               }
             ]"
             class="btnConsole"
           >
-            {{ getSelectedConsole }}
+            {{ selectedConsole }}
           </button>
         </div>
         <div class="linkCard">
-          <!-- <button class="btn btn-outline-danger" @click="deleteJeuxVideo(item.id)">🗑️</button> -->
           <button
-  class="btn btnPanier"
-  :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
-  @click="ajoutPanierJV(item)"
->
-  {{ item.consoleSelected ? '🛒' : 'Sélectionnez une console' }}
-</button>
+            class="btn btnPanier"
+            :class="{ 'btn-success': item.consoleSelected, 'btn-light': !item.consoleSelected }"
+            @click="ajoutPanierJV(item)"
+          >
+            {{ item.consoleSelected ? '🛒' : 'Sélectionnez une console' }}
+          </button>
         </div>
       </div>
     </div>
