@@ -1,9 +1,10 @@
-import joujouListe from '../json/stockjoujou.json'
+import listeJoujou from '../json/stockjoujou.json'
 import listeJeuxVideo from '../json/stockjv.json'
-import mangaList from '../json/stockmanga.json'
+import listManga from '../json/stockmanga.json'
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 
+// Section Jeux Vidéos
 export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   const jeuxVideoList = ref(listeJeuxVideo)
   const selectedGenre = ref('all')
@@ -12,7 +13,7 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   let triPrix = ref(false)
 
   const getJeuxVideo = computed(() => {
-   return jeuxVideoList.value
+    return jeuxVideoList.value
   })
 
   const getSelectedGenre = computed(() => {
@@ -32,8 +33,7 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
   })
 
   const getfilteredList = computed(() => {
-
-    let filteredList = jeuxVideoList.value; 
+    let filteredList = jeuxVideoList.value
 
     if (selectedGenre.value !== 'all') {
       filteredList = filteredList.filter((item) => item.style === selectedGenre.value)
@@ -107,138 +107,191 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
 
 // Section Joujou
 
-export const useJoujouStore = defineStore('joujou', {
-  state: () => ({
-    joujouListe: joujouListe,
-    selectedMarque: 'all',
-    triAlpha: false,
-    triPrix: false
-  }),
+export const useJoujouStore = defineStore('joujou', () => {
+  const joujouListe = ref(listeJoujou)
+  const selectedMarque = ref('all')
+  let triAlpha = ref(false)
+  let triPrix = ref(false)
 
-  getters: {
-    getJoujou: (state) => state.joujouListe,
-    getSelectedMarque: (state) => state.selectedMarque,
-    getTriAlpha: (state) => state.triAlpha,
-    getTriPrix: (state) => state.triPrix,
+  const getJoujou = computed(() => {
+    return joujouListe.value
+  })
 
-    getfilteredList: (state) => {
-      let filteredList = state.joujouListe
+  const getSelectedMarque = computed(() => {
+    return selectedMarque.value
+  })
 
-      if (state.selectedMarque !== 'all') {
-        filteredList = filteredList.filter((item) => item.la_marque === state.selectedMarque)
-      }
+  const getTriAlpha = computed(() => {
+    triAlpha.value
+  })
 
-      if (state.triAlpha == true) {
-        filteredList = filteredList.sort((a, b) => a.nom.localeCompare(b.nom))
-        console.log(filteredList)
-      }
+  const getTriPrix = computed(() => {
+    triPrix.value
+  })
 
-      if (state.triPrix == true) {
-        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
-        console.log(filteredList)
-      }
-      return filteredList
+  const getfilteredList = computed(() => {
+    let filteredList = joujouListe.value
+
+    if (selectedMarque.value !== 'all') {
+      filteredList = filteredList.filter((item) => item.la_marque === selectedMarque.value)
     }
-  },
 
-  actions: {
-    addJoujouToList(item) {
-      this.joujouListe.push(item)
-    },
-
-    deleteJoujouFromList(id) {
-      this.joujouListe.splice(id, 1)
-    },
-    updateSelectedMarque(selectedMarque) {
-      // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedMarque = selectedMarque
-    },
-
-    updateTriAlpha() {
-      // console.log('trialpha marche')
-      this.triPrix = false
-      this.triAlpha = true
-      // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-    },
-
-    updateTriPrix() {
-      this.triAlpha = false
-      this.triPrix = true
-      // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+    if (triAlpha.value == true) {
+      filteredList = filteredList.sort((a, b) => a.nom.localeCompare(b.nom))
+      console.log(filteredList)
     }
+
+    if (triPrix.value == true) {
+      filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+      console.log(filteredList)
+    }
+    return filteredList
+  })
+
+  function addJoujouToList(item) {
+    joujouListe.value.push(item)
+  }
+
+  function deleteJoujouFromList(id) {
+    joujouListe.value.splice(id, 1)
+  }
+
+  function updateSelectedMarque(newMarque) {
+    // Mettez à jour la valeur du sélecteur dans le state
+    selectedMarque.value = newMarque
+  }
+
+  function updateTriAlpha() {
+    // console.log('trialpha marche')
+    triPrix.value = false
+    triAlpha.value = true
+    // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
+  }
+
+  function updateTriPrix() {
+    triAlpha.value = false
+    triPrix.value = true
+    // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+  }
+
+  return {
+    joujouListe,
+    selectedMarque,
+    triAlpha,
+    triPrix,
+    getJoujou,
+    getSelectedMarque,
+    getTriAlpha,
+    getTriPrix,
+    getfilteredList,
+    addJoujouToList,
+    deleteJoujouFromList,
+    updateSelectedMarque,
+    updateTriAlpha,
+    updateTriPrix
   }
 })
 
-export const useMangaStore = defineStore('manga', {
-  state: () => ({
-    mangaList: mangaList,
-    selectedMarque: 'all',
-    selectedTitle: 'all',
-    triAlpha: false,
-    triPrix: false
-  }),
+// Section Manga
+export const useMangaStore = defineStore('manga', () => {
+  const mangaList = ref(listManga)
+  const selectedMarque = ref('all')
+  const selectedTitle = ref('all')
+  const triAlpha = ref(false)
+  const triPrix = ref(false)
 
-  getters: {
-    getManga: (state) => state.mangaList,
-    getMangaTitre: (state) => state.mangaList.titre,
-    getselectedTitle: (state) => state.selectedTitle,
-    getSelectedMarque: (state) => state.selectedMarque,
-    getTriAlpha: (state) => state.triAlpha,
-    getTriPrix: (state) => state.triPrix,
+  const getManga = computed(() => {
+    return mangaList.value
+  })
+  const getMangaTitre = computed(() => {
+    return mangaList.value.titre
+  })
+  const getselectedTitle = computed(() => {
+    return selectedTitle.value
+  })
+  const getSelectedMarque = computed(() => {
+    return selectedMarque.value
+  })
+  const getTriAlpha = computed(() => {
+    return triAlpha.value
+  })
+  const getTriPrix = computed(() => {
+    return triPrix.value
+  })
 
-    getfilteredList: (state) => {
-      let filteredList = state.mangaList
+  const getfilteredList = computed(() => {
+    let filteredList = mangaList.value
 
-      if (state.selectedMarque !== 'all') {
-        filteredList = filteredList.filter((item) => item.style === state.selectedMarque)
-      }
-
-      if (state.selectedTitle !== 'all') {
-        filteredList = filteredList.filter((item) => item.titre === state.selectedTitle.titre)
-      }
-
-      if (state.triAlpha == true) {
-        filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
-        console.log(filteredList)
-      }
-
-      if (state.triPrix == true) {
-        filteredList = filteredList.sort((a, b) => a.prix - b.prix)
-        console.log(filteredList)
-      }
-      return filteredList
+    if (selectedMarque.value !== 'all') {
+      filteredList = filteredList.filter((item) => item.style === selectedMarque.value)
     }
-  },
 
-  actions: {
-    addMangaToList(item) {
-      this.mangaList.push(item)
-    },
-
-    deleteMangaFromList(id) {
-      this.mangaList.splice(id, 1)
-    },
-    updateSelectedMarque(selectedMarque) {
-      // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedMarque = selectedMarque
-    },
-
-    updateSelectedTitle(selectedTitle) {
-      // Mettez à jour la valeur du sélecteur dans le state
-      this.selectedTitle = selectedTitle
-    },
-
-    updateTriAlpha() {
-      // console.log('trialpha marche')
-      this.triPrix = false
-      this.triAlpha = true
-      // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
-    },
-
-    updateTriPrix() {
-      this.triAlpha = false
-      this.triPrix = true
-      // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
+    if (selectedTitle.value !== 'all') {
+      filteredList = filteredList.filter((item) => item.titre === selectedTitle.value.titre)
     }
+
+    if (triAlpha.value == true) {
+      filteredList = filteredList.sort((a, b) => a.titre.localeCompare(b.titre))
+      console.log(filteredList)
+    }
+
+    if (triPrix.value == true) {
+      filteredList = filteredList.sort((a, b) => a.prix - b.prix)
+      console.log(filteredList)
+    }
+    return filteredList
+  })
+
+  function addMangaToList(item) {
+    mangaList.value.push(item)
   }
+
+  function deleteMangaFromList(id) {
+    mangaList.value.splice(id, 1)
+  }
+  function updateSelectedMarque(newMarque) {
+    // Mettez à jour la valeur du sélecteur dans le state
+    selectedMarque.value = newMarque
+  }
+
+  function updateSelectedTitle(newTitle) {
+    // Mettez à jour la valeur du sélecteur dans le state
+    selectedTitle.value = newTitle
+  }
+
+  function updateTriAlpha() {
+    // console.log('trialpha marche')
+    triPrix.value = false
+    triAlpha.value = true
+    // console.log('TRIPRI', this.triPrix, "trixalpha", this.triAlpha)
+  }
+
+  function updateTriPrix() {
+    triAlpha.value = false
+    triPrix.value = true
+    // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha
+  }
+
+  return {
+    mangaList,
+    selectedMarque,
+    selectedTitle,
+    triAlpha,
+    triPrix,
+    getManga,
+    getMangaTitre,
+    getselectedTitle,
+    getSelectedMarque,
+    getTriAlpha,
+    getTriPrix,
+    getfilteredList,
+    addMangaToList,
+    deleteMangaFromList,
+    updateSelectedMarque,
+    updateSelectedTitle,
+    updateTriAlpha,
+    updateTriPrix
+
+  }
+
 })
