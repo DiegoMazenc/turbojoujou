@@ -34,7 +34,6 @@ const getColorClass = (plateform) => {
   } else if (plateform === 'Xbox One' || plateform === 'Xbox Series X/S') {
     return 'xbox-color'
   }
-  // Ajoutez une gestion par défaut si nécessaire
   return ''
 }
 
@@ -202,3 +201,4 @@ h5 {
   bottom: 15px;
 }
 </style>
+../../stores/panier-first.js

@@ -140,3 +140,4 @@ h5 {
   bottom: 15px;
 }
 </style>
+@/stores/panier-first.js

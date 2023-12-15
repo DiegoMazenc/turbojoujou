@@ -1,57 +1,35 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
+<script setup>
+import { ref, computed } from 'vue'
 import { useJoujouStore } from '../../stores/stock.js'
 import PanierArticles from '../../components/PanierArticles.vue'
 
-export default {
-  name: 'FilterItem',
-  data() {
-    return {
-      la_marque: null,
-      tabMarque: [],
-      selectedMarque: 'all',
-      triAlpha: false,
-      triPrix: false
-    }
-  },
+let selectedMarque = 'all'
+let triAlpha = ref(true)
+let triPrix = ref(true)
 
-  components: {
-    PanierArticles
-  },
-  methods: {
-    ...mapActions(useJoujouStore, { updateSelectedMarqueAction: 'updateSelectedMarque' }),
-    exportSelectedMarque() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateSelectedMarqueAction(this.selectedMarque)
-      
-    },
+const storeJoujou = useJoujouStore()
 
-    ...mapActions(useJoujouStore, { updateTriAlphaAction: 'updateTriAlpha' }),
-    exportTrieAlpha() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriAlphaAction(this.triAlpha)
-    },
-
-    ...mapActions(useJoujouStore, { updateTriPrixAction: 'updateTriPrix' }),
-    exportTriePrix() {
-      // Appelez l'action du store pour mettre à jour la valeur dans le store
-      this.updateTriPrixAction(this.triPrix)
-    }
-  },
-  computed: {
-    ...mapState(useJoujouStore, ['joujouListe']),
-    uniqueMarques() {
-      const uniqueMarquesSet = new Set()
-
-      this.joujouListe.forEach((joujou) => {
-        uniqueMarquesSet.add(joujou.la_marque)
-      })
-
-      return Array.from(uniqueMarquesSet)
-    }
-  }
+const exportSelectedMarque = () => {
+  storeJoujou.updateSelectedMarque(selectedMarque)
 }
+
+const exportTrieAlpha = () => {
+  storeJoujou.updateTriAlpha(triAlpha)
+}
+
+const exportTriePrix = () => {
+  storeJoujou.updateTriPrix(triPrix)
+}
+
+const uniqueMarques = computed(() => {
+  const uniqueMarquesSet = new Set()
+
+  storeJoujou.getfilteredList.forEach((joujou) => {
+    uniqueMarquesSet.add(joujou.la_marque)
+  })
+
+  return Array.from(uniqueMarquesSet)
+})
 </script>
 
 <template>
