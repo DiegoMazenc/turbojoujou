@@ -4,10 +4,6 @@ import { usePanierStore } from '../../stores/panier.js'
 import { computed } from 'vue'
 import { defineEmits } from 'vue'
 
-// const id = null
-// const consoles = null
-// const colorConsoleBtn = null
-// const consoleSelected = null
 const storeJeuxVideo = useJeuxvVideoStore()
 const storePanier = usePanierStore()
 const emit = defineEmits(['ajoutPanierJV'])
