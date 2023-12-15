@@ -1,40 +1,44 @@
-<script>
-import { mapState } from 'pinia'
-import { mapActions } from 'pinia'
+<script setup>
 import { useMangaStore } from '../../stores/stock.js'
 import { usePanierStore } from '@/stores/panier'
+import { defineEmits } from 'vue';
+import { computed } from 'vue';
+import { ref } from 'vue';
 
-export default {
-  name: 'Display',
-  data() {
-    return {
-      id: null
-    }
-  },
-  methods: {
-    ...mapActions(useMangaStore, { deleteMangaFromListAction: 'deleteMangaFromList' }),
-    ...mapActions(usePanierStore, { updatePanierAction: 'updatePanier' }),
+const id = ref(null)
+const mangaStore = useMangaStore();
+const panierStore = usePanierStore();
+const emit = defineEmits(['ajoutPanierManga'])
 
-    deleteManga(id) {
-      const index = this.mangaList.findIndex((item) => item.id === id)
-      console.log(index)
-      this.deleteMangaFromListAction(index)
-    },
-    ajoutPanierManga(item, tome) {
-      this.updatePanierAction({
-        name: item.titre,
-        price: tome.prix,
-        tome: tome.numero
-      })
-      this.$emit('ajoutPanierManga', { item: this.selectedTitle, tome: this.tomeInfo })
-      console.log(item, tome)
-    }
-  },
-  computed: {
-    ...mapState(useMangaStore, ['mangaList', 'getfilteredList', 'getTomeList'])
-  },
-  emits: ['ajoutPanierManga']
+
+function deleteManga(id) {
+  const index = mangaStore.mangaList.findIndex((item) => item.id === id.value)
+  console.log(index)
+  mangaStore.deleteMangaFromList(index)
 }
+
+function ajoutPanierManga(item, tome) {
+  panierStore.updatePanier({
+    name: item.titre,
+    price: tome.prix,
+    tome: tome.numero
+  })
+  emit('ajoutPanierManga', { item: mangaStore.selectedTitle, tome: mangaStore.tomeInfo })
+}
+
+
+const getfilteredList = computed(()=>{
+  return mangaStore.getfilteredList; 
+})
+
+// const mangaList = computed(()=>{
+//   return mangaStore.mangaList; 
+// })
+
+// const getTomeList = computed(()=>{
+//   return mangaStore.getTomeList; 
+// })
+
 </script>
 
 <template>
@@ -54,10 +58,7 @@ export default {
                 <p>Tome {{ tome.numero }}</p>
                 <p>Prix : {{ tome.prix }} €</p>
               </div>
-              <button
-                class="btn btn-success btnPanierMangas"
-                @click="ajoutPanierManga(item, tome)"
-              >
+              <button class="btn btn-success btnPanierMangas" @click="ajoutPanierManga(item, tome)">
                 🛒
               </button>
             </div>
@@ -95,16 +96,15 @@ export default {
   height: 170px;
 }
 
-.tomContain{
+.tomContain {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
 }
 
-
-
-.btnPanierMangas, .tomContain p{
+.btnPanierMangas,
+.tomContain p {
   margin: 0;
 }
 
@@ -134,5 +134,4 @@ export default {
 .tome-container {
   border-top: 1px solid black;
 }
-
 </style>
