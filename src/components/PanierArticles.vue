@@ -46,6 +46,7 @@ export default {
   <div class="panierContaint">
     <hr />
   <h4>Mon Panier</h4>
+  <TransitionGroup name="slide-fade">
   <div v-for="item in getPanierContent" :key="item.id" class="itemPanier">
     <div>
       <p>{{ item.name }}</p>
@@ -60,6 +61,7 @@ export default {
       </div>
     </div>
   </div>
+</TransitionGroup>
   <div class="bottomPanier">
     <div class="total">
       <p>Total :</p>
@@ -149,6 +151,20 @@ export default {
  margin: 15px;
  background-color: #393bb1;
  border-radius: 10px;
+}
+
+.slide-fade-enter-active {
+  transition: 0.9s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>
 ../stores/panier-first.js
