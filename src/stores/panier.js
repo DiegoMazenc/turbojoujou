@@ -16,12 +16,15 @@ export const usePanierStore = defineStore('panier', () => {
           insertItem.tome = tome; 
           insertItem.marque = marque; 
           panierContent.value.push(insertItem);
+          console.log(panierContent)
       }
 
-      function deleteItemPanierFromList(id) {
-        const index = panierContent.value.findIndex(item => item.id === id);
+      function deleteItemPanierFromList(index) {
+        
         if (index !== -1) {
+          console.log(index)
           panierContent.value.splice(index, 1);
+          console.log(panierContent)
         }
       }
 

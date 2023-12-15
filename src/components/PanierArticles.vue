@@ -11,8 +11,8 @@ export default {
   },
   methods: {
     ...mapActions(usePanierStore, { deleteItemPanierFromListAction: 'deleteItemPanierFromList' }),
-    deleteItemPanier(id) {
-      this.deleteItemPanierFromListAction(id)
+    deleteItemPanier(index) {
+      this.deleteItemPanierFromListAction(index)
       this.CounterPrice();
     },
     CounterPrice() {
@@ -46,8 +46,9 @@ export default {
   <div class="panierContaint">
     <hr />
   <h4>Mon Panier</h4>
-  <TransitionGroup name="slide-fade">
-  <div v-for="item in getPanierContent" :key="item.id" class="itemPanier">
+
+  <TransitionGroup name="fade">
+  <div v-for="(item, index) in getPanierContent" :key="item.id" class="itemPanier">
     <div>
       <p>{{ item.name }}</p>
       <div class="sousInfosPanier">
@@ -57,11 +58,12 @@ export default {
         <p>{{ item.price }}€</p>
       </div>
       <div class="hoverSup">
-        <button @click="deleteItemPanier(item.id)" class="btnDelete">🗑️</button>
+        <button @click="deleteItemPanier(index)" class="btnDelete">🗑️</button>
       </div>
     </div>
   </div>
 </TransitionGroup>
+
   <div class="bottomPanier">
     <div class="total">
       <p>Total :</p>
@@ -153,18 +155,15 @@ export default {
  border-radius: 10px;
 }
 
-.slide-fade-enter-active {
-  transition: 0.9s ease-out;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 
-.slide-fade-leave-active {
-  transition: 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
+
 </style>
 ../stores/panier-first.js
