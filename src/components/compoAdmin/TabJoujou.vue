@@ -12,7 +12,6 @@ function supprJoujou(item){
   storeJoujou.deleteJoujouFromList(item)
 }
 
-console.log(storeJoujou)
 </script>
 
 <template>

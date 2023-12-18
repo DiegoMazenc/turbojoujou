@@ -7,6 +7,7 @@ import FormAddManga from './FormAddManga.vue'
 // Import des tables 
 
 import TabJoujou from './TabJoujou.vue'
+import TabJV from './TabJV.vue'
 
 const isFormAddJoujouVisible = ref(true)
 const isFormAddJVVisible = ref(false)
@@ -63,6 +64,7 @@ const showForm = (formName) => {
   </div>
 
   <TabJoujou/>
+  <TabJV/>
 </template>
 
 <style>
