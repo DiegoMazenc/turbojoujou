@@ -1,10 +1,18 @@
 <script setup>
 import { useJoujouStore } from '@/stores/stock'
-import { ref } from 'vue';
+import { computed } from 'vue'
 
-const storeJoujou = useJoujouStore; 
+const storeJoujou = useJoujouStore()
 
+const joujouListe = computed(() => {
+  return storeJoujou.getfilteredList
+})
 
+function supprJoujou(item){
+  storeJoujou.deleteJoujouFromList(item)
+}
+
+console.log(storeJoujou)
 </script>
 
 <template>
@@ -15,26 +23,16 @@ const storeJoujou = useJoujouStore;
         <th scope="col">Marque</th>
         <th scope="col">Stock</th>
         <th scope="col">Prix</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(item, idex) in storeJoujou" :key='index'>
+      <tr v-for="(item, index) in joujouListe" :key="index">
         <th scope="row">{{ item.nom }}</th>
         <td>{{ item.la_marque }}</td>
         <td>{{ item.stock }}</td>
         <td>{{ item.prix }}</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+        <td><button class="btn btn-danger" @click="supprJoujou(item)">Supprimer</button></td>
       </tr>
     </tbody>
   </table>
