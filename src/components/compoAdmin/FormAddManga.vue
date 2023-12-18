@@ -2,7 +2,6 @@
 import { ref, computed } from 'vue'
 import { useMangaStore } from '../../stores/stock.js'
 
-
 let titre = ref(null)
 let auteur = ref(null)
 let éditeur = ref(null)
@@ -20,12 +19,11 @@ const storeManga = useMangaStore()
 
 const formSubmit = () => {
   storeManga.addMangaToList(mangaMapper.value)
-
 }
 
 const mangaMapper = computed(() => {
   let mangaModel = {}
-  
+
   mangaModel.titre = titre.value
   mangaModel.auteur = auteur.value
   mangaModel.éditeur = éditeur.value
@@ -72,7 +70,13 @@ const mangaMapper = computed(() => {
     </div>
     <div class="mb-3">
       <label for="année_de_parution" class="form-label">année_de_parution</label>
-      <input type="text" class="form-control" name="année_de_parution" id="année_de_parution" v-model="année_de_parution" />
+      <input
+        type="text"
+        class="form-control"
+        name="année_de_parution"
+        id="année_de_parution"
+        v-model="année_de_parution"
+      />
     </div>
     <div class="mb-3">
       <label for="style" class="form-label">style</label>
@@ -82,29 +86,80 @@ const mangaMapper = computed(() => {
       <label for="img" class="form-label">img</label>
       <input type="text" class="form-control" name="img" id="img" v-model="img" />
     </div>
-    <div class="mb-3">
-      <label for="t1Stock" class="form-label">tome 1 stock</label>
-      <input type="text" class="form-control" name="t1Stock" id="t1Stock" v-model="t1Stock" />
-    </div>
-    <div class="mb-3">
-      <label for="t1Prix" class="form-label">tome 1 prix</label>
-      <input type="text" class="form-control" name="t1Prix" id="t1Prix" v-model="t1Prix" />
-    </div>
-    <div class="mb-3">
-      <label for="t2Stock" class="form-label">tome 2 stock</label>
-      <input type="text" class="form-control" name="t2Stock" id="t2Stock" v-model="t2Stock" />
-    </div>
-    <div class="mb-3">
-      <label for="t2Prix" class="form-label">tome 2 prix</label>
-      <input type="text" class="form-control" name="t2Prix" id="t2Prix" v-model="t2Prix" />
-    </div>
-    <div class="mb-3">
-      <label for="t3Stock" class="form-label">tome 3 stock</label>
-      <input type="text" class="form-control" name="t3Stock" id="t3Stock" v-model="t3Stock" />
-    </div>
-    <div class="mb-3">
-      <label for="t3Prix" class="form-label">tome 3 prix</label>
-      <input type="text" class="form-control" name="t3Prix" id="t3Prix" v-model="t3Prix" />
+    <div class="stockPrixContain">
+      <div class="stockPrix">
+        <p>Tome 1</p>
+        <div class="mb-3 blocInput">
+          <label for="t1Stock" class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control inputVal"
+            name="t1Stock"
+            id="t1Stock"
+            v-model="t1Stock"
+          />
+        </div>
+        <div class="mb-3 blocInput">
+          <label for="t1Prix" class="form-label">Prix (€)</label>
+          <input
+            type="text"
+            class="form-control inputVal"
+            name="t1Prix"
+            id="t1Prix"
+            v-model="t1Prix"
+          />
+          
+        </div>
+        
+      </div>
+      <div class="stockPrix">
+        <p>Tome 2</p>
+        <div class="mb-3 blocInput">
+          <label for="t2Stock" class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control inputVal"
+            name="t2Stock"
+            id="t2Stock"
+            v-model="t2Stock"
+          />
+        </div>
+        <div class="mb-3 blocInput">
+          <label for="t2Prix" class="form-label">Prix (€)</label>
+          <input
+            type="text"
+            class="form-control inputVal"
+            name="t2Prix"
+            id="t2Prix"
+            v-model="t2Prix"
+          />
+          
+        </div>
+      </div>
+      <div class="stockPrix">
+        <p>Tome 3</p>
+        <div class="mb-3 blocInput">
+          <label for="t3Stock" class="form-label">Stock</label>
+          <input
+            type="number"
+            class="form-control inputVal"
+            name="t3Stock"
+            id="t3Stock"
+            v-model="t3Stock"
+          />
+        </div>
+        <div class="mb-3 blocInput">
+          <label for="t3Prix" class="form-label">Prix (€)</label>
+          <input
+            type="text"
+            class="form-control inputVal"
+            name="t3Prix"
+            id="t3Prix"
+            v-model="t3Prix"
+          />
+          
+        </div>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -115,5 +170,32 @@ const mangaMapper = computed(() => {
 form {
   width: 60%;
   margin: 5% 20%;
+}
+
+.stockPrixContain {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.stockPrixContain p {
+  text-align: center;
+}
+
+
+.blocInput{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+
+.stockPrix{
+  margin: 5px;
+}
+
+.inputVal {
+  margin: 0 5px 0 20px;
+  width: 65%;
 }
 </style>
