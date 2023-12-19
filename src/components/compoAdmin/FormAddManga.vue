@@ -168,8 +168,8 @@ const mangaMapper = computed(() => {
 
 <style>
 form {
-  width: 60%;
-  margin: 5% 20%;
+  width: 80%;
+  margin: 5% 10%;
 }
 
 .stockPrixContain {

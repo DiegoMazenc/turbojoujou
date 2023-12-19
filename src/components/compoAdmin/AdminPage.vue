@@ -69,6 +69,7 @@ const showForm = (formName) => {
   list-style: none;
   justify-content: space-evenly;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .navForm hr {
