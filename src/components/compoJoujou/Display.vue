@@ -4,8 +4,6 @@ import { usePanierStore } from '@/stores/panier'
 import { computed } from 'vue'
 import { defineEmits } from 'vue'
 
-
-
 const storeJoujou = useJoujouStore()
 const storePanier = usePanierStore()
 const emit = defineEmits(['ajoutPanierJoujou'])
