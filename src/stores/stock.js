@@ -229,6 +229,15 @@ export const useMangaStore = defineStore('manga', () => {
     return triPrix.value
   })
 
+  const uniqueTitre = computed(()=>{
+    const uniqueMarquesSet = new Set()
+      mangaList.forEach((manga)=>{
+      uniqueMarquesSet.add(manga.style)
+    
+    })
+    return Array.from(uniqueMarquesSet)
+  })
+
   const getfilteredList = computed(() => {
     let filteredList = mangaList.value
 
@@ -300,6 +309,7 @@ export const useMangaStore = defineStore('manga', () => {
     updateSelectedMarque,
     updateSelectedTitle,
     updateTriAlpha,
-    updateTriPrix
+    updateTriPrix, 
+    uniqueTitre
   }
 })
