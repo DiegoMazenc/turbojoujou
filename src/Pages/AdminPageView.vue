@@ -10,7 +10,7 @@ export default {
 
 <template>
     <div>
-        <h1>Hello Admin</h1>
+        <p class="modal-title text-primary-emphasis fs-4 text-center mt-5 mb-5" >Administration </p>
         <AdminPage/>
     </div>
 </template>
