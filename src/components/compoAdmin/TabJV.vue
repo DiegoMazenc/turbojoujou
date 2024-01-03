@@ -12,7 +12,6 @@ function supprJv(item) {
     storeJv.deleteJeuxVideoFromList(item)
 }
 
-
 </script>
 
 <template>
@@ -22,26 +21,24 @@ function supprJv(item) {
                 <th scope="col">Nom</th>
                 <th scope="col" class="text-center">Plateformes</th>
                 <th scope="col">Stock</th>
-                <th scope="col">Prix</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(item, index) in jvListe" :key="index">
                 <th scope="row" class="title">{{ item.titre }}</th>
-                <td class="consoles">
-                <td v-for="(console, index) in item.plateforme" :key="index">
-                <div class="consoles">{{ console }}
-                 <button v-if="item.stock > 0" class="btn btn-danger" @click="item.stock--">Supprimer</button></div>
-                </td>
+                <td v-for="(console, index) in item.plateforme" :key="index" class="d-flex">
+                <div class="consoles">{{ console }}</div>
+                <div class=" w-25">
+                <button v-if="item.stock > 0" class="btn btn-danger" @click="item.stock--">Supprimer</button>
+            </div>
                 </td>
                 <td>{{ item.stock }}</td>
-                <td>{{ item.prix }}</td>
             </tr>
         </tbody>
     </table>
 </template>
 
-<style>
+<style scoped>
 
 .consoles{
 

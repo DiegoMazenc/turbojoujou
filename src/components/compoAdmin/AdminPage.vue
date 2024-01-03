@@ -8,6 +8,7 @@ import FormAddManga from './FormAddManga.vue'
 
 import TabJoujou from './TabJoujou.vue'
 import TabJV from './TabJV.vue'
+import TabManga from './TabManga.vue'
 
 const isFormAddJoujouVisible = ref(true)
 const isFormAddJVVisible = ref(false)
@@ -58,9 +59,7 @@ const showForm = (formName) => {
       <hr />
     </div>
 
-    <div 
-    class="mt-5"
-    :class="{ hidden: !isFormAddJoujouVisible }">
+    <div class="mt-5" :class="{ hidden: !isFormAddJoujouVisible }">
       <div class="card card-body mx-5">
         <a
           class="btn form-label"
@@ -90,11 +89,9 @@ const showForm = (formName) => {
       </div>
     </div>
 
-    <div 
-    class="mt-5"
-    :class="{ hidden: !isFormAddJVVisible }">
+    <div class="mt-5" :class="{ hidden: !isFormAddJVVisible }">
       <div class="card card-body mx-5">
-      <a
+        <a
           class="btn form-label"
           data-bs-toggle="collapse"
           href="#addJV"
@@ -104,10 +101,10 @@ const showForm = (formName) => {
         >
           Ajouter un Jeu Vidéo
         </a>
-      <FormAddJV class="collapse" id="addJV"/>
-    </div>
-    <div class="card card-body mx-5">
-      <a
+        <FormAddJV class="collapse" id="addJV" />
+      </div>
+      <div class="card card-body mx-5">
+        <a
           class="btn form-label"
           data-bs-toggle="collapse"
           href="#deleteJV"
@@ -117,14 +114,12 @@ const showForm = (formName) => {
         >
           Supprimer un Jeu Vidéo
         </a>
-       <TabJV class="collapse" id="deleteJV"/>
+        <TabJV class="collapse" id="deleteJV" />
       </div>
     </div>
-    <div
-    class="mt-5" 
-    :class="{ hidden: !isFormAddMangaVisible }">
+    <div class="mt-5" :class="{ hidden: !isFormAddMangaVisible }">
       <div class="card card-body mx-5">
-      <a
+        <a
           class="btn form-label"
           data-bs-toggle="collapse"
           href="#addManga"
@@ -134,13 +129,23 @@ const showForm = (formName) => {
         >
           Ajouter un Manga
         </a>
-      <FormAddManga class="collapse" id="addManga"/>
-    </div>
+        <FormAddManga class="collapse" id="addManga" />
+      </div>
+      <div class="card card-body mx-5">
+        <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#deleteManga"
+          role="button"
+          aria-expanded="false"
+          aria-controls="deleteManga"
+        >
+          Supprimer un Manga
+        </a>
+        <TabManga class="collapse" id="deleteManga" />
+      </div>
     </div>
   </div>
-
-
- 
 </template>
 
 <style>
