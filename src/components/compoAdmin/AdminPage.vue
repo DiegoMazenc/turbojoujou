@@ -4,7 +4,7 @@ import FormAddJoujou from './FormAddJoujou.vue'
 import FormAddJV from './FormAddJV.vue'
 import FormAddManga from './FormAddManga.vue'
 
-// Import des tables 
+// Import des tables
 
 import TabJoujou from './TabJoujou.vue'
 import TabJV from './TabJV.vue'
@@ -33,7 +33,7 @@ const showForm = (formName) => {
             :class="{ selectBtn: isFormAddJoujouVisible }"
             @click="showForm('FormAddJoujou')"
           >
-            Ajouter une Figurine
+            Gérer Figurines
           </button>
         </li>
         <li>
@@ -42,7 +42,7 @@ const showForm = (formName) => {
             :class="{ selectBtn: isFormAddMangaVisible }"
             @click="showForm('FormAddManga')"
           >
-            Ajouter un Manga
+            Gérer Mangas
           </button>
         </li>
         <li>
@@ -51,20 +51,96 @@ const showForm = (formName) => {
             :class="{ selectBtn: isFormAddJVVisible }"
             @click="showForm('FormAddJV')"
           >
-            Ajouter un Jeu Video
+            Gérer Jeux Videos
           </button>
         </li>
       </ul>
       <hr />
     </div>
 
-    <FormAddJoujou :class="{ hidden: !isFormAddJoujouVisible }" />
-    <FormAddJV :class="{ hidden: !isFormAddJVVisible }" />
-    <FormAddManga :class="{ hidden: !isFormAddMangaVisible }" />
+    <div 
+    class="mt-5"
+    :class="{ hidden: !isFormAddJoujouVisible }">
+      <div class="card card-body mx-5">
+        <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#addJoujou"
+          role="button"
+          aria-expanded="false"
+          aria-controls="addJoujou"
+        >
+          Ajouter un Joujou
+        </a>
+        <FormAddJoujou class="collapse" id="addJoujou" />
+      </div>
+
+      <div class="card card-body mx-5">
+        <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#deleteJoujou"
+          role="button"
+          aria-expanded="false"
+          aria-controls="deleteJoujou"
+        >
+          Supprimer un Joujou
+        </a>
+        <TabJoujou class="collapse" id="deleteJoujou" />
+      </div>
+    </div>
+
+    <div 
+    class="mt-5"
+    :class="{ hidden: !isFormAddJVVisible }">
+      <div class="card card-body mx-5">
+      <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#addJV"
+          role="button"
+          aria-expanded="false"
+          aria-controls="addJV"
+        >
+          Ajouter un Jeu Vidéo
+        </a>
+      <FormAddJV class="collapse" id="addJV"/>
+    </div>
+    <div class="card card-body mx-5">
+      <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#deleteJV"
+          role="button"
+          aria-expanded="false"
+          aria-controls="deleteJV"
+        >
+          Supprimer un Jeu Vidéo
+        </a>
+       <TabJV class="collapse" id="deleteJV"/>
+      </div>
+    </div>
+    <div
+    class="mt-5" 
+    :class="{ hidden: !isFormAddMangaVisible }">
+      <div class="card card-body mx-5">
+      <a
+          class="btn form-label"
+          data-bs-toggle="collapse"
+          href="#addManga"
+          role="button"
+          aria-expanded="false"
+          aria-controls="addManga"
+        >
+          Ajouter un Manga
+        </a>
+      <FormAddManga class="collapse" id="addManga"/>
+    </div>
+    </div>
   </div>
 
-  <TabJoujou/>
-  <TabJV/>
+
+ 
 </template>
 
 <style>

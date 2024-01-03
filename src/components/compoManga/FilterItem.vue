@@ -40,8 +40,10 @@ const data = computed(()=>{
 
 <template>
   <div class="options-container">
-    <button @click="exportTrieAlpha">Alphabétique</button>
-    <h4>Style</h4>
+    
+    <p class="modal-title text-primary-emphasis fs-6 text-center">Trier par ordre : </p>
+    <button @click="exportTrieAlpha" class="btn btn-outline-secondary">Alphabétique</button>
+    <p class="modal-title text-primary-emphasis fs-6 text-center">Style : </p>
     <div class="custom-select">
       <select class="card selectOption" style="width: 18rem" v-model="selectedMarque" @change="exportSelectedMarque">
         <option value="all">All</option>
@@ -50,7 +52,7 @@ const data = computed(()=>{
         </option>
       </select>
     </div>
-    <h4>Titre</h4>
+    <p class="modal-title text-primary-emphasis fs-6 text-center">Titres : </p>
     <div class="custom-select">
       <select class="card selectOption" style="width: 18rem" v-model="selectedTitle" @change="exportSelectedTitle">
         <option value="all">All</option>

@@ -86,8 +86,10 @@ const filteredGenres = computed(() => {
 <template>
   <div>
     <div class="options-container">
-      <button @click="exportTrieAlpha">Alphabétique</button>
-      <button @click="exportTriePrix">Prix</button>
+      <p class="modal-title text-primary-emphasis fs-6 text-center">Trier par ordre : </p>
+      <button @click="exportTrieAlpha" class="btn btn-outline-secondary">Alphabétique</button>
+      <button @click="exportTriePrix" class="btn btn-outline-secondary">Prix</button>
+      <p class="modal-title text-primary-emphasis fs-6 text-center">Genres : </p>
       <div class="custom-select">
         <select class="card selectOption" v-model="selectedGenre" @change="exportSelectedGenre">
           <option value="all">All</option>
@@ -96,6 +98,7 @@ const filteredGenres = computed(() => {
           </option>
         </select>
       </div>
+      <p class="modal-title text-primary-emphasis fs-6 text-center">Plateformes : </p>
       <div class="custom-select">
         <select
           class="card selectOption"
