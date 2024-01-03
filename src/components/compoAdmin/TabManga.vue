@@ -35,8 +35,6 @@ function supprManga(item) {
                 <button v-if="tome.stock > 0" class="btn btn-danger" @click="tome.stock--">Supprimer</button>
                 </td>
                 </td>
-                <td>{{ item.stock }}</td>
-                <td>{{ item.prix }}</td>
             </tr>
         </tbody>
     </table>
