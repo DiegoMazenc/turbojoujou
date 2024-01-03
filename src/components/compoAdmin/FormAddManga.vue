@@ -108,9 +108,7 @@ const mangaMapper = computed(() => {
             id="t1Prix"
             v-model="t1Prix"
           />
-          
         </div>
-        
       </div>
       <div class="stockPrix">
         <p>Tome 2</p>
@@ -133,7 +131,6 @@ const mangaMapper = computed(() => {
             id="t2Prix"
             v-model="t2Prix"
           />
-          
         </div>
       </div>
       <div class="stockPrix">
@@ -157,7 +154,6 @@ const mangaMapper = computed(() => {
             id="t3Prix"
             v-model="t3Prix"
           />
-          
         </div>
       </div>
     </div>
@@ -175,22 +171,19 @@ form {
 .stockPrixContain {
   display: flex;
   justify-content: space-between;
-
 }
 
 .stockPrixContain p {
   text-align: center;
 }
 
-
-.blocInput{
+.blocInput {
   width: 100%;
   display: flex;
   justify-content: space-between;
- 
 }
 
-.stockPrix{
+.stockPrix {
   margin: 5px;
 }
 

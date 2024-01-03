@@ -8,10 +8,9 @@ const joujouListe = computed(() => {
   return storeJoujou.getfilteredList
 })
 
-function supprJoujou(item){
+function supprJoujou(item) {
   storeJoujou.deleteJoujouFromList(item)
 }
-
 </script>
 
 <template>

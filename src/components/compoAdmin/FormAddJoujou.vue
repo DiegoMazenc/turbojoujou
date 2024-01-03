@@ -13,7 +13,6 @@ const storeJoujou = useJoujouStore()
 const formSubmit = () => {
   console.log(joujouMapper.value)
   storeJoujou.addJoujouToList(joujouMapper.value)
-
 }
 
 const joujouMapper = computed(() => {
@@ -23,7 +22,6 @@ const joujouMapper = computed(() => {
   joujouModel.la_marque = la_marque.value
   joujouModel.prix = prix.value
   joujouModel.taille = taille.value
-
 
   return joujouModel
 })

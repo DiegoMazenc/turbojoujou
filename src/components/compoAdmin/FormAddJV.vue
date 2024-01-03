@@ -109,7 +109,7 @@ form {
   margin: 5% 10%;
 }
 
-.checkboxDiv{
+.checkboxDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

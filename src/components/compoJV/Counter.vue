@@ -6,42 +6,35 @@ export default {
   name: 'Counter',
   data() {
     return {
-        qte: null, 
+      qte: null
     }
   },
-  methods: {
-    
-  },
+  methods: {},
 
   computed: {
     ...mapState(useJeuxvVideoStore, ['jeuxVideoList']),
 
-    showQte () {
-        this.qte = this.jeuxVideoList.length
-        return this.qte; 
+    showQte() {
+      this.qte = this.jeuxVideoList.length
+      return this.qte
     }
-  }, 
+  },
   mounted() {
     this.showQte()
   },
   watch: {
     jeuxVideoList: {
-        handler() {
-            this.showQte; 
-        },
-        deep:true
+      handler() {
+        this.showQte
+      },
+      deep: true
     }
-
   }
-
-  }
-
+}
 </script>
 
 <template>
   <p>{{ qte }}</p>
 </template>
 
-<style>
-
-</style>
+<style></style>
