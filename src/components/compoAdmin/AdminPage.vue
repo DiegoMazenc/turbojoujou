@@ -8,6 +8,7 @@ import FormAddManga from './FormAddManga.vue'
 
 import TabJoujou from './TabJoujou.vue'
 import TabJV from './TabJV.vue'
+import TabManga from './TabManga.vue'
 
 const isFormAddJoujouVisible = ref(true)
 const isFormAddJVVisible = ref(false)
@@ -62,9 +63,7 @@ const showForm = (formName) => {
     <FormAddJV :class="{ hidden: !isFormAddJVVisible }" />
     <FormAddManga :class="{ hidden: !isFormAddMangaVisible }" />
   </div>
-
-  <TabJoujou/>
-  <TabJV/>
+ 
 </template>
 
 <style>
