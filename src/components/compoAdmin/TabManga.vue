@@ -8,9 +8,9 @@ const mangaListe = computed(() => {
     return storeManga.getfilteredList
 })
 
-function supprManga(item) {
-    storeManga.deleteJeuxVideoFromList(item)
-}
+// function supprManga(item) {
+//     storeManga.deleteJeuxVideoFromList(item)
+// }
 
 </script>
 
