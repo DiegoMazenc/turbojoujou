@@ -84,6 +84,7 @@ export const useJeuxvVideoStore = defineStore('jeuxvideo', () => {
     triPrix.value = true
     // console.log('TRIPRI marche', this.triPrix, "alpha", this.triAlpha)
   }
+
   return {
     jeuxVideoList,
     selectedGenre,
@@ -120,6 +121,14 @@ export const useJoujouStore = defineStore('joujou', () => {
   const getSelectedMarque = computed(() => {
     return selectedMarque.value
   })
+
+  const uniqueMarques = computed(() => {
+    const uniqueMarquesSet = new Set();
+    joujouListe.value.forEach((joujou) => {
+      uniqueMarquesSet.add(joujou.la_marque);
+    });
+    return Array.from(uniqueMarquesSet);
+  });
 
   const getTriAlpha = computed(() => {
     triAlpha.value
@@ -188,7 +197,8 @@ export const useJoujouStore = defineStore('joujou', () => {
     deleteJoujouFromList,
     updateSelectedMarque,
     updateTriAlpha,
-    updateTriPrix
+    updateTriPrix,
+    uniqueMarques
   }
 })
 
@@ -217,6 +227,15 @@ export const useMangaStore = defineStore('manga', () => {
   })
   const getTriPrix = computed(() => {
     return triPrix.value
+  })
+
+  const uniqueTitre = computed(()=>{
+    const uniqueMarquesSet = new Set()
+      mangaList.forEach((manga)=>{
+      uniqueMarquesSet.add(manga.style)
+    
+    })
+    return Array.from(uniqueMarquesSet)
   })
 
   const getfilteredList = computed(() => {
@@ -290,6 +309,7 @@ export const useMangaStore = defineStore('manga', () => {
     updateSelectedMarque,
     updateSelectedTitle,
     updateTriAlpha,
-    updateTriPrix
+    updateTriPrix, 
+    uniqueTitre
   }
 })

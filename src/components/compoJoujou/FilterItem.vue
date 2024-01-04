@@ -21,15 +21,10 @@ const exportTriePrix = () => {
   storeJoujou.updateTriPrix(triPrix)
 }
 
-const uniqueMarques = computed(() => {
-  const uniqueMarquesSet = new Set()
+const tableauUniqueMarque = computed(() => {
+  return storeJoujou.uniqueMarques;
+});
 
-  storeJoujou.getfilteredList.forEach((joujou) => {
-    uniqueMarquesSet.add(joujou.la_marque)
-  })
-
-  return Array.from(uniqueMarquesSet)
-})
 </script>
 
 <template>
@@ -47,7 +42,7 @@ const uniqueMarques = computed(() => {
           @change="exportSelectedMarque"
         >
           <option value="all">All</option>
-          <option v-for="(item, index) in uniqueMarques" :key="index" :value="item">
+          <option v-for="(item, index) in tableauUniqueMarque" :key="index" :value="item">
             {{ item }}
           </option>
         </select>

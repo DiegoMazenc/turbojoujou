@@ -28,12 +28,7 @@ function exportSelectedTitle() {
 }
 
 const data = computed(()=>{
-  const uniqueMarquesSet = new Set()
-  storeManga.mangaList.forEach((manga)=>{
-    uniqueMarquesSet.add(manga.style)
-  
-  })
-  return Array.from(uniqueMarquesSet)
+  return storeManga.uniqueTitre
 })
 
 </script>
