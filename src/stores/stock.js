@@ -231,7 +231,7 @@ export const useMangaStore = defineStore('manga', () => {
 
   const uniqueTitre = computed(()=>{
     const uniqueMarquesSet = new Set()
-      mangaList.forEach((manga)=>{
+      mangaList.value.forEach((manga)=>{
       uniqueMarquesSet.add(manga.style)
     
     })

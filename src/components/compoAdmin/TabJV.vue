@@ -8,9 +8,9 @@ const jvListe = computed(() => {
   return storeJv.getfilteredList
 })
 
-function supprJv(item) {
-  storeJv.deleteJeuxVideoFromList(item)
-}
+// function supprJv(item) {
+//   storeJv.deleteJeuxVideoFromList(item)
+// }
 </script>
 
 <template>
